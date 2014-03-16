@@ -10,7 +10,6 @@ import gate.creole.ConditionalSerialAnalyserController;
 import gate.creole.ExecutionException;
 import gate.creole.ResourceInstantiationException;
 import gate.persist.PersistenceException;
-import gate.persist.SerialDataStore;
 import gate.util.persistence.PersistenceManager;
 
 import java.io.File;
@@ -34,23 +33,18 @@ public class TweetPOSTagTest {
         // gatePath "/home/yasen/programs/gate-7.0"
         String gatePath = args[0];
 
-        // dataStorePath "/home/yasen/projects/nlp_analysis/corpora/intention/"
-        String dataStorePath = args[1];
-
         // tweetsPath "/home/yasen/projects/data/sentiment/pos-neg/reviews-14-products/"
-        String tweetsPath = args[2];
+        String tweetsPath = args[1];
 
         // path to twitie xgapp
-        String twitieAppPath = args[3];
+        String twitieAppPath = args[2];
 
         // path to twitie xgapp
-        String cmuAppPath = args[4];
+        String cmuAppPath = args[3];
 
         GateUtil.initGate(gatePath);
-        SerialDataStore dataStore = GateUtil.createSerialDataStore(dataStorePath);
 
-        Corpus corpusToAdoptForPersistence = Factory.newCorpus("POStag");
-        Corpus corpus = (Corpus) dataStore.adopt(corpusToAdoptForPersistence, null);
+        Corpus corpus = Factory.newCorpus("POStag");
 
         String[] tweetLines = IO.splitStringToArray(tweetsPath, "\r\n", StandardCharsets.UTF_8);
         Integer docCount = 0;
@@ -60,19 +54,17 @@ public class TweetPOSTagTest {
 
             tweet = TweetNormalizer.normalize(tweet);
 
-            GateUtil.addDocumentToCorpus(tweet, dataStore, corpus, docCount.toString());
-
+            GateUtil.addDocumentToCorpus(tweet, corpus, docCount.toString());
             docCount++;
         }
-
         Map<String, String> taggersMap = new HashMap<String, String>();
         taggersMap.put("twitie", twitieAppPath);
         taggersMap.put("CMU", cmuAppPath);
 
         HashMap<String, List<Map<String, Integer>>> taggersResultMap = executePOSTaggersOverCorpus(corpus, taggersMap);
 
-        if (args.length == 6) {
-            String output = args[5];
+        if (args.length == 5) {
+            String output = args[4];
             PrintStream writer = new PrintStream(new FileOutputStream(output, false));
             try {
                 printResults(writer, taggersResultMap);

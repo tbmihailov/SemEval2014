@@ -42,13 +42,12 @@ public class GateUtil {
         }
     }
 
-    public static void addDocumentToCorpus(String docText, SerialDataStore dataStore, Corpus corpus, String docName) throws Exception {
+    public static void addDocumentToCorpus(String docText, Corpus corpus, String docName) throws Exception {
         FeatureMap params = Factory.newFeatureMap();
         params.put(Document.DOCUMENT_STRING_CONTENT_PARAMETER_NAME, docText);
         params.put(Document.DOCUMENT_ENCODING_PARAMETER_NAME, "UTF-8");
         Document doc = (Document) Factory.createResource("gate.corpora.DocumentImpl", params);
         doc.setName(docName);
         corpus.add(doc);
-        dataStore.sync(corpus);
     }
 }

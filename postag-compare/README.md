@@ -5,9 +5,8 @@ Requirements:
 	- export of application that executes yasen's CMU wrapper in xgapp format
 		- this application must consist of a sentence splitter and the CMU wrapper.
 Usage:
-expects 5 mandatory arguments in the launch configuration in this order
+expects 4 mandatory arguments in the launch configuration in this order
 	- gate root path
-	- gate datastore path (could be any directory)
 	- tweets file path
 	- twitie xgapp (path to gate plugins/twitie/*.xgapp)
 	- cmu xgapp (path to yasen's gate plugin wrapper of the CMU wrapper saved as xgapp)
