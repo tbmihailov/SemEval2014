@@ -1,1 +1,0 @@
-﻿LexiconToGazetteer bigrams-pmilexicon.txt "(.+)\s(.+)\t(.+)\t(.+)\t(.+)" "$1 $2	sentimentScore=$3	numPositive=$4	numNegative=$5" bigrams-pmilexicon.lst

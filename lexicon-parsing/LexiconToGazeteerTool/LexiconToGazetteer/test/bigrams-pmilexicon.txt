@@ -1,8 +1,0 @@
-. #perfection	8.888	4493	1
-. #excellent	8.65	3542	1
-. #nice	8.421	2815	1
-. #fabulous	8.403	2765	1
-. #ideal	8.339	2593	1
-! #perfection	7.853	1596	1
-! #classy	7.616	1259	1
-. #perfect	7.417	4127	4
