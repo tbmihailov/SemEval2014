@@ -1,0 +1,3 @@
+bigrams-pmilexicon.lst:sentiment:nrc
+unigrams-pmilexicon.lst:sentiment:nrc
+sentimenthashtags.lst:sentiment:nrc

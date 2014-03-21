@@ -1,0 +1,1 @@
+LexiconToGazetteer sentimenthashtags.txt "(.+)\t(.+)" "$1	sentiment=$2" sentimenthashtags.lst
