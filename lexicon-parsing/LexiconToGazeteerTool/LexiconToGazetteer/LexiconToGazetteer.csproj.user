@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartArguments>test\bigrams-pmilexicon.txt "%28.+%29\s%28.+%29\t%28.+%29\t%28.+%29\t%28.+%29" "%241 %242	sentimentScore=%243	numPositive=%244	numNegative=%245" bigrams-pmilexicon.lst</StartArguments>
+  </PropertyGroup>
+</Project>
