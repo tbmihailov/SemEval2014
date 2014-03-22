@@ -1,0 +1,4 @@
+00000001 so---! #positive	5	29	0
+00000002 i---cuddled up	5	6	2
+00000003 wine---out	5	9	0
+00000004 i---my covers	5	5	1
