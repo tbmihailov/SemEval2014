@@ -1,0 +1,3 @@
+neg_emoticons.lst:emoticons:neg
+pos_emoticons.lst:emoticons:pos
+emoticons.lst:emoticons:all
