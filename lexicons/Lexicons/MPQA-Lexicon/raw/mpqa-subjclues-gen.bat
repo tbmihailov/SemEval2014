@@ -1,0 +1,2 @@
+rem type=weaksubj len=1 word1=abandoned pos1=adj stemmed1=n priorpolarity=negative
+LexiconToGazetteer subjclueslen1-HLTEMNLP05.tff "(.+)=(.+)\s(.+)=(.+)\s(.+)=(.+)\s(.+)=(.+)\s(.+)=(.+)\s(.+)=(.+)" "$6	mpqa_$1=$2	mpqa_$3=$4	mpqa_$7=$8	mpqa_$9=$10	mpqa_$11=$12" mpqa-subjclues.lst
