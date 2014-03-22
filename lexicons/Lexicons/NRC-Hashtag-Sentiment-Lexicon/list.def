@@ -1,5 +1,5 @@
-bigrams-pmilexicon.lst:sentiment:nrc
-unigrams-pmilexicon.lst:sentiment:nrc
-sentimenthashtags.lst:sentiment:nrc
-pairs-pmilexicon-begin.lst:nrc_pair_begin
-pairs-pmilexicon-end.lst:nrc_pair_end
+bigrams-pmilexicon.lst:nrcSen_sentiment
+unigrams-pmilexicon.lst:nrcSeniment_sentiment
+sentimenthashtags.lst:nrcSen_sentiment
+pairs-pmilexicon-begin.lst:nrcSen_PairBegin
+pairs-pmilexicon-end.lst:nrcSen_PairEnd
