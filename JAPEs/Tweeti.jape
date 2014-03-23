@@ -1,0 +1,99 @@
+﻿Phase:allcap
+Input: Token
+Options: control = appelt
+
+Rule: allCaps
+( {Token.orth == allCaps} ):allcaps
+-->
+:allcaps.AllCaps={rule = "allCaps"}
+
+Phase:hash
+Input: Token
+Options: control = appelt
+
+Rule:hashTag
+(
+{Token.string == "#"}
+{Token.kind == word}
+):hashtag
+-->
+:hashtag.HashTags={rule = "hashTag"}
+
+Phase:emoticonPos
+Input: Lookup 
+Options: control = appelt
+
+Rule:emoticonpos
+(
+{Lookup.minorType == pos}
+):emo
+-->
+:emo.PositiveEmoticons={rule = "emoticonpos"}
+
+Phase:emoticonNeg
+Input: Lookup 
+Options: control = appelt
+
+Rule:emoticonneg
+(
+{Lookup.minorType == neg}
+):emo
+-->
+:emo.NegativeEmoticons={rule = "emoticonneg"}
+
+Phase:elongword
+Input: Token 
+Options: control = appelt
+
+Rule:elongWord
+(
+{Token.string ==~".*(\\w)\\1{2,}.*"}
+):elongwords
+-->
+:elongwords.ElongatedWords={rule = "elongWord"}
+
+Phase:emot
+Input: Lookup 
+Options: control = appelt
+
+Rule:emoticon
+(
+{Lookup.minorType == all}
+):emo
+-->
+:emo.Emoticon={rule = "emoticon"}
+
+Phase:twitter
+Input: Token Split
+Options: control = appelt
+
+Rule:tweet
+({Token.category == JJ})
+(
+({Token})*
+{Split.kind == external}
+):tw
+-->
+:tw.Tweet={rule = "tweet"}
+
+Phase:emotposend
+Input: Split PositiveEmoticons
+Options: control = appelt
+
+Rule:EndPosEmot
+({PositiveEmoticons}
+{Split.kind == external}
+):ee
+-->
+:ee.EndPosEmoticon={rule = "EndPosEmot"}
+
+Phase:emotnegend
+Input: Split NegativeEmoticons
+Options: control = appelt
+
+Rule:EndPosEmot
+({NegativeEmoticons}
+{Split.kind == external}
+):ee
+-->
+:ee.EndNegEmoticon={rule = "EndNegEmot"}
