@@ -1,2 +1,2 @@
-LexiconToGazetteer pairs-pmilexicon-numbered.txt "([0-9]{8})\s(.+)---(.+)\t(.+)\t(.+)\t(.+)" "$2	ID=$1 sentimentScore=$4	numPositive=$5	numNegative=$6" pairs-pmilexicon-begin.lst
+LexiconToGazetteer pairs-pmilexicon-numbered.txt "([0-9]{8})\s(.+)---(.+)\t(.+)\t(.+)\t(.+)" "$2	ID=$1 sent140Pair_sentimentScore=$4	sent140Pair_numPositive=$5	sent140Pair_numNegative=$6" pairs-pmilexicon-begin.lst
 LexiconToGazetteer pairs-pmilexicon-numbered.txt "([0-9]{8})\s(.+)---(.+)\t(.+)\t(.+)\t(.+)" "$3	ID=$1" pairs-pmilexicon-end.lst

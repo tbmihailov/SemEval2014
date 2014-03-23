@@ -1,1 +1,1 @@
-LexiconToGazetteer unigrams-pmilexicon.txt "(.+)\t(.+)\t(.+)\t(.+)" "$1	sentimentScore=$2	numPositive=$3	numNegative=$4" unigrams-pmilexicon.lst
+LexiconToGazetteer unigrams-pmilexicon.txt "(.+)\t(.+)\t(.+)\t(.+)" "$1	sent140Pair_sentimentScore=$2	sent140Pair_numPositive=$3	sent140Pair_numNegative=$4" unigrams-pmilexicon.lst
