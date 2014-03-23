@@ -1,0 +1,73 @@
+﻿Imports: { import static gate.Utils.*;}
+
+Phase: FeatureTweet
+Input: Tweet
+Options: control = appelt
+
+Rule: FeatureTweet
+({Tweet}):tw
+-->
+:tw {
+	AnnotationSet allcaps = inputAS.get("AllCaps").getContained(start(twAnnots), end(twAnnots));
+	long numAllCaps = 0;
+	for(Annotation a : allcaps){
+		if("allCaps".equals(a.getFeatures().get("rule"))){
+		numAllCaps ++;
+		}
+	}
+	twAnnots.iterator().next().getFeatures().put("numAllCaps", numAllCaps);
+	
+	AnnotationSet elongatedwords = inputAS.get("ElongatedWords").getContained(start(twAnnots), end(twAnnots));
+	long numelongwords = 0;
+	for(Annotation e : elongatedwords){
+		if("elongWord".equals(e.getFeatures().get("rule"))){
+		numelongwords ++;
+		}
+	}
+	twAnnots.iterator().next().getFeatures().put("numElongWords", numelongwords);
+	
+	AnnotationSet hashtags = inputAS.get("HashTags").getContained(start(twAnnots), end(twAnnots));
+	long numhashtags = 0;
+	for(Annotation h : hashtags){
+		if("hashTag".equals(h.getFeatures().get("rule"))){
+		numhashtags ++;
+		}
+	}
+	twAnnots.iterator().next().getFeatures().put("numHashTags", numhashtags);
+	
+	AnnotationSet posemoticons = inputAS.get("PositiveEmoticons").getContained(start(twAnnots), end(twAnnots));
+	long numposemoticons = 0;
+	for(Annotation p : posemoticons){
+		if("emoticonpos".equals(p.getFeatures().get("rule"))){
+		numposemoticons ++;
+		}
+	}
+	twAnnots.iterator().next().getFeatures().put("numPosEmoticons", numposemoticons);
+	
+	AnnotationSet negemoticons = inputAS.get("NegativeEmoticons").getContained(start(twAnnots), end(twAnnots));
+	long numnegemoticons = 0;
+	for(Annotation n : negemoticons){
+		if("emoticonneg".equals(n.getFeatures().get("rule"))){
+		numnegemoticons ++;
+		}
+	}
+	twAnnots.iterator().next().getFeatures().put("numNegEmoticons", numnegemoticons);
+	
+	AnnotationSet endposemot = inputAS.get("EndPosEmoticon").getContained(start(twAnnots), end(twAnnots));
+	boolean endemotpos = false;
+	for(Annotation m : endposemot){
+		if("EndPosEmot".equals(m.getFeatures().get("rule"))){
+		endemotpos = true;
+		}
+	}
+	twAnnots.iterator().next().getFeatures().put("EndPosEmoticons", endemotpos);
+	
+	AnnotationSet endnegemot = inputAS.get("EndNegEmoticon").getContained(start(twAnnots), end(twAnnots));
+	boolean endemotneg = false;
+	for(Annotation g : endnegemot){
+		if("EndNegEmot".equals(g.getFeatures().get("rule"))){
+		endemotneg = true;
+		}
+	}
+	twAnnots.iterator().next().getFeatures().put("EndNegEmoticons", endemotneg);
+}
