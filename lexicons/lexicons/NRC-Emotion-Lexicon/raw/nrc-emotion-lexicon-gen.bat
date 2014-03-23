@@ -1,0 +1,2 @@
+rem type=weaksubj len=1 word1=abandoned pos1=adj stemmed1=n priorpolarity=negative
+LexiconToGazetteer nrc-emotion-lexicon.txt "(.+)\s(.+):(.+)\s(.+):(.+)\s(.+):(.+)\s(.+):(.+)\s(.+):(.+)\s(.+):(.+)\s(.+):(.+)\s(.+):(.+)\s(.+):(.+)\s(.+):(.+)" "$1	nrcEmo_$2=$3	nrcEmo_$4=$5	nrcEmo_$6=$7	nrcEmo_$8=$9	nrcEmo_$10=$11	nrcEmo_$12=$13	nrcEmo_$14=$15	nrcEmo_$16=$17	nrcEmo_$18=$19	nrcEmo_$20=$21" nrc-emotion-lexicon.lst
