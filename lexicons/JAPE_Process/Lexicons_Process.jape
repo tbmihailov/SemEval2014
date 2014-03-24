@@ -18,6 +18,14 @@ Rule: LexiconsSum
 	int bl_pos_cnt = 0;
 	int bl_sent_sum = 0;
 	int bl_token_sent = 0;
+	
+	//MPQA Lexicon
+	int mpqa_neu_cnt = 0;
+	int mpqa_neg_cnt = 0;
+	int mpqa_pos_cnt = 0;
+	int mpqa_sent_sum = 0;
+	int mpqa_token_sent = 0;
+	
 	for(Annotation a : lookups){
 		FeatureMap aFeatMap = a.getFeatures();
 		
@@ -34,10 +42,39 @@ Rule: LexiconsSum
 			aFeatMap.put("bl_sent","1");
 		}
 		bl_sent_sum += bl_token_sent;
+		
+		//MPQA Lexicon
+		mpqa_token_sent = 0;
+		if(aFeatMap.containsKey("mpqa_pplrty_nom")){
+			mpqa_token_sent = (int)(aFeatMap.get("mpqa_pplrty_nom"));
+			if(mpqa_token_sent>0){
+				mpqa_pos_cnt++;
+			} else if(mpqa_token_sent<0) {
+				mpqa_neg_cnt++;
+			}else{
+				mpqa_neu_cnt++;
+			}
+			
+			if("mpqa_neg".equals(aFeatMap.get("minorType"))){
+				mpqa_neg_cnt++;
+				mpqa_token_sent=-1;
+				aFeatMap.put("mpqa_sent","-1");
+			}
+			mpqa_sent_sum += mpqa_token_sent;
+			aFeatMap.put("mpqa_sent",mpqa_token_sent);
+		}
 	}
 	
 	//BingLiu
 	featureMap.put("bl_neg_cnt", bl_neg_cnt);
 	featureMap.put("bl_pos_cnt", bl_pos_cnt);
 	featureMap.put("bl_sent_sum", bl_sent_sum);
+	featureMap.put("bl_sent_last_token", bl_token_sent);
+	
+	//MPQA Lexicon
+	featureMap.put("mpqa_neg_cnt", mpqa_neg_cnt);
+	featureMap.put("mpqa_neu_cnt", mpqa_neu_cnt);
+	featureMap.put("mpqa_pos_cnt", mpqa_pos_cnt);
+	featureMap.put("mpqa_sent_sum", mpqa_sent_sum);
+	featureMap.put("mpqa_sent_last_token", mpqa_token_sent);
 }
