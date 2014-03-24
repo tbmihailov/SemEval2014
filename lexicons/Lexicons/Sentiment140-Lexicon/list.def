@@ -1,2 +1,4 @@
-bigrams-pmilexicon.lst:sentiment:nrc
-unigrams-pmilexicon.lst:sentiment:nrc
+bigrams-pmilexicon.lst:sen14
+unigrams-pmilexicon.lst:sen14
+pairs-pmilexicon-begin.lst:sen14_pair:sen14_PairBegin
+pairs-pmilexicon-end.lst:sen14_pair:sen14_PairEnd
