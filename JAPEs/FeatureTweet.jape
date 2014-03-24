@@ -8,6 +8,8 @@ Rule: FeatureTweet
 ({Tweet}):tw
 -->
 :tw {
+
+	//
 	AnnotationSet allcaps = inputAS.get("AllCaps").getContained(start(twAnnots), end(twAnnots));
 	long numAllCaps = 0;
 	for(Annotation a : allcaps){
@@ -17,6 +19,8 @@ Rule: FeatureTweet
 	}
 	twAnnots.iterator().next().getFeatures().put("numAllCaps", numAllCaps);
 	
+	
+	//
 	AnnotationSet elongatedwords = inputAS.get("ElongatedWords").getContained(start(twAnnots), end(twAnnots));
 	long numelongwords = 0;
 	for(Annotation e : elongatedwords){
@@ -26,6 +30,8 @@ Rule: FeatureTweet
 	}
 	twAnnots.iterator().next().getFeatures().put("numElongWords", numelongwords);
 	
+	
+	//
 	AnnotationSet hashtags = inputAS.get("HashTags").getContained(start(twAnnots), end(twAnnots));
 	long numhashtags = 0;
 	for(Annotation h : hashtags){
@@ -35,6 +41,8 @@ Rule: FeatureTweet
 	}
 	twAnnots.iterator().next().getFeatures().put("numHashTags", numhashtags);
 	
+	
+	//
 	AnnotationSet posemoticons = inputAS.get("PositiveEmoticons").getContained(start(twAnnots), end(twAnnots));
 	long numposemoticons = 0;
 	for(Annotation p : posemoticons){
@@ -44,6 +52,8 @@ Rule: FeatureTweet
 	}
 	twAnnots.iterator().next().getFeatures().put("numPosEmoticons", numposemoticons);
 	
+	
+	//
 	AnnotationSet negemoticons = inputAS.get("NegativeEmoticons").getContained(start(twAnnots), end(twAnnots));
 	long numnegemoticons = 0;
 	for(Annotation n : negemoticons){
@@ -53,6 +63,8 @@ Rule: FeatureTweet
 	}
 	twAnnots.iterator().next().getFeatures().put("numNegEmoticons", numnegemoticons);
 	
+	
+	//
 	AnnotationSet endposemot = inputAS.get("EndPosEmoticon").getContained(start(twAnnots), end(twAnnots));
 	boolean endemotpos = false;
 	for(Annotation m : endposemot){
@@ -62,6 +74,7 @@ Rule: FeatureTweet
 	}
 	twAnnots.iterator().next().getFeatures().put("EndPosEmoticons", endemotpos);
 	
+	//
 	AnnotationSet endnegemot = inputAS.get("EndNegEmoticon").getContained(start(twAnnots), end(twAnnots));
 	boolean endemotneg = false;
 	for(Annotation g : endnegemot){

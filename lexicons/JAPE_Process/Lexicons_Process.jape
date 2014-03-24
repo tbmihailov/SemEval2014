@@ -1,0 +1,43 @@
+﻿Imports: { import static gate.Utils.*;}
+
+Phase: LexiconsSum
+Input: Tweet
+Options: control = appelt
+
+Rule: LexiconsSum
+({Tweet}):tw
+-->
+:tw {
+
+	//
+	AnnotationSet lookups = inputAS.get("Lookup").getContained(start(twAnnots), end(twAnnots));
+	FeatureMap featureMap = twAnnots.iterator().next().getFeatures();
+	
+	//BingLiu
+	int bl_neg_cnt = 0;
+	int bl_pos_cnt = 0;
+	int bl_sent_sum = 0;
+	int bl_token_sent = 0;
+	for(Annotation a : lookups){
+		FeatureMap aFeatMap = a.getFeatures();
+		
+		//BingLiu	
+		bl_token_sent = 0;
+		if("bl_neg".equals(aFeatMap.get("minorType"))){
+			bl_neg_cnt++;
+			bl_token_sent=-1;
+			aFeatMap.put("bl_sent","-1");
+		}
+		if("bl_pos".equals(aFeatMap.get("minorType"))){
+			bl_pos_cnt++;
+			bl_token_sent=1;
+			aFeatMap.put("bl_sent","1");
+		}
+		bl_sent_sum += bl_token_sent;
+	}
+	
+	//BingLiu
+	featureMap.put("bl_neg_cnt", bl_neg_cnt);
+	featureMap.put("bl_pos_cnt", bl_pos_cnt);
+	featureMap.put("bl_sent_sum", bl_sent_sum);
+}
