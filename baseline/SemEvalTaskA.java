@@ -1,4 +1,4 @@
-package com.sm.semeval;
+package com.sm.ner.file.sentiment;
 
 import gate.Corpus;
 import gate.Document;
@@ -88,7 +88,7 @@ public class SemEvalTaskA {
 					endPos--;
 					
 					Anno sentAnn = new Anno(docStartPos + startPos, docStartPos + endPos, label, id1, id2);
-					Anno tweetAnn = new Anno(docStartPos, docStartPos + text.length(), "tweet", id1, id2);
+					Anno tweetAnn = new Anno(docStartPos, docStartPos + text.length(), label, id1, id2);
 					docAnns.add(sentAnn);
 					twAnns.add(tweetAnn);
 					docText.append(text).append(" \n\n");
@@ -129,7 +129,8 @@ public class SemEvalTaskA {
 			FeatureMap fm = Factory.newFeatureMap();
 			fm.put("id1", ann.id1);
 			fm.put("id2", ann.id2);
-			doc.getAnnotations().add((long) ann.start, (long) ann.end, ann.type, fm);
+			fm.put("label", ann.type);
+			doc.getAnnotations("GOLD").add((long) ann.start, (long) ann.end, "tweet", fm);
 		}
 		
 		cor.add(doc);
