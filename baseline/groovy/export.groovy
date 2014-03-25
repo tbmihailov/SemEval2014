@@ -25,7 +25,9 @@ new File(doc.name).withWriterAppend{ out ->
         }
 		
 		// export label
-		out.write(tw.features.label);
+		if(tw.features.label != null) {
+			out.write(tw.features.label);
+		}
 		out.write("\n");
 	}
 }
