@@ -63,18 +63,6 @@ Rule:emoticon
 -->
 :emo.Emoticon={rule = "emoticon"}
 
-Phase:twitter
-Input: Token Split
-Options: control = appelt
-
-Rule:tweet
-({Token.category == JJ})
-(
-({Token})*
-{Split.kind == external}
-):tw
--->
-:tw.Tweet={rule = "tweet"}
 
 Phase:emotposend
 Input: Split PositiveEmoticons

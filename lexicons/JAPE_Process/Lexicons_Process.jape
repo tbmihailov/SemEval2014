@@ -1,11 +1,11 @@
 ﻿Imports: { import static gate.Utils.*;}
 
 Phase: LexiconsSum
-Input: Tweet
+Input: tweet
 Options: control = appelt
 
 Rule: LexiconsSum
-({Tweet}):tw
+({tweet}):tw
 -->
 :tw {
 

@@ -135,9 +135,9 @@ public class WordClusterTagger extends AbstractLanguageAnalyser {
             for (Pair cluster : clusters) {
                 if (fm.get(cluster.getCluster()) != null) {
                     String label = (String)fm.get(cluster.getCluster());
-                    fm.put("word-cluster", label + "\t" + cluster.getCluster());
+                    fm.put("wc", label + "\t" + cluster.getCluster());
                 } else {
-                    fm.put("word-cluster", cluster.getCluster());
+                    fm.put("wc", cluster.getCluster());
                 }
             }
 //            out.add(sentStart, sentEnd, "Token", fm);

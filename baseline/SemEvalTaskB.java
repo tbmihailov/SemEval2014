@@ -1,4 +1,4 @@
-package com.sm.semeval;
+package com.sm.ner.file.sentiment;
 
 import gate.Corpus;
 import gate.Document;
@@ -104,7 +104,11 @@ public class SemEvalTaskB {
 			fm.put("id1", ann.id1);
 			fm.put("id2", ann.id2);
 			doc.getAnnotations("GOLD").add((long) ann.start, (long) ann.end, ann.type, fm);
-			doc.getAnnotations().add((long) ann.start, (long) ann.end, "tweet", Factory.newFeatureMap());
+			FeatureMap twfm = Factory.newFeatureMap();
+			twfm.put("id1", ann.id1);
+			twfm.put("id2", ann.id2);
+			twfm.put("label", ann.type);
+			doc.getAnnotations("GOLD").add((long) ann.start, (long) ann.end, "tweet", twfm);
 		}
 		cor.add(doc);
 		ds.sync(cor);

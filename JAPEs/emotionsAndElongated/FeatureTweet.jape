@@ -1,11 +1,11 @@
 ﻿Imports: { import static gate.Utils.*;}
 
 Phase: FeatureTweet
-Input: Tweet
+Input: tweet
 Options: control = appelt
 
 Rule: FeatureTweet
-({Tweet}):tw
+({tweet}):tw
 -->
 :tw {
 
