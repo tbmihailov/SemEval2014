@@ -26,17 +26,3 @@ inputAS.get("tweet").each{ tw ->
 		tw.features.nGram.add(nGram);
 	}
 }
-
-
-// export to file
-new File(doc.name).withWriterAppend{ out ->
-	doc.getAnnotations().get("tweet").each{ tw ->
-		out.write(doc.stringFor(tw) + "\t");
-        tw.features.each{ fName, fValue ->
-			// TODO: not the best format here... probably each n-gram in the set should be exported as N-<nGram>
-			// TODO: also label should be last and without label_
-			out.write(/${fName}_${fValue}	/)
-        }
-        out.write("\n")
-	}
-}
