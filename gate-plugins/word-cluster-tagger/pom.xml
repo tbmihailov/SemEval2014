@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>gate-wordcluster</groupId>
+	<artifactId>word-cluster-tagger</artifactId>
+	<name>Word Cluster Tagger</name>
+	<version>0.1</version>
+  
+  	<parent>
+		<groupId>gate-wordcluster</groupId>
+		<artifactId>plugin-parent</artifactId>
+		<version>0.1</version>
+	</parent>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<build>
+	<plugins>
+      
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptors>
+            <descriptor>${project.basedir}/src/assemble/distribution.xml</descriptor>
+          </descriptors>
+        </configuration>
+      </plugin>
+    
+    </plugins>
+    </build>
+</project>

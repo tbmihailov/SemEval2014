@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="no"?>
+<jardesc>
+    <jar path="/Users/inspir3d/dev/gate-8.0-SNAPSHOT-build4765-ALL/plugins/Semeval-word-cluster-tagger/semeval-word-cluster-tagger.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/gate-word-clusters/wordcluster.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <folder path="/gate-word-clusters/src/main/resources/clusters"/>
+        <javaElement handleIdentifier="=gate-word-clusters/src\/main\/java"/>
+    </selectedElements>
+</jardesc>

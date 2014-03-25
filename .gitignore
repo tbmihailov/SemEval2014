@@ -5,3 +5,4 @@
 *.war
 *.ear
 postag-compare/bin
+gate-plugins/word-cluster-tagger/target

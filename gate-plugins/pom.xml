@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>gate-wordcluster</groupId>
+  <artifactId>plugin-parent</artifactId>
+  <version>0.1</version>
+  <name>Gate Plugins Parent Pom</name>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>word-cluster-tagger</module>
+  </modules>
+
+  <build>
+    <pluginManagement>
+
+      <plugins>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>1.6</source>
+            <target>1.6</target>
+          </configuration>
+        </plugin>
+        
+        <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.4</version>
+        <!--configuration>
+          <descriptors>
+            <descriptor>${project.basedir}/src/assemble/distribution.xml</descriptor>
+          </descriptors>
+        </configuration-->
+        <executions>
+          <execution>
+            <id>assemble-zip</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <appendAssemblyId>false</appendAssemblyId>
+              <finalName>${project.artifactId}</finalName>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    
+      </plugins>
+    </pluginManagement>
+    <plugins>
+    </plugins>
+
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>uk.ac.gate</groupId>
+      <artifactId>gate-core</artifactId>
+      <version>7.0</version>
+      <scope>provided</scope>
+    </dependency>
+    
+    <dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>2.4</version>
+	</dependency>
+            
+  </dependencies>
+
+</project>
+

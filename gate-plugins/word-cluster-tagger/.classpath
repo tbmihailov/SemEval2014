@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/inspir3d/dev/gate-8.0-SNAPSHOT-build4765-ALL/bin/gate.jar"/>
+	<classpathentry kind="lib" path="/Users/inspir3d/dev/gate-8.0-SNAPSHOT-build4765-ALL/lib/commons-io.jar"/>
+	<classpathentry kind="lib" path="/Users/inspir3d/dev/gate-8.0-SNAPSHOT-build4765-ALL/lib/commons-lang.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
