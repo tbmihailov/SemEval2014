@@ -26,6 +26,18 @@ Rule: LexiconsSum
 	int mpqa_sent_sum = 0;
 	int mpqa_token_sent = 0;
 	
+	//MSOL Lexicon
+	int msol_neg_cnt = 0;
+	int msol_pos_cnt = 0;
+	int msol_sent_sum = 0;
+	int msol_token_sent = 0;
+	
+	//NRC Emotion Lexicon
+	int nrcEmo_neg_cnt = 0;
+	int nrcEmo_pos_cnt = 0;
+	int nrcEmo_sent_sum = 0;
+	int nrcEmo_token_sent = 0;
+	
 	for(Annotation a : lookups){
 		FeatureMap aFeatMap = a.getFeatures();
 		
@@ -46,7 +58,7 @@ Rule: LexiconsSum
 		//MPQA Lexicon
 		mpqa_token_sent = 0;
 		if(aFeatMap.containsKey("mpqa_pplrty_nom")){
-			mpqa_token_sent = (int)(aFeatMap.get("mpqa_pplrty_nom"));
+			mpqa_token_sent = Integer.parseInt(aFeatMap.get("mpqa_pplrty_nom").toString());
 			if(mpqa_token_sent>0){
 				mpqa_pos_cnt++;
 			} else if(mpqa_token_sent<0) {
@@ -63,6 +75,36 @@ Rule: LexiconsSum
 			mpqa_sent_sum += mpqa_token_sent;
 			aFeatMap.put("mpqa_sent",mpqa_token_sent);
 		}
+		
+		//MSOL lexicon	
+		msol_token_sent = 0;
+		if("msol_neg".equals(aFeatMap.get("minorType"))){
+			msol_neg_cnt++;
+			msol_token_sent=-1;
+			aFeatMap.put("msol_sent","-1");
+		}
+		if("msol_pos".equals(aFeatMap.get("minorType"))){
+			msol_pos_cnt++;
+			msol_token_sent=1;
+			aFeatMap.put("msol_sent","1");
+		}
+		msol_sent_sum += msol_token_sent;
+		
+		//NRC Emotion Lexicon
+		nrcEmo_token_sent = 0;
+		if(aFeatMap.containsKey("nrcEmo_neg")
+			&&((Integer.parseInt(aFeatMap.get("nrcEmo_neg").toString())>0))){
+			nrcEmo_neg_cnt++;
+			nrcEmo_token_sent=-1;
+			aFeatMap.put("nrcEmo_sent","-1");
+		}
+		if(aFeatMap.containsKey("nrcEmo_pos")
+			&&((Integer.parseInt(aFeatMap.get("nrcEmo_pos").toString())>0))){
+			nrcEmo_pos_cnt++;
+			nrcEmo_token_sent=1;
+			aFeatMap.put("nrcEmo_sent","1");
+		}
+		nrcEmo_sent_sum += nrcEmo_token_sent;
 	}
 	
 	//BingLiu
@@ -77,4 +119,16 @@ Rule: LexiconsSum
 	featureMap.put("mpqa_pos_cnt", mpqa_pos_cnt);
 	featureMap.put("mpqa_sent_sum", mpqa_sent_sum);
 	featureMap.put("mpqa_sent_last_token", mpqa_token_sent);
+	
+	//MSOl Lexicon
+	featureMap.put("msol_neg_cnt", msol_neg_cnt);
+	featureMap.put("msol_pos_cnt", msol_pos_cnt);
+	featureMap.put("msol_sent_sum", msol_sent_sum);
+	featureMap.put("msol_sent_last_token", msol_token_sent);
+	
+	//NRC Emotion Lexicon
+	featureMap.put("nrcEmo_neg_cnt", nrcEmo_neg_cnt);
+	featureMap.put("nrcEmo_pos_cnt", nrcEmo_pos_cnt);
+	featureMap.put("nrcEmo_sent_sum", nrcEmo_sent_sum);
+	featureMap.put("nrcEmo_sent_last_token", nrcEmo_token_sent);
 }
