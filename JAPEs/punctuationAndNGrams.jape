@@ -2,26 +2,26 @@ Imports: {
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 }
-
+/*
 Phase:twitter
 Input: Token Split
 Options: control = appelt
-
-Rule:tweet
+*/
+/*Rule:tweet
 ({Token.category == JJ})
 (
 ({Token})*
 {Split.kind == external}
 ):tw
 -->
-:tw.Tweet={rule = "tweet"}
-
+:tw.tweet={rule = "tweet"}
+*/
 
 //////////////////////////////////////////////////////////////////
 
 
 Phase: Punctuation
-Input: Tweet
+Input: tweet
 Options: control = appelt
 
 
@@ -29,7 +29,7 @@ Rule: PunctuationCounter
 Priority: 100
 
 (
- {Tweet}
+ {tweet}
 ):tw
 -->
 :tw {
@@ -191,30 +191,26 @@ Priority: 100
 	
 	// Run stemmer.
 	final String STEM = "STEM";
-	count = 1;
 	
 	List<String> stems = new ArrayList<String>();
 	AnnotationSet tweetTokensAS = inputAS.get("Token").getContained(start, end);
 	
 	for(Annotation tweetTokenAnn : tweetTokensAS) {
 		String stem = (String) tweetTokenAnn.getFeatures().get("stem");
-		stems.add(STEM + count + "_" + stem);
-		count++;
+		stems.add(STEM + "_" + stem);
 	}
 	twAnnots.iterator().next().getFeatures().put("Stems", stems);
 	
 	
 	// Run lemmatizer.
 	final String LEMMA = "LEMMA";
-	count = 1;
 	
 	List<String> lemmas = new ArrayList<String>();
 	tweetTokensAS = inputAS.get("Token").getContained(start, end);
 	
 	for(Annotation tweetTokenAnn : tweetTokensAS) {
 		String root = (String) tweetTokenAnn.getFeatures().get("root");
-		lemmas.add(LEMMA + count + "_" + root);
-		count++;
+		lemmas.add(LEMMA + "_" + root);
 	}
 	twAnnots.iterator().next().getFeatures().put("Lemmas", lemmas);
 	
