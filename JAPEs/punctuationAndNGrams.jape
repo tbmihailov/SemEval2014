@@ -122,7 +122,8 @@ Priority: 100
 	
 	String[] words = text.split(" ");
 	for (int n = 1; n <= maxN; n++) {
-		String[] wordNGrams = new String[words.length - n + 1];
+		//String[] wordNGrams = new String[words.length - n + 1];
+		List<String> wordNGrams = new ArrayList<String>();
 		for (int i = 0; i < words.length - n + 1; i++) {
 			StringBuilder sb = new StringBuilder();
 			if (useConcatenation) {
@@ -138,10 +139,12 @@ Priority: 100
 				}
 				sb.append(words[i + j]);
 			}
-			wordNGrams[i] = sb.toString();
+			//wordNGrams[i] = sb.toString();
+			wordNGrams.add(sb.toString());
 		}
 		String featureCode = "Word " + n + "-grams";
-		twAnnots.iterator().next().getFeatures().put(featureCode, Arrays.toString(wordNGrams));
+		//twAnnots.iterator().next().getFeatures().put(featureCode, Arrays.toString(wordNGrams));
+		twAnnots.iterator().next().getFeatures().put(featureCode, wordNGrams);
 	}
 	
 	
@@ -152,7 +155,8 @@ Priority: 100
 	
 	for(int n = 1; n <= maxN; n++) {
 		char[] characters = text.toCharArray();
-		String[] charNGrams = new String[2];
+		//String[] charNGrams = new String[2];
+		List<String> charNGrams = new ArrayList<String>();
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append(PRE + n + "_");
@@ -163,7 +167,8 @@ Priority: 100
 			}
 			sb.append(ch);
 		}
-		charNGrams[0] = sb.toString();
+		//charNGrams[0] = sb.toString();
+		charNGrams.add(sb.toString());
 		
 		sb = new StringBuilder();
 		sb.append(SUF + n + "_");
@@ -174,12 +179,44 @@ Priority: 100
 			}
 			sb.append(ch);
 		}
-		charNGrams[1] = sb.toString();
+		//charNGrams[1] = sb.toString();
+		charNGrams.add(sb.toString());
 		
 		String featureCode = "Char " + n + "-grams";
-		twAnnots.iterator().next().getFeatures().put(featureCode, Arrays.toString(charNGrams));
+		//twAnnots.iterator().next().getFeatures().put(featureCode, Arrays.toString(charNGrams));
+		twAnnots.iterator().next().getFeatures().put(featureCode, charNGrams);
 	}
 	
+	
+	
+	// Run stemmer.
+	final String STEM = "STEM";
+	count = 1;
+	
+	List<String> stems = new ArrayList<String>();
+	AnnotationSet tweetTokensAS = inputAS.get("Token").getContained(start, end);
+	
+	for(Annotation tweetTokenAnn : tweetTokensAS) {
+		String stem = (String) tweetTokenAnn.getFeatures().get("stem");
+		stems.add(STEM + count + "_" + stem);
+		count++;
+	}
+	twAnnots.iterator().next().getFeatures().put("Stems", stems);
+	
+	
+	// Run lemmatizer.
+	final String LEMMA = "LEMMA";
+	count = 1;
+	
+	List<String> lemmas = new ArrayList<String>();
+	tweetTokensAS = inputAS.get("Token").getContained(start, end);
+	
+	for(Annotation tweetTokenAnn : tweetTokensAS) {
+		String root = (String) tweetTokenAnn.getFeatures().get("root");
+		lemmas.add(LEMMA + count + "_" + root);
+		count++;
+	}
+	twAnnots.iterator().next().getFeatures().put("Lemmas", lemmas);
 	
 	
 }
