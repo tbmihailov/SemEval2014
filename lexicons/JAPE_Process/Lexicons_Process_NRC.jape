@@ -1,0 +1,64 @@
+﻿Imports: { import static gate.Utils.*;}
+
+Phase: LexiconsSum_NRC
+Input: Tweet
+Options: control = appelt
+
+Rule: LexiconsSum_NRC
+({Tweet}):tw
+-->
+:tw {
+
+	//
+	AnnotationSet lookups = inputAS.get("Lookup").getContained(start(twAnnots), end(twAnnots));
+	FeatureMap featureMap = twAnnots.iterator().next().getFeatures();
+	
+	//common
+	int pos=0;
+	int neg=0;
+	float sentiment=0;
+	float ratio=0;
+	
+	////NRC hashtags lexicon
+	int nrcSen_uni_pos_sum = 0;
+	int nrcSen_uni_neg_sum = 0;
+	float nrcSen_uni_sent_sum = 0;
+	float nrcSen_uni_ratio = 0;
+	
+	for(Annotation a : lookups){
+		FeatureMap aFeatMap = a.getFeatures();
+		
+		String annoVal = gate.Utils.stringFor(doc, a);
+		annoVal = annoVal.replace(" ", "_");
+		
+		
+		//NRC hashtags lexicon
+		bl_token_sent = 0;
+		if(("nrcSen".equals(aFeatMap.get("majorType")))
+		&&("unigrams".equals(aFeatMap.get("minorType"))){
+			pos=Integer.parseInt(aFeatMap.get("p").toString());
+			neg=Integer.parseInt(aFeatMap.get("n").toString());
+			sentiment=Float.parseFloat(aFeatMap.get("s").toString());
+			ratio=(pos+1)/(neg+1);
+			
+			//set new features
+			aFeatMap.put("nrcSen_uni_pos", pos);
+			aFeatMap.put("nrcSen_uni_neg", neg);
+			aFeatMap.put("nrcSen_uni_sent", sentiment);
+			aFeatMap.put("nrcSen_uni_ratio", ratio);
+			
+			nrcSen_uni_pos_sum+=pos;
+			nrcSen_uni_neg_sum+=neg;
+			nrcSen_uni_sent_sum+=sentiment;
+		}
+		
+	}
+	
+	//NRC hashtags lexicon
+	nrcSen_uni_ratio=(nrcSen_uni_pos_sum+1)/(nrcSen_uni_neg_sum+1);
+	
+	featureMap.put("nrcSen_uni_pos_sum", nrcSen_uni_pos_sum);
+	featureMap.put("nrcSen_uni_neg", nrcSen_uni_neg);
+	featureMap.put("nrcSen_uni_sent", nrcSen_uni_sent);
+	featureMap.put("nrcSen_uni_ratio", nrcSen_uni_ratio);
+}
