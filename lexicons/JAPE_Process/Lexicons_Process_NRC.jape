@@ -19,19 +19,30 @@ Rule: LexiconsSum_NRC
 	float sentiment=0;
 	float ratio=0;
 	
-	////NRC hashtags lexicon
+	//NRC hashtags lexicon UNI
 	int nrcSen_uni_pos_sum = 0;
 	int nrcSen_uni_neg_sum = 0;
 	float nrcSen_uni_sent_sum = 0;
 	float nrcSen_uni_ratio = 0;
+	
+	//NRC hashtags lexicon BIGRAM
+	int nrcSen_bi_pos_sum = 0;
+	int nrcSen_bi_neg_sum = 0;
+	float nrcSen_bi_sent_sum = 0;
+	float nrcSen_bi_ratio = 0;
+	
+	//NRC hashtags lexicon HASHTAGS
+	int nrcSen_hash_pos_sum = 0;
+	int nrcSen_hash_neg_sum = 0;
+	float nrcSen_hash_sent_sum = 0;
+	float nrcSen_hash_ratio = 0;
 	
 	for(Annotation a : lookups){
 		FeatureMap aFeatMap = a.getFeatures();
 		
 		String annoVal = gate.Utils.stringFor(doc, a);
 		annoVal = annoVal.replace(" ", "_");
-		
-		
+				
 		//NRC hashtags lexicon
 		//unigrams
 		if(("nrcSen".equals(aFeatMap.get("majorType")))
@@ -51,18 +62,84 @@ Rule: LexiconsSum_NRC
 			nrcSen_uni_neg_sum+=neg;
 			nrcSen_uni_sent_sum+=sentiment;
 			
-			featureMap.put("nrcSen_uni_pos"+"_"+annoVal, pos);
-			featureMap.put("nrcSen_uni_neg"+"_"+annoVal, neg);
-			featureMap.put("nrcSen_uni_sent"+"_"+annoVal, sentiment);
-			featureMap.put("nrcSen_uni_ratio"+"_"+annoVal, ratio);
+			//featureMap.put("nrcSen_uni_pos_t"+"_"+annoVal, pos);
+			//featureMap.put("nrcSen_uni_neg_t"+"_"+annoVal, neg);
+			//featureMap.put("nrcSen_uni_sent_t"+"_"+annoVal, sentiment);
+			//featureMap.put("nrcSen_uni_ratio_t"+"_"+annoVal, ratio);
+		}
+		
+		//NRC hashtags lexicon
+		//bigram
+		if(("nrcSen".equals(aFeatMap.get("majorType")))
+		&&("bigrams".equals(aFeatMap.get("minorType")))){
+			pos=Integer.parseInt(aFeatMap.get("p").toString());
+			neg=Integer.parseInt(aFeatMap.get("n").toString());
+			sentiment=Float.parseFloat(aFeatMap.get("s").toString());
+			ratio=(pos+1)/(neg+1);
+			
+			//set new features
+			aFeatMap.put("nrcSen_bi_pos", pos);
+			aFeatMap.put("nrcSen_bi_neg", neg);
+			aFeatMap.put("nrcSen_bi_sent", sentiment);
+			aFeatMap.put("nrcSen_bi_ratio", ratio);
+			
+			nrcSen_bi_pos_sum+=pos;
+			nrcSen_bi_neg_sum+=neg;
+			nrcSen_bi_sent_sum+=sentiment;
+			
+			//featureMap.put("nrcSen_bi_pos_t"+"_"+annoVal, pos);
+			//featureMap.put("nrcSen_bi_neg_t"+"_"+annoVal, neg);
+			//featureMap.put("nrcSen_bi_sent_t"+"_"+annoVal, sentiment);
+			//featureMap.put("nrcSen_bi_ratio_t"+"_"+annoVal, ratio);
+		}
+		
+		//NRC hashtags lexicon
+		//hashtags
+		if(("nrcSen".equals(aFeatMap.get("majorType")))
+		&&("hashtags".equals(aFeatMap.get("minorType")))){
+			pos=Integer.parseInt(aFeatMap.get("p").toString());
+			neg=Integer.parseInt(aFeatMap.get("n").toString());
+			sentiment=Float.parseFloat(aFeatMap.get("s").toString());
+			ratio=(pos+1)/(neg+1);
+			
+			//set new features
+			aFeatMap.put("nrcSen_hash_pos", pos);
+			aFeatMap.put("nrcSen_hash_neg", neg);
+			aFeatMap.put("nrcSen_hash_sent", sentiment);
+			aFeatMap.put("nrcSen_hash_ratio", ratio);
+			
+			nrcSen_hash_pos_sum+=pos;
+			nrcSen_hash_neg_sum+=neg;
+			nrcSen_hash_sent_sum+=sentiment;
+			
+			//featureMap.put("nrcSen_hash_pos_t"+"_"+annoVal, pos);
+			//featureMap.put("nrcSen_hash_neg_t"+"_"+annoVal, neg);
+			//featureMap.put("nrcSen_hash_sent_t"+"_"+annoVal, sentiment);
+			//featureMap.put("nrcSen_hash_ratio_t"+"_"+annoVal, ratio);
 		}
 	}
 	
-	//NRC hashtags lexicon
+	//NRC hashtags lexicon UNI
 	nrcSen_uni_ratio=(nrcSen_uni_pos_sum+1)/(nrcSen_uni_neg_sum+1);
 	
 	featureMap.put("nrcSen_uni_pos_sum", nrcSen_uni_pos_sum);
 	featureMap.put("nrcSen_uni_neg_sum", nrcSen_uni_neg_sum);
 	featureMap.put("nrcSen_uni_sent_sum", nrcSen_uni_sent_sum);
 	featureMap.put("nrcSen_uni_ratio", nrcSen_uni_ratio);
+	
+	//NRC hashtags lexicon BI
+	nrcSen_bi_ratio=(nrcSen_bi_pos_sum+1)/(nrcSen_bi_neg_sum+1);
+	
+	featureMap.put("nrcSen_bi_pos_sum", nrcSen_bi_pos_sum);
+	featureMap.put("nrcSen_bi_neg_sum", nrcSen_bi_neg_sum);
+	featureMap.put("nrcSen_bi_sent_sum", nrcSen_bi_sent_sum);
+	featureMap.put("nrcSen_bi_ratio", nrcSen_bi_ratio);
+	
+	//NRC hashtags lexicon HASHTAGS
+	nrcSen_hash_ratio=(nrcSen_hash_pos_sum+1)/(nrcSen_hash_neg_sum+1);
+	
+	featureMap.put("nrcSen_hash_pos_sum", nrcSen_hash_pos_sum);
+	featureMap.put("nrcSen_hash_neg_sum", nrcSen_hash_neg_sum);
+	featureMap.put("nrcSen_hash_sent_sum", nrcSen_hash_sent_sum);
+	featureMap.put("nrcSen_hash_ratio", nrcSen_hash_ratio);
 }
