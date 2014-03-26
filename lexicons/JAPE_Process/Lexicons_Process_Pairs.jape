@@ -1,0 +1,133 @@
+﻿Imports: { import static gate.Utils.*;}
+
+Phase: LexiconsSum_NRC_pairs
+Input: tweet
+Options: control = appelt
+
+Rule: LexiconsSum_NRC_pairs
+({tweet}):tw
+-->
+:tw {
+
+	AnnotationSet lookups = inputAS.get("Lookup").getContained(start(twAnnots), end(twAnnots));
+	FeatureMap featureMap = twAnnots.iterator().next().getFeatures();
+	
+	//common
+	int pos=0;
+	int neg=0;
+	float sentiment=0;
+	float ratio=0;
+	
+	Map<String, String> pairBeginMapNrc = new HashMap<String, String>();
+	Map<String, String> pairBeginMapSen140 = new HashMap<String, String>();
+	//map.put("dog", "type of animal");
+
+	//NRC hashtags lexicon pair
+	int nrcSen_pair_pos_sum = 0;
+	int nrcSen_pair_neg_sum = 0;
+	float nrcSen_pair_sent_sum = 0;
+	float nrcSen_pair_ratio = 0;
+
+	//sent140 pair
+	int sen140_pair_pos_sum = 0;
+	int sen140_pair_neg_sum = 0;
+	float sen140_pair_sent_sum = 0;
+	float sen140_pair_ratio = 0;
+	
+	for(Annotation a : lookups){
+		FeatureMap aFeatMap = a.getFeatures();
+		
+		String annoVal = gate.Utils.stringFor(doc, a);
+		annoVal = annoVal.replace(" ", "_");
+				
+		//NRC hashtags lexicon
+		//pairBegin
+		if(("nrcSen".equals(aFeatMap.get("majorType")))
+		&&("pairBegin".equals(aFeatMap.get("minorType")))){
+			pairBeginMapNrc.put(aFeatMap.get("ID").toString(), annoVal);
+		}
+		
+		//pairEnd
+		if(("nrcSen".equals(aFeatMap.get("majorType")))
+		&&("pairEnd".equals(aFeatMap.get("minorType")))){
+			if(pairBeginMapNrc.containsKey(aFeatMap.get("ID").toString()))
+			{
+				pos=Integer.parseInt(aFeatMap.get("p").toString());
+				neg=Integer.parseInt(aFeatMap.get("n").toString());
+				sentiment=Float.parseFloat(aFeatMap.get("s").toString());
+				ratio=(pos+1)/(neg+1);
+				
+				//set new features
+				//aFeatMap.put("nrcSen_pair_pos", pos);
+				//aFeatMap.put("nrcSen_pair_neg", neg);
+				//aFeatMap.put("nrcSen_pair_sent", sentiment);
+				//aFeatMap.put("nrcSen_pair_ratio", ratio);
+				
+				//aFeatMap.put("nrcSen_pair_ratio", ratio);
+				
+				nrcSen_pair_pos_sum+=pos;
+				nrcSen_pair_neg_sum+=neg;
+				nrcSen_pair_sent_sum+=sentiment;
+				
+				//featureMap.put("nrcSen_pair_pos_t"+"_"+annoVal, pos);
+				//featureMap.put("nrcSen_pair_neg_t"+"_"+annoVal, neg);
+				//featureMap.put("nrcSen_pair_sent_t"+"_"+annoVal, sentiment);
+				//featureMap.put("nrcSen_pair_ratio_t"+"_"+annoVal, ratio);
+			}
+		}
+			
+
+		//sentiment 140
+		//pairBegin
+		if(("sen140".equals(aFeatMap.get("majorType")))
+		&&("pairBegin".equals(aFeatMap.get("minorType")))){
+			pairBeginMapSen140.put(aFeatMap.get("ID").toString(), annoVal);
+		}
+		
+		//pairEnd
+		if(("sen140".equals(aFeatMap.get("majorType")))
+		&&("pairEnd".equals(aFeatMap.get("minorType")))){
+			if(pairBeginMapSen140.containsKey(aFeatMap.get("ID").toString()))
+			{
+				pos=Integer.parseInt(aFeatMap.get("p").toString());
+				neg=Integer.parseInt(aFeatMap.get("n").toString());
+				sentiment=Float.parseFloat(aFeatMap.get("s").toString());
+				ratio=(pos+1)/(neg+1);
+				
+				//set new features
+				//aFeatMap.put("sen140_pair_pos", pos);
+				//aFeatMap.put("sen140_pair_neg", neg);
+				//aFeatMap.put("sen140_pair_sent", sentiment);
+				//aFeatMap.put("sen140_pair_ratio", ratio);
+				
+				//aFeatMap.put("sen140_pair_ratio", ratio);
+				
+				sen140_pair_pos_sum+=pos;
+				sen140_pair_neg_sum+=neg;
+				sen140_pair_sent_sum+=sentiment;
+				
+				//featureMap.put("sen140_pair_pos_t"+"_"+annoVal, pos);
+				//featureMap.put("sen140_pair_neg_t"+"_"+annoVal, neg);
+				//featureMap.put("sen140_pair_sent_t"+"_"+annoVal, sentiment);
+				//featureMap.put("sen140_pair_ratio_t"+"_"+annoVal, ratio);
+			}
+		}			
+	}
+	
+	//NRC hashtags lexicon pairs
+	nrcSen_pair_ratio=(nrcSen_pair_pos_sum+1)/(nrcSen_pair_neg_sum+1);
+	
+	featureMap.put("nrcSen_pair_pos_sum", nrcSen_pair_pos_sum);
+	featureMap.put("nrcSen_pair_neg_sum", nrcSen_pair_neg_sum);
+	featureMap.put("nrcSen_pair_sent_sum", nrcSen_pair_sent_sum);
+	featureMap.put("nrcSen_pair_ratio", nrcSen_pair_ratio);
+	
+	//Sen140
+	sen140_pair_ratio=(sen140_pair_pos_sum+1)/(sen140_pair_neg_sum+1);
+	
+	featureMap.put("sen140_pair_pos_sum", sen140_pair_pos_sum);
+	featureMap.put("sen140_pair_neg_sum", sen140_pair_neg_sum);
+	featureMap.put("sen140_pair_sent_sum", sen140_pair_sent_sum);
+	featureMap.put("sen140_pair_ratio", sen140_pair_ratio);
+	
+}

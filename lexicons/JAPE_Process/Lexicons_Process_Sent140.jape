@@ -8,8 +8,6 @@ Rule: LexiconsSum_NRC
 ({tweet}):tw
 -->
 :tw {
-
-	//
 	AnnotationSet lookups = inputAS.get("Lookup").getContained(start(twAnnots), end(twAnnots));
 	FeatureMap featureMap = twAnnots.iterator().next().getFeatures();
 	
