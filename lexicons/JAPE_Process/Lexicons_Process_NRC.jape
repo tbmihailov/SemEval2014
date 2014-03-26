@@ -33,9 +33,9 @@ Rule: LexiconsSum_NRC
 		
 		
 		//NRC hashtags lexicon
-		bl_token_sent = 0;
+		//unigrams
 		if(("nrcSen".equals(aFeatMap.get("majorType")))
-		&&("unigrams".equals(aFeatMap.get("minorType"))){
+		&&("unigrams".equals(aFeatMap.get("minorType")))){
 			pos=Integer.parseInt(aFeatMap.get("p").toString());
 			neg=Integer.parseInt(aFeatMap.get("n").toString());
 			sentiment=Float.parseFloat(aFeatMap.get("s").toString());
@@ -58,7 +58,7 @@ Rule: LexiconsSum_NRC
 	nrcSen_uni_ratio=(nrcSen_uni_pos_sum+1)/(nrcSen_uni_neg_sum+1);
 	
 	featureMap.put("nrcSen_uni_pos_sum", nrcSen_uni_pos_sum);
-	featureMap.put("nrcSen_uni_neg", nrcSen_uni_neg);
-	featureMap.put("nrcSen_uni_sent", nrcSen_uni_sent);
+	featureMap.put("nrcSen_uni_neg_sum", nrcSen_uni_neg_sum);
+	featureMap.put("nrcSen_uni_sent_sum", nrcSen_uni_sent_sum);
 	featureMap.put("nrcSen_uni_ratio", nrcSen_uni_ratio);
 }

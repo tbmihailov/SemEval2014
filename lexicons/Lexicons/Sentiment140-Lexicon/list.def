@@ -1,4 +1,4 @@
-bigrams-pmilexicon.lst:sen14
-unigrams-pmilexicon.lst:sen14
-pairs-pmilexicon-begin.lst:sen14_pair:sen14_PairBegin
-pairs-pmilexicon-end.lst:sen14_pair:sen14_PairEnd
+bigrams-pmilexicon.lst:sen140:bigrams
+unigrams-pmilexicon.lst:sen140:unigrams
+pairs-pmilexicon-begin.lst:sen140:pairBegin
+pairs-pmilexicon-end.lst:sen140:pairEnd
