@@ -1,0 +1,107 @@
+Imports: { import static gate.Utils.*;}
+
+Phase: LexiconsSum_NRC
+Input: tweet
+Options: control = appelt
+
+Rule: LexiconsSum_NRC
+({tweet}):tw
+-->
+:tw {
+
+	//
+	AnnotationSet lookups = inputAS.get("Lookup").getContained(start(twAnnots), end(twAnnots));
+	FeatureMap featureMap = twAnnots.iterator().next().getFeatures();
+	
+	//common
+	int pos=0;
+	int neg=0;
+	float sentiment=0;
+	float ratio=0;
+	
+	//NRC hashtags lexicon UNI
+	int sen140_uni_pos_sum = 0;
+	int sen140_uni_neg_sum = 0;
+	float sen140_uni_sent_sum = 0;
+	float sen140_uni_ratio = 0;
+	
+	//NRC hashtags lexicon BIGRAM
+	int sen140_bi_pos_sum = 0;
+	int sen140_bi_neg_sum = 0;
+	float sen140_bi_sent_sum = 0;
+	float sen140_bi_ratio = 0;
+	
+	
+	for(Annotation a : lookups){
+		FeatureMap aFeatMap = a.getFeatures();
+		
+		String annoVal = gate.Utils.stringFor(doc, a);
+		annoVal = annoVal.replace(" ", "_");
+				
+		//NRC hashtags lexicon
+		//unigrams
+		if(("nrcSen".equals(aFeatMap.get("majorType")))
+		&&("unigrams".equals(aFeatMap.get("minorType")))){
+			pos=Integer.parseInt(aFeatMap.get("p").toString());
+			neg=Integer.parseInt(aFeatMap.get("n").toString());
+			sentiment=Float.parseFloat(aFeatMap.get("s").toString());
+			ratio=(pos+1)/(neg+1);
+			
+			//set new features
+			aFeatMap.put("sen140_uni_pos", pos);
+			aFeatMap.put("sen140_uni_neg", neg);
+			aFeatMap.put("sen140_uni_sent", sentiment);
+			aFeatMap.put("sen140_uni_ratio", ratio);
+			
+			sen140_uni_pos_sum+=pos;
+			sen140_uni_neg_sum+=neg;
+			sen140_uni_sent_sum+=sentiment;
+			
+			//featureMap.put("sen140_uni_pos_t"+"_"+annoVal, pos);
+			//featureMap.put("sen140_uni_neg_t"+"_"+annoVal, neg);
+			//featureMap.put("sen140_uni_sent_t"+"_"+annoVal, sentiment);
+			//featureMap.put("sen140_uni_ratio_t"+"_"+annoVal, ratio);
+		}
+		
+		//NRC hashtags lexicon
+		//bigram
+		if(("nrcSen".equals(aFeatMap.get("majorType")))
+		&&("bigrams".equals(aFeatMap.get("minorType")))){
+			pos=Integer.parseInt(aFeatMap.get("p").toString());
+			neg=Integer.parseInt(aFeatMap.get("n").toString());
+			sentiment=Float.parseFloat(aFeatMap.get("s").toString());
+			ratio=(pos+1)/(neg+1);
+			
+			//set new features
+			aFeatMap.put("sen140_bi_pos", pos);
+			aFeatMap.put("sen140_bi_neg", neg);
+			aFeatMap.put("sen140_bi_sent", sentiment);
+			aFeatMap.put("sen140_bi_ratio", ratio);
+			
+			sen140_bi_pos_sum+=pos;
+			sen140_bi_neg_sum+=neg;
+			sen140_bi_sent_sum+=sentiment;
+			
+			//featureMap.put("sen140_bi_pos_t"+"_"+annoVal, pos);
+			//featureMap.put("sen140_bi_neg_t"+"_"+annoVal, neg);
+			//featureMap.put("sen140_bi_sent_t"+"_"+annoVal, sentiment);
+			//featureMap.put("sen140_bi_ratio_t"+"_"+annoVal, ratio);
+		}
+	}
+	
+	//NRC hashtags lexicon UNI
+	sen140_uni_ratio=(sen140_uni_pos_sum+1)/(sen140_uni_neg_sum+1);
+	
+	featureMap.put("sen140_uni_pos_sum", sen140_uni_pos_sum);
+	featureMap.put("sen140_uni_neg_sum", sen140_uni_neg_sum);
+	featureMap.put("sen140_uni_sent_sum", sen140_uni_sent_sum);
+	featureMap.put("sen140_uni_ratio", sen140_uni_ratio);
+	
+	//NRC hashtags lexicon BI
+	sen140_bi_ratio=(sen140_bi_pos_sum+1)/(sen140_bi_neg_sum+1);
+	
+	featureMap.put("sen140_bi_pos_sum", sen140_bi_pos_sum);
+	featureMap.put("sen140_bi_neg_sum", sen140_bi_neg_sum);
+	featureMap.put("sen140_bi_sent_sum", sen140_bi_sent_sum);
+	featureMap.put("sen140_bi_ratio", sen140_bi_ratio);
+}
