@@ -109,7 +109,7 @@ public class WordClusterTagger extends AbstractLanguageAnalyser {
                 long end = sentAnn.getEndNode().getOffset();
 
                 String token = document.getContent().getContent(start, end).toString();
-                addToken(outAS, start, end, token, sentAnn.getFeatures());
+                addToken(outAS, start, end, token.toLowerCase(), sentAnn.getFeatures());
                 
                 System.err.println(token);
 
@@ -130,17 +130,17 @@ public class WordClusterTagger extends AbstractLanguageAnalyser {
     }
 
     private void addToken(AnnotationSet out, long sentStart, long sentEnd, String token, FeatureMap fm) throws InvalidOffsetException {
-            List<Pair> clusters = this.fiftyMCluster.get(token);
-            if (clusters != null) {
+        List<Pair> clusters = this.fiftyMCluster.get(token);
+        if (clusters != null) {
             for (Pair cluster : clusters) {
                 if (fm.get(cluster.getCluster()) != null) {
-                    String label = (String)fm.get(cluster.getCluster());
+                    String label = (String) fm.get(cluster.getCluster());
                     fm.put("wc", label + "\t" + cluster.getCluster());
                 } else {
                     fm.put("wc", cluster.getCluster());
                 }
             }
-//            out.add(sentStart, sentEnd, "Token", fm);
+            // out.add(sentStart, sentEnd, "Token", fm);
         }
     }
 
