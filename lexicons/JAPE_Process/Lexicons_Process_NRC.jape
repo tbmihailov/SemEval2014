@@ -1,11 +1,11 @@
 ﻿Imports: { import static gate.Utils.*;}
 
 Phase: LexiconsSum_NRC
-Input: Tweet
+Input: tweet
 Options: control = appelt
 
 Rule: LexiconsSum_NRC
-({Tweet}):tw
+({tweet}):tw
 -->
 :tw {
 
@@ -50,8 +50,12 @@ Rule: LexiconsSum_NRC
 			nrcSen_uni_pos_sum+=pos;
 			nrcSen_uni_neg_sum+=neg;
 			nrcSen_uni_sent_sum+=sentiment;
+			
+			featureMap.put("nrcSen_uni_pos"+"_"+annoVal, pos);
+			featureMap.put("nrcSen_uni_neg"+"_"+annoVal, neg);
+			featureMap.put("nrcSen_uni_sent"+"_"+annoVal, sentiment);
+			featureMap.put("nrcSen_uni_ratio"+"_"+annoVal, ratio);
 		}
-		
 	}
 	
 	//NRC hashtags lexicon
