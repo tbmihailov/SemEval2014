@@ -1,0 +1,83 @@
+Phase:Negation
+Input: Token Lookup
+Options: control = appelt
+
+Rule:negation (
+	{Token, Lookup.majorType == "negation"}
+	({Token.string !~ "^[.:;!?]$"})*
+):ng
+-->
+:ng.Negation={}
+
+
+Phase:NegationSuffix
+Input: Negation
+Options: control = appelt
+
+Rule:negationSuffix (
+	{Negation}
+):ng
+-->
+:ng {
+
+	Long start = ngAnnots.firstNode().getOffset();
+	Long end = ngAnnots.lastNode().getOffset();
+	
+	String text = "";
+	try {
+		text = doc.getContent().getContent(start, end).toString();
+	} catch (gate.util.InvalidOffsetException e) {
+		throw new java.lang.IndexOutOfBoundsException(e.toString());
+	}
+	
+	
+	
+	//Add NEG suffix to words.
+	final String NEG = "NEG";
+	
+	
+	String[] words = text.split(" ");
+	for (int n = 1; n <= words.length; n++) {
+		//String[] negatedWords = new String[words.length - n + 1];
+		List<String> negatedWords = new ArrayList<String>();
+		negatedWords.add(words[0]);
+		for (int i = 1; i < words.length; i++) {
+			StringBuilder sb = new StringBuilder();
+			sb.append(words[i]);
+			sb.append("_" + NEG);
+			//negatedWords[i] = sb.toString();
+			negatedWords.add(sb.toString());
+		}
+		String featureCode = "Negations";
+		//ngAnnots.iterator().next().getFeatures().put(featureCode, Arrays.toString(negatedWords));
+		ngAnnots.iterator().next().getFeatures().put(featureCode, negatedWords);
+	}
+
+}
+
+
+
+///////////////////////////////////////////////////////////////////////
+
+
+
+Phase:NotNegPunctuation
+Input: Token
+Options: control = appelt
+
+Rule:notNegPunctuation (
+	{Token.string !~ "^[.:;!?]$"}
+):ng
+-->
+:ng.NotNegPunctuation={}
+
+
+Phase:NegPunctuation
+Input: Token
+Options: control = appelt
+
+Rule:negPunctuation (
+	{Token.string =~ "^[.:;!?]$"}
+):ng
+-->
+:ng.NegPunctuation={}
