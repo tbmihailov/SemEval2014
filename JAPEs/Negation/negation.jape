@@ -1,10 +1,28 @@
+Phase:twitter
+Input: Token Split
+Options: control = appelt
+
+Rule:tweet
+({Token.category == JJ})
+(
+({Token})*
+{Split.kind == external}
+):tw
+-->
+:tw.Tweet={rule = "tweet"}
+
+
+///////////////////////////
+
+
 Phase:Negation
-Input: Token Lookup
+Input: Token Lookup Split Tweet
 Options: control = appelt
 
 Rule:negation (
 	{Token, Lookup.majorType == "negation"}
 	({Token.string !~ "^[.:;!?]$"})*
+	{!Tweet}
 ):ng
 -->
 :ng.Negation={}
@@ -57,8 +75,10 @@ Rule:negationSuffix (
 
 
 
-///////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////
+////////////////////////////  Not Used  ///////////////////////////////
+///////////////////////////////////////////////////////////////////////
 
 
 Phase:NotNegPunctuation
