@@ -7,7 +7,7 @@ Rule: allCaps
 -->
 :allcaps.AllCaps={rule = "allCaps"}
 
-Phase:hash
+/*Phase:hash
 Input: Token
 Options: control = appelt
 
@@ -17,7 +17,7 @@ Rule:hashTag
 {Token.kind == word}
 ):hashtag
 -->
-:hashtag.HashTags={rule = "hashTag"}
+:hashtag.HashTags={rule = "hashTag"}*/  //izlishno e
 
 Phase:emoticonPos
 Input: Lookup 
@@ -47,7 +47,7 @@ Options: control = appelt
 
 Rule:elongWord
 (
-{Token.string ==~".*(\\w)\\1{2,}.*"}
+{Token.kind == word, Token.string ==~".*(\\w)\\1{2,}.*"}
 ):elongwords
 -->
 :elongwords.ElongatedWords={rule = "elongWord"}

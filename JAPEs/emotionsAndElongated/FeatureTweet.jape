@@ -32,10 +32,10 @@ Rule: FeatureTweet
 	
 	
 	//
-	AnnotationSet hashtags = inputAS.get("HashTags").getContained(start(twAnnots), end(twAnnots));
+	AnnotationSet hashtags = inputAS.get("Hashtag").getContained(start(twAnnots), end(twAnnots));
 	long numhashtags = 0;
 	for(Annotation h : hashtags){
-		if("hashTag".equals(h.getFeatures().get("rule"))){
+		if("Hashtag".equals(h.getFeatures().get("rule"))){
 		numhashtags ++;
 		}
 	}
