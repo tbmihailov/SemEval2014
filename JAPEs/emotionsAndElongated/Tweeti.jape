@@ -85,3 +85,30 @@ Rule:EndPosEmot
 ):ee
 -->
 :ee.EndNegEmoticon={rule = "EndNegEmot"}
+
+Phase:StanLookup
+Input: Lookup 
+Options: control = appelt
+
+Rule:stanfLookup
+(
+{Lookup.majorType == treebank}
+):slbl
+-->
+:slbl{
+	
+	Long end = slblAnnots.lastNode().getOffset();
+	Long start = slblAnnots.firstNode().getOffset();
+	
+	String text = "";
+	try {
+		text = doc.getContent().getContent(start, end).toString();
+	} catch (gate.util.InvalidOffsetException e) {
+		throw new java.lang.IndexOutOfBoundsException(e.toString());
+	}
+	
+	/*for(Annotation l : slblAnnots){
+	System.out.println(text);
+	System.out.println(l.getFeatures().get("sl"));
+	}*/
+}

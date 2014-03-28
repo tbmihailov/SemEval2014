@@ -1,0 +1,22 @@
+﻿Imports: { import static gate.Utils.*;}
+
+Phase: SentimentLabel
+Input: tweet
+Options: control = appelt
+
+Rule: SentimentLabel
+({tweet}):tw
+-->
+:tw {
+	AnnotationSet lookup = inputAS.get("Lookup").getContained(start(twAnnots), end(twAnnots));
+	double slbl = 0.0;
+	long count = 0;
+	for(Annotation l : lookup){
+		if("treebank".equals(l.getFeatures().get("majorType"))){
+			count++;
+			String value = ( String ) l.getFeatures().get("sl");
+			slbl = Double.parseDouble(value);
+			twAnnots.iterator().next().getFeatures().put("Sentim_lbl" + count, slbl);
+		}
+	}
+}
