@@ -1,0 +1,50 @@
+﻿Imports: { import static gate.Utils.*;}
+
+Phase: POStag
+Input: tweet
+Options: control = appelt
+
+Rule: POStag
+({tweet}):tw
+-->
+:tw {
+
+	AnnotationSet tokens = inputAS.getContained(start(twAnnots), end(twAnnots)).get("Token");
+	FeatureMap featureMap = twAnnots.iterator().next().getFeatures();
+
+	Map<String, Integer> postags = new HashMap<String, Integer>();
+	// count all POS tags within a tweet and add the as feature
+	for (Annotation a : tokens) { 
+		String postag = (String) a.getFeatures().get("category");
+		if (postags.containsKey(postag)) {
+			Integer posCount = postags.get(postag);
+			postags.put(postag, posCount + 1);
+		} else {
+			postags.put(postag, 1);
+		}
+	}
+	
+	for (String postag : postags.keySet()) {
+		featureMap.put(postag, postags.get(postag));
+	}
+	
+	// add all POS_lemma pair counts as features
+	Map<String, Integer> lemmaPOStags = new HashMap<String, Integer>();
+	for (Annotation a : tokens) { 
+		String postag = (String) a.getFeatures().get("category");
+		String lemma = (String) a.getFeatures().get("root");
+		String label = postag + "_" + lemma;
+		if (lemmaPOStags.containsKey(label)) {
+			Integer posCount = lemmaPOStags.get(label);
+			lemmaPOStags.put(label, posCount + 1);
+		} else {
+			lemmaPOStags.put(label, 1);
+		}
+	}
+	
+	for (String lemmaPOS : lemmaPOStags.keySet()) {
+		featureMap.put(lemmaPOS, lemmaPOStags.get(lemmaPOS));
+	}	
+	
+	// add all POS_MPQA pair counts as features
+}
