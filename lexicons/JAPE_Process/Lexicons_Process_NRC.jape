@@ -24,18 +24,27 @@ Rule: LexiconsSum_NRC
 	int nrcSen_uni_neg_sum = 0;
 	float nrcSen_uni_sent_sum = 0;
 	float nrcSen_uni_ratio = 0;
+	int nrcSen_uni_pos_max = 0;
+	int nrcSen_uni_neg_max = 0;
+	float nrcSen_uni_sent_sum = 0;
 	
 	//NRC hashtags lexicon BIGRAM
 	int nrcSen_bi_pos_sum = 0;
 	int nrcSen_bi_neg_sum = 0;
 	float nrcSen_bi_sent_sum = 0;
 	float nrcSen_bi_ratio = 0;
+	int nrcSen_bi_pos_max = 0;
+	int nrcSen_bi_neg_max = 0;
+	float nrcSen_bi_sent_max = 0;
 	
 	//NRC hashtags lexicon HASHTAGS
 	int nrcSen_hash_pos_sum = 0;
 	int nrcSen_hash_neg_sum = 0;
 	float nrcSen_hash_sent_sum = 0;
 	float nrcSen_hash_ratio = 0;
+	int nrcSen_hash_pos_max = 0;
+	int nrcSen_hash_neg_max = 0;
+	float nrcSen_hash_sent_max = 0;
 	
 	for(Annotation a : lookups){
 		FeatureMap aFeatMap = a.getFeatures();
@@ -62,6 +71,16 @@ Rule: LexiconsSum_NRC
 			nrcSen_uni_neg_sum+=neg;
 			nrcSen_uni_sent_sum+=sentiment;
 			
+			if(pos>nrcSen_uni_pos_max){
+			  nrcSen_uni_pos_max = pos;
+			}
+			if(neg > nrcSen_uni_neg_max){
+			  nrcSen_uni_neg_max = pos;
+			}
+			if(sentiment > nrcSen_uni_sent_max){
+			  nrcSen_uni_sent_max = sentiment;
+			}
+			
 			//featureMap.put("nrcSen_uni_pos_t"+"_"+annoVal, pos);
 			//featureMap.put("nrcSen_uni_neg_t"+"_"+annoVal, neg);
 			//featureMap.put("nrcSen_uni_sent_t"+"_"+annoVal, sentiment);
@@ -86,6 +105,18 @@ Rule: LexiconsSum_NRC
 			nrcSen_bi_pos_sum+=pos;
 			nrcSen_bi_neg_sum+=neg;
 			nrcSen_bi_sent_sum+=sentiment;
+			
+			if(pos > nrcSen_bi_pos_max){
+				nrcSen_bi_pos_max = pos;
+			}
+			
+			if(neg > nrcSen_bi_neg_max){
+				nrcSen_bi_neg_max = neg;
+			}
+			
+			if(sentiment > nrcSen_bi_sent_max){
+				nrcSen_bi_sent_max = sentiment;
+			}
 			
 			//featureMap.put("nrcSen_bi_pos_t"+"_"+annoVal, pos);
 			//featureMap.put("nrcSen_bi_neg_t"+"_"+annoVal, neg);
@@ -112,6 +143,18 @@ Rule: LexiconsSum_NRC
 			nrcSen_hash_neg_sum+=neg;
 			nrcSen_hash_sent_sum+=sentiment;
 			
+			if(pos > nrcSen_hash_pos_max){
+				nrcSen_hash_pos_max = pos;
+			}
+			
+			if(neg > nrcSen_hash_neg_max){
+				nrcSen_hash_neg_max = neg;
+			}
+			
+			if(sentiment > nrcSen_hash_sent_max){
+				nrcSen_hash_sent_max = sentiment;
+			}
+	
 			//featureMap.put("nrcSen_hash_pos_t"+"_"+annoVal, pos);
 			//featureMap.put("nrcSen_hash_neg_t"+"_"+annoVal, neg);
 			//featureMap.put("nrcSen_hash_sent_t"+"_"+annoVal, sentiment);
@@ -123,23 +166,37 @@ Rule: LexiconsSum_NRC
 	nrcSen_uni_ratio=(nrcSen_uni_pos_sum+1)/(nrcSen_uni_neg_sum+1);
 	
 	featureMap.put("nrcSen_uni_pos_sum", nrcSen_uni_pos_sum);
-	featureMap.put("nrcSen_uni_neg_sum", nrcSen_uni_neg_sum);
+	featureMap.put("nrcSen_uni_neg_sum", -nrcSen_uni_neg_sum);
 	featureMap.put("nrcSen_uni_sent_sum", nrcSen_uni_sent_sum);
+	featureMap.put("nrcSen_uni_posneg_sum", nrcSen_uni_pos_sum - nrcSen_uni_neg_sum);
 	featureMap.put("nrcSen_uni_ratio", nrcSen_uni_ratio);
+	featureMap.put("nrcSen_uni_pos_max", nrcSen_uni_pos_max);
+	featureMap.put("nrcSen_uni_neg_max", -nrcSen_uni_neg_max);
+	featureMap.put("nrcSen_uni_sent_sum", nrcSen_uni_sent_sum);
+
 	
 	//NRC hashtags lexicon BI
 	nrcSen_bi_ratio=(nrcSen_bi_pos_sum+1)/(nrcSen_bi_neg_sum+1);
 	
 	featureMap.put("nrcSen_bi_pos_sum", nrcSen_bi_pos_sum);
-	featureMap.put("nrcSen_bi_neg_sum", nrcSen_bi_neg_sum);
+	featureMap.put("nrcSen_bi_neg_sum", -nrcSen_bi_neg_sum);
 	featureMap.put("nrcSen_bi_sent_sum", nrcSen_bi_sent_sum);
+	featureMap.put("nrcSen_bi_posneg_sum", nrcSen_bi_pos_sum - nrcSen_bi_neg_sum);
 	featureMap.put("nrcSen_bi_ratio", nrcSen_bi_ratio);
+	featureMap.put("nrcSen_bi_pos_max", nrcSen_bi_pos_max);
+	featureMap.put("nrcSen_bi_neg_max", -nrcSen_bi_neg_max);
+	featureMap.put("nrcSen_bi_sent_max", nrcSen_bi_sent_max);
+
 	
 	//NRC hashtags lexicon HASHTAGS
 	nrcSen_hash_ratio=(nrcSen_hash_pos_sum+1)/(nrcSen_hash_neg_sum+1);
 	
 	featureMap.put("nrcSen_hash_pos_sum", nrcSen_hash_pos_sum);
-	featureMap.put("nrcSen_hash_neg_sum", nrcSen_hash_neg_sum);
+	featureMap.put("nrcSen_hash_neg_sum", -nrcSen_hash_neg_sum);
 	featureMap.put("nrcSen_hash_sent_sum", nrcSen_hash_sent_sum);
+	featureMap.put("nrcSen_hash_posneg_sum", nrcSen_hash_pos_sum - nrcSen_hash_neg_sum);
 	featureMap.put("nrcSen_hash_ratio", nrcSen_hash_ratio);
+	featureMap.put("nrcSen_hash_pos_max", nrcSen_hash_pos_max);
+	featureMap.put("nrcSen_hash_neg_max", -nrcSen_hash_neg_max);
+	featureMap.put("nrcSen_hash_sent_max", nrcSen_hash_sent_max);
 }
