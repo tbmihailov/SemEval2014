@@ -26,7 +26,7 @@ Rule: LexiconsSum_NRC
 	float nrcSen_uni_ratio = 0;
 	int nrcSen_uni_pos_max = 0;
 	int nrcSen_uni_neg_max = 0;
-	float nrcSen_uni_sent_sum = 0;
+	float nrcSen_uni_sent_max = 0;
 	
 	//NRC hashtags lexicon BIGRAM
 	int nrcSen_bi_pos_sum = 0;

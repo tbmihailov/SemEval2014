@@ -24,7 +24,7 @@ Rule: LexiconsSum_NRC
 	float sen140_uni_ratio = 0;
 	int sen140_uni_pos_max = 0;
 	int sen140_uni_neg_max = 0;
-	float sen140_uni_sent_sum = 0;
+	float sen140_uni_sent_max = 0;
 	
 	//sentiment 140 BIGRAM
 	int sen140_bi_pos_sum = 0;
@@ -115,26 +115,24 @@ Rule: LexiconsSum_NRC
 	}
 	
 	//Sentiment140 lexicon UNI
-	sen140_uni_ratio=(sen140_uni_pos_sum+1)/(sen140_uni_neg_sum+1);
 	
 	featureMap.put("sen140_uni_pos_sum", sen140_uni_pos_sum);
 	featureMap.put("sen140_uni_neg_sum", -sen140_uni_neg_sum);
 	featureMap.put("sen140_uni_sent_sum", sen140_uni_sent_sum);
 	featureMap.put("sen140_uni_posneg_sum", sen140_uni_pos_sum - sen140_uni_neg_sum);
-	featureMap.put("sen140_uni_ratio", sen140_uni_ratio);
+	featureMap.put("sen140_uni_ratio", ((sen140_uni_pos_sum+1)/(sen140_uni_neg_sum+1)));
 	featureMap.put("sen140_uni_pos_max", sen140_uni_pos_max);
 	featureMap.put("sen140_uni_neg_max", -sen140_uni_neg_max);
 	featureMap.put("sen140_uni_sent_sum", sen140_uni_sent_sum);
 
 	
 	//Sentiment140 lexicon BI
-	sen140_bi_ratio=(sen140_bi_pos_sum+1)/(sen140_bi_neg_sum+1);
-	
+		
 	featureMap.put("sen140_bi_pos_sum", sen140_bi_pos_sum);
 	featureMap.put("sen140_bi_neg_sum", -sen140_bi_neg_sum);
 	featureMap.put("sen140_bi_sent_sum", sen140_bi_sent_sum);
 	featureMap.put("sen140_bi_posneg_sum", sen140_bi_pos_sum - sen140_bi_neg_sum);
-	featureMap.put("sen140_bi_ratio", sen140_bi_ratio);
+	featureMap.put("sen140_bi_ratio", ((sen140_bi_pos_sum+1)/(sen140_bi_neg_sum+1)));
 	featureMap.put("sen140_bi_pos_max", sen140_bi_pos_max);
 	featureMap.put("sen140_bi_neg_max", -sen140_bi_neg_max);
 	featureMap.put("sen140_bi_sent_max", sen140_bi_sent_max);
