@@ -1,4 +1,4 @@
-﻿Imports: { import static gate.Utils.*;}
+﻿/*Imports: { import static gate.Utils.*;}
 
 Phase: SentimentLabel
 Input: tweet
@@ -19,4 +19,6 @@ Rule: SentimentLabel
 			twAnnots.iterator().next().getFeatures().put("Sentim_lbl" + count, slbl);
 		}
 	}
-}
+}*/ 
+
+// otkazahme se ot tezi featuri
