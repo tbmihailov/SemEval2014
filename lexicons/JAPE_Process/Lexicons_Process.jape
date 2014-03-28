@@ -10,15 +10,23 @@ Rule: LexiconsSum
 :tw {
 
 	//
-	AnnotationSet lookups = inputAS.get("Lookup").getContained(start(twAnnots), end(twAnnots));
+	AnnotationSet lookups = inputAS.getContained(start(twAnnots), end(twAnnots)).get("Lookup");
 	FeatureMap featureMap = twAnnots.iterator().next().getFeatures();
 	
+	
+	//last token
+	//AnnotationSet toks = inputAS.get("Token",start(twAnnots), end(twAnnots));
+	//List<Annotation> sortedToks = new ArrayList<Annotation>(toks);
+	//Collections.sort(sortedToks, new OffsetComparator());
+	//Annotation lastToken = sortedToks.get(sortedToks.size() - 1);
+	//AnnotationSet tLookups = inputAS.get("Lookup", start(lastToken), end(lastToken));
+
 	//BingLiu
 	int bl_neg_cnt = 0;
 	int bl_pos_cnt = 0;
 	int bl_sent_sum = 0;
 	int bl_token_sent = 0;
-	
+		
 	//MPQA Lexicon
 	int mpqa_neu_cnt = 0;
 	int mpqa_neg_cnt = 0;
@@ -47,13 +55,15 @@ Rule: LexiconsSum
 			bl_neg_cnt++;
 			bl_token_sent=-1;
 			aFeatMap.put("bl_sent","-1");
-		}
+			//bl_sent_sum += bl_token_sent;
+		}else
 		if("bl_pos".equals(aFeatMap.get("minorType"))){
 			bl_pos_cnt++;
 			bl_token_sent=1;
 			aFeatMap.put("bl_sent","1");
+			//bl_sent_sum += bl_token_sent;
 		}
-		bl_sent_sum += bl_token_sent;
+		
 		
 		//MPQA Lexicon
 		mpqa_token_sent = 0;
@@ -72,7 +82,7 @@ Rule: LexiconsSum
 				mpqa_token_sent=-1;
 				aFeatMap.put("mpqa_sent","-1");
 			}
-			mpqa_sent_sum += mpqa_token_sent;
+			//mpqa_sent_sum += mpqa_token_sent;
 			aFeatMap.put("mpqa_sent",mpqa_token_sent);
 		}
 		
@@ -82,13 +92,15 @@ Rule: LexiconsSum
 			msol_neg_cnt++;
 			msol_token_sent=-1;
 			aFeatMap.put("msol_sent","-1");
-		}
+			//msol_sent_sum += msol_token_sent;
+		}else
 		if("msol_pos".equals(aFeatMap.get("minorType"))){
 			msol_pos_cnt++;
 			msol_token_sent=1;
 			aFeatMap.put("msol_sent","1");
+			//msol_sent_sum += msol_token_sent;
 		}
-		msol_sent_sum += msol_token_sent;
+		
 		
 		//NRC Emotion Lexicon
 		nrcEmo_token_sent = 0;
@@ -97,38 +109,48 @@ Rule: LexiconsSum
 			nrcEmo_neg_cnt++;
 			nrcEmo_token_sent=-1;
 			aFeatMap.put("nrcEmo_sent","-1");
-		}
+			//nrcEmo_sent_sum += nrcEmo_token_sent;
+		}else
 		if(aFeatMap.containsKey("nrcEmo_pos")
 			&&((Integer.parseInt(aFeatMap.get("nrcEmo_pos").toString())>0))){
 			nrcEmo_pos_cnt++;
 			nrcEmo_token_sent=1;
 			aFeatMap.put("nrcEmo_sent","1");
+			//nrcEmo_sent_sum += nrcEmo_token_sent;
 		}
-		nrcEmo_sent_sum += nrcEmo_token_sent;
+		
 	}
 	
 	//BingLiu
-	featureMap.put("bl_neg_cnt", bl_neg_cnt);
+	featureMap.put("bl_neg_cnt", -bl_neg_cnt);
 	featureMap.put("bl_pos_cnt", bl_pos_cnt);
+	bl_sent_sum = bl_pos_cnt - bl_neg_cnt;
 	featureMap.put("bl_sent_sum", bl_sent_sum);
+	featureMap.put("bl_posneg_ratio", (bl_pos_cnt+1)/(bl_neg_cnt+1));
 	featureMap.put("bl_sent_last_token", bl_token_sent);
 	
 	//MPQA Lexicon
-	featureMap.put("mpqa_neg_cnt", mpqa_neg_cnt);
+	featureMap.put("mpqa_neg_cnt", -mpqa_neg_cnt);
 	featureMap.put("mpqa_neu_cnt", mpqa_neu_cnt);
 	featureMap.put("mpqa_pos_cnt", mpqa_pos_cnt);
+	featureMap.put("mpqa_posneg_ratio", (mpqa_pos_cnt+1)/(mpqa_neg_cnt+1));
+	mpqa_sent_sum = mpqa_pos_cnt - mpqa_neg_cnt;
 	featureMap.put("mpqa_sent_sum", mpqa_sent_sum);
 	featureMap.put("mpqa_sent_last_token", mpqa_token_sent);
 	
 	//MSOl Lexicon
-	featureMap.put("msol_neg_cnt", msol_neg_cnt);
+	featureMap.put("msol_neg_cnt", -msol_neg_cnt);
 	featureMap.put("msol_pos_cnt", msol_pos_cnt);
+	featureMap.put("msol_posneg_ratio", (msol_pos_cnt+1)/(msol_neg_cnt+1));
+	msol_sent_sum = msol_pos_cnt - msol_neg_cnt;
 	featureMap.put("msol_sent_sum", msol_sent_sum);
 	featureMap.put("msol_sent_last_token", msol_token_sent);
 	
 	//NRC Emotion Lexicon
-	featureMap.put("nrcEmo_neg_cnt", nrcEmo_neg_cnt);
+	featureMap.put("nrcEmo_neg_cnt", -nrcEmo_neg_cnt);
 	featureMap.put("nrcEmo_pos_cnt", nrcEmo_pos_cnt);
+	featureMap.put("nrcEmo_posneg_ratio", (nrcEmo_pos_cnt+1)/(nrcEmo_neg_cnt+1));
+	nrcEmo_sent_sum = nrcEmo_pos_cnt - nrcEmo_neg_cnt; 
 	featureMap.put("nrcEmo_sent_sum", nrcEmo_sent_sum);
 	featureMap.put("nrcEmo_sent_last_token", nrcEmo_token_sent);
 }
