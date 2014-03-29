@@ -29,166 +29,6 @@
     <collectionType>java.util.ArrayList</collectionType>
   </urlList>
   <application class="gate.util.persistence.ConditionalSerialAnalyserControllerPersistence">
-    <corpus class="gate.util.persistence.CorpusPersistence">
-      <docList>
-        <gate.util.persistence.LRPersistence>
-          <dsData class="gate.util.persistence.DSPersistence">
-            <className>gate.persist.SerialDataStore</className>
-            <storageUrlString>file:/D:/programming/TextMining/data/ds/</storageUrlString>
-            <storageUrl class="gate.util.persistence.PersistenceManager$URLHolder">
-              <urlString>$relpath$../data/ds/</urlString>
-            </storageUrl>
-          </dsData>
-          <persistenceID class="string">twitter-train-cleansed-A-extra.txt0___1395761872678___2796</persistenceID>
-          <resourceType>gate.corpora.DocumentImpl</resourceType>
-          <resourceName>twitter-train-cleansed-A-extra.txt0</resourceName>
-          <initParams class="gate.util.persistence.MapPersistence">
-            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-            <localMap>
-              <entry>
-                <string>markupAware</string>
-                <boolean>true</boolean>
-              </entry>
-              <entry>
-                <string>stringContent</string>
-                <string>RT @Caroljs:Yes!! opening ceremony Fri 8.30 amNZ v Tonga 9.15am OH v happy as he has Friday off  &amp;lt;YAY. Might make ANZAC biscuits #RWC 
-
-RT @Caroljs:Yes!! opening ceremony Fri 8.30 amNZ v Tonga 9.15am OH v happy as he has Friday off  &amp;lt;YAY. Might make ANZAC biscuits #RWC 
-
-Dear @MACEisabeast  , please bring my glasses tonight (: or I&apos;ll kill you ! Lmao  -love Irene.&amp;lt;3 
-
-Wow and Pink Friday has got to number 16 in the albums chart. Well done Nicki Minaj. :D &amp;lt;333 xxxx 
-
-RT @Mr_StickBall Dec. 3rd &quot;Its about to go down&quot; (kevin hart voice) New Orleans gone kick me the hell out &amp;lt;===== that&apos;s my birthday 
-
-looing like I&apos;m going to miss the NZ vs Tonga game on Friday &amp;gt;_&amp;lt; #RugbyWorldCup 
-
-RT @Illuminati_Piff I stopped watching them after the 2nd one RT @NelleBeKillinEm Final Destination 5? I&apos;ll pass &amp;lt; I watched them all sadly 
-
-RT @Illuminati_Piff I stopped watching them after the 2nd one RT @NelleBeKillinEm Final Destination 5? I&apos;ll pass &amp;lt; I watched them all sadly 
-
-Any tourists planning on coming to London soon? Take a look at #tottenham tonight. Not worth the &quot;I &amp;lt;3 LDN&quot; t-shirt. 
-
-So I&apos;m eating yogurt and watch Rise of the Planet of the Apes and I think my morning has been amazing so far&amp;lt;3 
-
-@HLNTV &quot;Showbiz Tonight&quot; You tease us with the &quot;Madonna and Gag&quot; story but keep showing other silly stories.  Otherwise...I don&apos;t watch! 
-
-@HLNTV &quot;Showbiz Tonight&quot; You tease us with the &quot;Madonna and Gag&quot; story but keep showing other silly stories.  Otherwise...I don&apos;t watch! 
-
-RT @DJKristal: Final Destination 5?! Look man its gone far enough allow it &amp;lt; I didn&apos;t know a 4th existed :/ Ahh 
-
-RT @DJKristal: Final Destination 5?! Look man its gone far enough allow it &amp;lt; I didn&apos;t know a 4th existed :/ Ahh 
-
-RT @LeighFrancis: Celebrity Juice tonight 10pm itv2. Hurrraaaaah! its a Back to school special&amp;lt;~ yayyyy 
-
-RT @LeighFrancis: Celebrity Juice tonight 10pm itv2. Hurrraaaaah! its a Back to school special&amp;lt;~ yayyyy 
-
-@sebroche Congrats! :D Supernatural is my fave show and Vampire Diaries is 2nd! Eager to see you in TVD, loved you in SPN! :D &amp;lt;3 #ishappy 
-
-@sebroche Congrats! :D Supernatural is my fave show and Vampire Diaries is 2nd! Eager to see you in TVD, loved you in SPN! :D &amp;lt;3 #ishappy 
-
-@sebroche Congrats! :D Supernatural is my fave show and Vampire Diaries is 2nd! Eager to see you in TVD, loved you in SPN! :D &amp;lt;3 #ishappy 
-
-@sebroche Congrats! :D Supernatural is my fave show and Vampire Diaries is 2nd! Eager to see you in TVD, loved you in SPN! :D &amp;lt;3 #ishappy 
-
-Great night with @TomFeltonsMrs! Now watching Vampire Diaries again &amp;lt;3 
-
-new doggy?&amp;lt;3 just cant decide which one i like...and leaving monday to vegas.just whish i can see LaTrell before then... 
-
-new doggy?&amp;lt;3 just cant decide which one i like...and leaving monday to vegas.just whish i can see LaTrell before then... 
-
-Had a good day at brid, now off to bed. Cant wait to see inbetweeners on wednesday! &amp;lt;3 
-
-Had a good day at brid, now off to bed. Cant wait to see inbetweeners on wednesday! &amp;lt;3 
-
-Had a good day at brid, now off to bed. Cant wait to see inbetweeners on wednesday! &amp;lt;3 
-
-RT @nteah: League? RT @JovinhoMorales: I just found that Barcelona and Real Madrid are playing on Sunday... I need sleeping pills. &amp;gt; LA LIGA 
-
- @commersense Depends if it works or not &quot;&quot;I had the CEO of a Tampa Bay company try to send me a virus through twitter today&quot;&quot; 
-
- @commersense Depends if it works or not &quot;&quot;I had the CEO of a Tampa Bay company try to send me a virus through twitter today&quot;&quot; 
-
-Copycat Tribute to Hank Williams tonight @ottosnyc LLLINKKK 9 pm free 
-
-The best part of Monday -- Picks of the Week! Hank Williams III at The Roxy Theatre, The Yardbirds at Key Club,... LLLINKKK 
-
-Its so cheesy... RT @Raiders80224 ARE YOU KIDDING ME!!! RT @guero_tothemax Hank williams jr.&apos;s song about Monday night football &amp;lt; 
-
-USF Athletics and the entire Tampa Bay Community lost a giant of man this evening. Lee Roy Selmon was a role... LLLINKKK 
-
-USF Athletics and the entire Tampa Bay Community lost a giant of man this evening. Lee Roy Selmon was a role... LLLINKKK 
-
-#NFL Cardinals, Fitzgerald working on a new deal - The return of ESPN&apos;s Monday Night Football means the return of ES... LLLINKKK 
-
-I liked a @YouTube video LLLINKKK hank williams i dreamed about mama last night  .  original sing 
-
-Photo: Blue Friday! I get to wear jeans to work and the Colts are playing tonight!! Woohoo!! Go Colts!!!!... LLLINKKK 
-
-#MLB 5* Run Line banger and two 4* bonus plays!Perfect #NFL record on the line 3-0(100%) tonight with a MNF steam move LLLINKKK 
-
- @cocosworld I hope you are voted for on Aug 28TH for DWTS! That would be the ISH ,while we wait for season 2 of ... LLLINKKK 
-
- @cocosworld I hope you are voted for on Aug 28TH for DWTS! That would be the ISH ,while we wait for season 2 of ... LLLINKKK 
-
-Willing on the Claret &amp; Blue today! And yes - Head full of dreams! LLLINKKK C-O-Y-I! #upthehammers 
-
-Willing on the Claret &amp; Blue today! And yes - Head full of dreams! LLLINKKK C-O-Y-I! #upthehammers 
-
-It&apos;s the first night of Monday Night Football at Skosh Monahan&apos;s 5 pm: New York Jets  vs.  Houston Texans Plus... LLLINKKK 
-
-Thank you to all that came out on Saturday for the FC Tampa Bay game! We had a blast!   Want to hear all about it... LLLINKKK 
-
-Thank you to all that came out on Saturday for the FC Tampa Bay game! We had a blast!   Want to hear all about it... LLLINKKK 
-
-Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK 
-
-</string>
-              </entry>
-              <entry>
-                <string>encoding</string>
-                <string>UTF-8</string>
-              </entry>
-              <entry>
-                <string>sourceUrlStartOffset</string>
-                <null/>
-              </entry>
-              <entry>
-                <string>preserveOriginalContent</string>
-                <boolean>false</boolean>
-              </entry>
-              <entry>
-                <string>collectRepositioningInfo</string>
-                <boolean>false</boolean>
-              </entry>
-              <entry>
-                <string>sourceUrl</string>
-                <null/>
-              </entry>
-              <entry>
-                <string>sourceUrlEndOffset</string>
-                <null/>
-              </entry>
-              <entry>
-                <string>mimeType</string>
-                <null/>
-              </entry>
-            </localMap>
-          </initParams>
-        </gate.util.persistence.LRPersistence>
-      </docList>
-      <resourceType>gate.corpora.CorpusImpl</resourceType>
-      <resourceName>Corpus for twitter-train-cleansed-A-extra.txt0</resourceName>
-      <initParams class="gate.util.persistence.MapPersistence">
-        <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-        <localMap>
-          <entry>
-            <string>documentsList</string>
-            <null/>
-          </entry>
-        </localMap>
-      </initParams>
-    </corpus>
     <strategiesList class="gate.util.persistence.CollectionPersistence">
       <localList>
         <gate.util.persistence.AnalyserRunningStrategyPersistence>
@@ -334,15 +174,15 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
                   <string>UTF-8</string>
                 </entry>
                 <entry>
-                  <string>transducerGrammarURL</string>
-                  <gate.util.persistence.PersistenceManager-URLHolder>
-                    <urlString>$gatehome$plugins/Twitter/resources/tokeniser/twitter+English.jape</urlString>
-                  </gate.util.persistence.PersistenceManager-URLHolder>
-                </entry>
-                <entry>
                   <string>tokeniserRulesURL</string>
                   <gate.util.persistence.PersistenceManager-URLHolder>
                     <urlString>$gatehome$plugins/ANNIE/resources/tokeniser/DefaultTokeniser.rules</urlString>
+                  </gate.util.persistence.PersistenceManager-URLHolder>
+                </entry>
+                <entry>
+                  <string>transducerGrammarURL</string>
+                  <gate.util.persistence.PersistenceManager-URLHolder>
+                    <urlString>$gatehome$plugins/Twitter/resources/tokeniser/twitter+English.jape</urlString>
                   </gate.util.persistence.PersistenceManager-URLHolder>
                 </entry>
               </localMap>
@@ -498,12 +338,12 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
                   <string>Sentence</string>
                 </entry>
                 <entry>
-                  <string>baseTokenAnnotationType</string>
-                  <string>Token</string>
-                </entry>
-                <entry>
                   <string>posTagAllTokens</string>
                   <boolean>true</boolean>
+                </entry>
+                <entry>
+                  <string>baseTokenAnnotationType</string>
+                  <string>Token</string>
                 </entry>
               </localMap>
             </runtimeParams>
@@ -557,19 +397,80 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
               </localMap>
             </runtimeParams>
             <resourceType>gate.creole.gazetteer.DefaultGazetteer</resourceType>
+            <resourceName>Negation Gazetteer</resourceName>
+            <initParams class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap>
+                <entry>
+                  <string>listsURL</string>
+                  <gate.util.persistence.PersistenceManager-URLHolder>
+                    <urlString>$relpath$JAPEs/Negation/lists.def</urlString>
+                  </gate.util.persistence.PersistenceManager-URLHolder>
+                </entry>
+                <entry>
+                  <string>caseSensitive</string>
+                  <boolean>true</boolean>
+                </entry>
+                <entry>
+                  <string>gazetteerFeatureSeparator</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>encoding</string>
+                  <string>UTF-8</string>
+                </entry>
+              </localMap>
+            </initParams>
+            <features class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap/>
+            </features>
+          </pr>
+        </gate.util.persistence.AnalyserRunningStrategyPersistence>
+        <gate.util.persistence.AnalyserRunningStrategyPersistence>
+          <runMode>1</runMode>
+          <featureName></featureName>
+          <featureValue></featureValue>
+          <pr class="gate.util.persistence.LanguageAnalyserPersistence">
+            <runtimeParams class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap>
+                <entry>
+                  <string>wholeWordsOnly</string>
+                  <boolean>true</boolean>
+                </entry>
+                <entry>
+                  <string>longestMatchOnly</string>
+                  <boolean>true</boolean>
+                </entry>
+                <entry>
+                  <string>document</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>corpus</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>annotationSetName</string>
+                  <null/>
+                </entry>
+              </localMap>
+            </runtimeParams>
+            <resourceType>gate.creole.gazetteer.DefaultGazetteer</resourceType>
             <resourceName>BingLiu lexicon</resourceName>
             <initParams class="gate.util.persistence.MapPersistence">
               <mapType>gate.util.SimpleFeatureMapImpl</mapType>
               <localMap>
                 <entry>
-                  <string>caseSensitive</string>
-                  <boolean>false</boolean>
-                </entry>
-                <entry>
                   <string>listsURL</string>
                   <gate.util.persistence.PersistenceManager-URLHolder>
                     <urlString>$relpath$lexicons/Lexicons/BingLiu-Lexicon/list.def</urlString>
                   </gate.util.persistence.PersistenceManager-URLHolder>
+                </entry>
+                <entry>
+                  <string>caseSensitive</string>
+                  <boolean>false</boolean>
                 </entry>
                 <entry>
                   <string>gazetteerFeatureSeparator</string>
@@ -623,14 +524,14 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
               <mapType>gate.util.SimpleFeatureMapImpl</mapType>
               <localMap>
                 <entry>
-                  <string>caseSensitive</string>
-                  <boolean>false</boolean>
-                </entry>
-                <entry>
                   <string>listsURL</string>
                   <gate.util.persistence.PersistenceManager-URLHolder>
                     <urlString>$relpath$lexicons/Lexicons/MPQA-Lexicon/list.def</urlString>
                   </gate.util.persistence.PersistenceManager-URLHolder>
+                </entry>
+                <entry>
+                  <string>caseSensitive</string>
+                  <boolean>false</boolean>
                 </entry>
                 <entry>
                   <string>gazetteerFeatureSeparator</string>
@@ -684,14 +585,14 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
               <mapType>gate.util.SimpleFeatureMapImpl</mapType>
               <localMap>
                 <entry>
-                  <string>caseSensitive</string>
-                  <boolean>false</boolean>
-                </entry>
-                <entry>
                   <string>listsURL</string>
                   <gate.util.persistence.PersistenceManager-URLHolder>
                     <urlString>$relpath$lexicons/Lexicons/MSOL-lexicon/list.def</urlString>
                   </gate.util.persistence.PersistenceManager-URLHolder>
+                </entry>
+                <entry>
+                  <string>caseSensitive</string>
+                  <boolean>false</boolean>
                 </entry>
                 <entry>
                   <string>gazetteerFeatureSeparator</string>
@@ -745,14 +646,14 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
               <mapType>gate.util.SimpleFeatureMapImpl</mapType>
               <localMap>
                 <entry>
-                  <string>caseSensitive</string>
-                  <boolean>false</boolean>
-                </entry>
-                <entry>
                   <string>listsURL</string>
                   <gate.util.persistence.PersistenceManager-URLHolder>
                     <urlString>$relpath$lexicons/Lexicons/NRC-Emotion-Lexicon/list.def</urlString>
                   </gate.util.persistence.PersistenceManager-URLHolder>
+                </entry>
+                <entry>
+                  <string>caseSensitive</string>
+                  <boolean>false</boolean>
                 </entry>
                 <entry>
                   <string>gazetteerFeatureSeparator</string>
@@ -806,14 +707,14 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
               <mapType>gate.util.SimpleFeatureMapImpl</mapType>
               <localMap>
                 <entry>
-                  <string>caseSensitive</string>
-                  <boolean>false</boolean>
-                </entry>
-                <entry>
                   <string>listsURL</string>
                   <gate.util.persistence.PersistenceManager-URLHolder>
                     <urlString>$relpath$Gazetteers/emoticons/lists.def</urlString>
                   </gate.util.persistence.PersistenceManager-URLHolder>
+                </entry>
+                <entry>
+                  <string>caseSensitive</string>
+                  <boolean>false</boolean>
                 </entry>
                 <entry>
                   <string>gazetteerFeatureSeparator</string>
@@ -833,8 +734,6 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
         </gate.util.persistence.AnalyserRunningStrategyPersistence>
         <gate.util.persistence.AnalyserRunningStrategyPersistence>
           <runMode>1</runMode>
-          <featureName></featureName>
-          <featureValue></featureValue>
           <pr class="gate.util.persistence.LanguageAnalyserPersistence">
             <runtimeParams class="gate.util.persistence.MapPersistence">
               <mapType>gate.util.SimpleFeatureMapImpl</mapType>
@@ -862,14 +761,10 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
               </localMap>
             </runtimeParams>
             <resourceType>gate.creole.gazetteer.DefaultGazetteer</resourceType>
-            <resourceName>Stanford Lexicon</resourceName>
+            <resourceName>Standford Gazetteer</resourceName>
             <initParams class="gate.util.persistence.MapPersistence">
               <mapType>gate.util.SimpleFeatureMapImpl</mapType>
               <localMap>
-                <entry>
-                  <string>caseSensitive</string>
-                  <boolean>true</boolean>
-                </entry>
                 <entry>
                   <string>listsURL</string>
                   <gate.util.persistence.PersistenceManager-URLHolder>
@@ -877,8 +772,12 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
                   </gate.util.persistence.PersistenceManager-URLHolder>
                 </entry>
                 <entry>
+                  <string>caseSensitive</string>
+                  <boolean>true</boolean>
+                </entry>
+                <entry>
                   <string>gazetteerFeatureSeparator</string>
-                  <string>	</string>
+                  <string>\t</string>
                 </entry>
                 <entry>
                   <string>encoding</string>
@@ -955,8 +854,6 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
         </gate.util.persistence.AnalyserRunningStrategyPersistence>
         <gate.util.persistence.AnalyserRunningStrategyPersistence>
           <runMode>1</runMode>
-          <featureName></featureName>
-          <featureValue></featureValue>
           <pr class="gate.util.persistence.PRPersistence">
             <runtimeParams class="gate.util.persistence.MapPersistence">
               <mapType>gate.util.SimpleFeatureMapImpl</mapType>
@@ -967,7 +864,7 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
                 </entry>
                 <entry>
                   <string>annotationSetName</string>
-                  <string></string>
+                  <null/>
                 </entry>
                 <entry>
                   <string>annotationType</string>
@@ -987,6 +884,71 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
                 <entry>
                   <string>language</string>
                   <string>english</string>
+                </entry>
+              </localMap>
+            </initParams>
+            <features class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap/>
+            </features>
+          </pr>
+        </gate.util.persistence.AnalyserRunningStrategyPersistence>
+        <gate.util.persistence.AnalyserRunningStrategyPersistence>
+          <runMode>1</runMode>
+          <featureName></featureName>
+          <featureValue></featureValue>
+          <pr class="gate.util.persistence.LanguageAnalyserPersistence">
+            <runtimeParams class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap>
+                <entry>
+                  <string>outputASName</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>document</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>corpus</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>ontology</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>inputASName</string>
+                  <null/>
+                </entry>
+              </localMap>
+            </runtimeParams>
+            <resourceType>gate.creole.Transducer</resourceType>
+            <resourceName>negation</resourceName>
+            <initParams class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap>
+                <entry>
+                  <string>encoding</string>
+                  <string>UTF-8</string>
+                </entry>
+                <entry>
+                  <string>annotationAccessors</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>operators</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>grammarURL</string>
+                  <gate.util.persistence.PersistenceManager-URLHolder>
+                    <urlString>$relpath$JAPEs/Negation/negation.jape</urlString>
+                  </gate.util.persistence.PersistenceManager-URLHolder>
+                </entry>
+                <entry>
+                  <string>binaryGrammarURL</string>
+                  <null/>
                 </entry>
               </localMap>
             </initParams>
@@ -1368,201 +1330,6 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
           <runMode>1</runMode>
           <featureName></featureName>
           <featureValue></featureValue>
-          <pr class="gate.util.persistence.LanguageAnalyserPersistence">
-            <runtimeParams class="gate.util.persistence.MapPersistence">
-              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-              <localMap>
-                <entry>
-                  <string>outputASName</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>document</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>corpus</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>ontology</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>inputASName</string>
-                  <null/>
-                </entry>
-              </localMap>
-            </runtimeParams>
-            <resourceType>gate.creole.Transducer</resourceType>
-            <resourceName>Lexicons_Process_NRC.jape</resourceName>
-            <initParams class="gate.util.persistence.MapPersistence">
-              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-              <localMap>
-                <entry>
-                  <string>encoding</string>
-                  <string>UTF-8</string>
-                </entry>
-                <entry>
-                  <string>annotationAccessors</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>operators</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>grammarURL</string>
-                  <gate.util.persistence.PersistenceManager-URLHolder>
-                    <urlString>$relpath$lexicons/JAPE_Process/Lexicons_Process_NRC.jape</urlString>
-                  </gate.util.persistence.PersistenceManager-URLHolder>
-                </entry>
-                <entry>
-                  <string>binaryGrammarURL</string>
-                  <null/>
-                </entry>
-              </localMap>
-            </initParams>
-            <features class="gate.util.persistence.MapPersistence">
-              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-              <localMap/>
-            </features>
-          </pr>
-        </gate.util.persistence.AnalyserRunningStrategyPersistence>
-        <gate.util.persistence.AnalyserRunningStrategyPersistence>
-          <runMode>1</runMode>
-          <featureName></featureName>
-          <featureValue></featureValue>
-          <pr class="gate.util.persistence.LanguageAnalyserPersistence">
-            <runtimeParams class="gate.util.persistence.MapPersistence">
-              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-              <localMap>
-                <entry>
-                  <string>outputASName</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>document</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>corpus</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>ontology</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>inputASName</string>
-                  <null/>
-                </entry>
-              </localMap>
-            </runtimeParams>
-            <resourceType>gate.creole.Transducer</resourceType>
-            <resourceName>Lexicons_Process_Pairs.jape</resourceName>
-            <initParams class="gate.util.persistence.MapPersistence">
-              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-              <localMap>
-                <entry>
-                  <string>encoding</string>
-                  <string>UTF-8</string>
-                </entry>
-                <entry>
-                  <string>annotationAccessors</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>operators</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>grammarURL</string>
-                  <gate.util.persistence.PersistenceManager-URLHolder>
-                    <urlString>$relpath$lexicons/JAPE_Process/Lexicons_Process_Pairs.jape</urlString>
-                  </gate.util.persistence.PersistenceManager-URLHolder>
-                </entry>
-                <entry>
-                  <string>binaryGrammarURL</string>
-                  <null/>
-                </entry>
-              </localMap>
-            </initParams>
-            <features class="gate.util.persistence.MapPersistence">
-              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-              <localMap/>
-            </features>
-          </pr>
-        </gate.util.persistence.AnalyserRunningStrategyPersistence>
-        <gate.util.persistence.AnalyserRunningStrategyPersistence>
-          <runMode>1</runMode>
-          <featureName></featureName>
-          <featureValue></featureValue>
-          <pr class="gate.util.persistence.LanguageAnalyserPersistence">
-            <runtimeParams class="gate.util.persistence.MapPersistence">
-              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-              <localMap>
-                <entry>
-                  <string>outputASName</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>document</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>corpus</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>ontology</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>inputASName</string>
-                  <null/>
-                </entry>
-              </localMap>
-            </runtimeParams>
-            <resourceType>gate.creole.Transducer</resourceType>
-            <resourceName>Lexicons_Process_Sent140</resourceName>
-            <initParams class="gate.util.persistence.MapPersistence">
-              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-              <localMap>
-                <entry>
-                  <string>encoding</string>
-                  <string>UTF-8</string>
-                </entry>
-                <entry>
-                  <string>annotationAccessors</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>operators</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>grammarURL</string>
-                  <gate.util.persistence.PersistenceManager-URLHolder>
-                    <urlString>$relpath$lexicons/JAPE_Process/Lexicons_Process_Sent140.jape</urlString>
-                  </gate.util.persistence.PersistenceManager-URLHolder>
-                </entry>
-                <entry>
-                  <string>binaryGrammarURL</string>
-                  <null/>
-                </entry>
-              </localMap>
-            </initParams>
-            <features class="gate.util.persistence.MapPersistence">
-              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-              <localMap/>
-            </features>
-          </pr>
-        </gate.util.persistence.AnalyserRunningStrategyPersistence>
-        <gate.util.persistence.AnalyserRunningStrategyPersistence>
-          <runMode>1</runMode>
-          <featureName></featureName>
-          <featureValue></featureValue>
           <pr class="gate.util.persistence.PRPersistence">
             <runtimeParams class="gate.util.persistence.MapPersistence">
               <mapType>gate.util.SimpleFeatureMapImpl</mapType>
@@ -1629,9 +1396,9 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[10]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[11]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[12]/pr"/>
-        <gate.util.persistence.PRPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[13]/pr"/>
+        <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[13]/pr"/>
         <gate.util.persistence.PRPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[14]/pr"/>
-        <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[15]/pr"/>
+        <gate.util.persistence.PRPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[15]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[16]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[17]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[18]/pr"/>
@@ -1639,13 +1406,12 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[20]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[21]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[22]/pr"/>
-        <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[23]/pr"/>
-        <gate.util.persistence.PRPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[24]/pr"/>
+        <gate.util.persistence.PRPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[23]/pr"/>
       </localList>
       <collectionType>java.util.ArrayList</collectionType>
     </prList>
     <resourceType>gate.creole.ConditionalSerialAnalyserController</resourceType>
-    <resourceName>main-no-gaz</resourceName>
+    <resourceName>main</resourceName>
     <initParams class="gate.util.persistence.MapPersistence">
       <mapType>gate.util.SimpleFeatureMapImpl</mapType>
       <localMap/>
