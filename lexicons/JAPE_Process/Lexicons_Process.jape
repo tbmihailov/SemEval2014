@@ -46,7 +46,9 @@ Rule: LexiconsSum
 	int nrcEmo_sent_sum = 0;
 	int nrcEmo_token_sent = 0;
 	
-	
+	//stanford
+	float stanford_sent_sum = 0;
+	float stanford_sent = 0;
 	
 	for(Annotation a : lookups){
 		FeatureMap aFeatMap = a.getFeatures();
@@ -121,6 +123,11 @@ Rule: LexiconsSum
 			//nrcEmo_sent_sum += nrcEmo_token_sent;
 		}
 		
+		//stanford sum
+		if("stanford".equals(aFeatMap.get("majorType"))){
+			stanford_sent = Float.parseFloat(aFeatMap.get("sl").toString());
+			stanford_sent_sum += (stanford_sent-1/2);			
+		}
 	}
 	
 	//BingLiu
@@ -155,4 +162,7 @@ Rule: LexiconsSum
 	nrcEmo_sent_sum = nrcEmo_pos_cnt - nrcEmo_neg_cnt; 
 	featureMap.put("nrcEmo_sent_sum", nrcEmo_sent_sum);
 	featureMap.put("nrcEmo_sent_last_token", nrcEmo_token_sent);
+	
+	//stanford
+	featureMap.put("stanford_sent_sum", stanford_sent_sum);
 }
