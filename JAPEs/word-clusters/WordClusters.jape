@@ -1,0 +1,47 @@
+﻿Imports: { import static gate.Utils.*;}
+
+Phase: POStag
+Input: tweet
+Options: control = appelt
+
+Rule: POStag
+({tweet}):tw
+-->
+:tw {
+
+	AnnotationSet tokens = inputAS.getContained(start(twAnnots), end(twAnnots)).get("Token");
+	List<Annotation> sortedTokens = inDocumentOrder(tokens); 
+	FeatureMap featureMap = twAnnots.iterator().next().getFeatures();
+
+	Set<String> uniqueness = new HashSet<String>();
+	List<String> clustersInOrder = new ArrayList<String>();
+	for (Annotation ann : sortedTokens) {
+		String cluster = (String) ann.getFeatures().get("wc");
+		if (cluster != null) {
+			clustersInOrder.add(cluster);
+			uniqueness.add("WC_" + cluster);
+		}
+	}
+	
+	int window = 2;
+	boolean add = true;
+	if (clustersInOrder.size() > 1) {  
+		for (int i = 0; i < clustersInOrder.size(); i = i+window) {
+			String ngramF = "WC_"+window+"GRAM";
+			for (int j = i; j < i+window; j++) {
+				if (j < clustersInOrder.size()) {
+					ngramF = ngramF + "_" + clustersInOrder.get(j);
+				} else {
+					add = false;
+				}
+			}
+			if (add) {
+				uniqueness.add(ngramF);
+			}
+		}
+	}
+	
+	for (String feature : uniqueness) {
+		featureMap.put(feature, 1);
+	}
+}
