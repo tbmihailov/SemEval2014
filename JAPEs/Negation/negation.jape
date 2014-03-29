@@ -8,7 +8,7 @@ Rule:negation (
 	({Split.kind != external})?
 ):ng
 -->
-:ng.Negation={}
+:ng.Negation={rule="negation"}
 
 
 Phase:NegationSuffix
@@ -33,6 +33,14 @@ Rule:negationSuffix (
 	for(Annotation lookupAnn : lookupAS) {
 		lookupAnn.getFeatures().put("negated", 1);
 	}
+	
+	AnnotationSet tokenAS = inputAS.get("Token").getContained(start, end);
+
+	int numNegationTokens = 0;
+	for(Annotation tokenAnn : tokenAS) {
+		numNegationTokens++;
+	}
+	ngAnnots.iterator().next().getFeatures().put("numNegationTokens", numNegationTokens);
 	
 	
 	

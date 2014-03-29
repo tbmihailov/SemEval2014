@@ -40,6 +40,21 @@ Priority: 100
 	Long start = twAnnots.firstNode().getOffset();
 	Long end = twAnnots.lastNode().getOffset();
 	
+	
+	//Add negation count
+	AnnotationSet negation = inputAS.get("Negation").getContained(start, end);
+	int numNegation = 0;
+	int numAllNegationTokens = 0;
+	for(Annotation a : negation){
+		if("negation".equals(a.getFeatures().get("rule"))){
+			numNegation ++;
+			numAllNegationTokens += (Integer) a.getFeatures().get("numNegationTokens");
+		}
+	}
+	twAnnots.iterator().next().getFeatures().put("numNegations", numNegation);
+	twAnnots.iterator().next().getFeatures().put("numAllNegationTokens", numAllNegationTokens);
+	
+	
 	String text = "";
 	try {
 		text = doc.getContent().getContent(start, end).toString();
