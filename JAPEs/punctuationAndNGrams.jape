@@ -35,6 +35,7 @@ Priority: 100
 :tw {
 	// public void doit(inputAS, outputAS, doc, twAnnots ...)
 
+	
 	//Get content of the Tweet.
 	Long start = twAnnots.firstNode().getOffset();
 	Long end = twAnnots.lastNode().getOffset();
@@ -177,8 +178,11 @@ Priority: 100
 	final String SUF = "SUF";
 	maxN = 5;
 	
+	char[] characters = text.toCharArray();
+	if (characters.length < maxN) {
+		maxN = characters.length;
+	}
 	for(int n = 1; n <= maxN; n++) {
-		char[] characters = text.toCharArray();
 		List<String> charNGrams = new ArrayList<String>();
 		
 		StringBuilder sb = new StringBuilder();
@@ -194,6 +198,7 @@ Priority: 100
 		
 		sb = new StringBuilder();
 		sb.append(SUF + n + "_");
+		System.out.println("Stage 1 - " + (characters.length - n));
 		for (int i = characters.length - n; i < characters.length; i++) {
 			char ch = characters[i];
 			if (ch == ' ') {
