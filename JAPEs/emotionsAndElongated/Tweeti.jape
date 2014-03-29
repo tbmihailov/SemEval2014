@@ -7,7 +7,8 @@ Rule: allCaps
 -->
 :allcaps.AllCaps={rule = "allCaps"}
 
-/*Phase:hash
+/*
+Phase:hash
 Input: Token
 Options: control = appelt
 
@@ -17,7 +18,7 @@ Rule:hashTag
 {Token.kind == word}
 ):hashtag
 -->
-:hashtag.HashTags={rule = "hashTag"}*/  //izlishno e
+:hashtag.HashTags={rule = "hashTag"}*/  //not used
 
 Phase:emoticonPos
 Input: Lookup 
