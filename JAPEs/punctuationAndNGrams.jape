@@ -122,7 +122,6 @@ Priority: 100
 	
 	String[] words = text.split(" ");
 	for (int n = 1; n <= maxN; n++) {
-		//String[] wordNGrams = new String[words.length - n + 1];
 		List<String> wordNGrams = new ArrayList<String>();
 		for (int i = 0; i < words.length - n + 1; i++) {
 			StringBuilder sb = new StringBuilder();
@@ -139,12 +138,28 @@ Priority: 100
 				}
 				sb.append(words[i + j]);
 			}
-			//wordNGrams[i] = sb.toString();
 			wordNGrams.add(sb.toString());
 		}
+		
+		Set<String> setOfWordNGrams = new HashSet<String>(wordNGrams);
+	    Iterator<String> iterator = setOfWordNGrams.iterator();
+		List<String> repeated = new ArrayList<String>();
+		
+	    while(iterator.hasNext()) {
+	        String temp = iterator.next();
+	        int frequency = Collections.frequency(wordNGrams, temp);
+	        if(frequency > 1) {
+	            iterator.remove();
+	            repeated.add(temp + "=" + frequency);
+	        }
+	    }
+		
+	    for (String rep : repeated) {
+			setOfWordNGrams.add(rep);
+		}
+		
 		String featureCode = "Word " + n + "-grams";
-		//twAnnots.iterator().next().getFeatures().put(featureCode, Arrays.toString(wordNGrams));
-		twAnnots.iterator().next().getFeatures().put(featureCode, wordNGrams);
+		twAnnots.iterator().next().getFeatures().put(featureCode, setOfWordNGrams);
 	}
 	
 	
@@ -155,7 +170,6 @@ Priority: 100
 	
 	for(int n = 1; n <= maxN; n++) {
 		char[] characters = text.toCharArray();
-		//String[] charNGrams = new String[2];
 		List<String> charNGrams = new ArrayList<String>();
 		
 		StringBuilder sb = new StringBuilder();
@@ -167,7 +181,6 @@ Priority: 100
 			}
 			sb.append(ch);
 		}
-		//charNGrams[0] = sb.toString();
 		charNGrams.add(sb.toString());
 		
 		sb = new StringBuilder();
@@ -179,11 +192,29 @@ Priority: 100
 			}
 			sb.append(ch);
 		}
-		//charNGrams[1] = sb.toString();
 		charNGrams.add(sb.toString());
 		
+		/*
+		Set<String> setOfCharNGrams = new HashSet<String>(charNGrams);
+	    Iterator<String> charIterator = setOfCharNGrams.iterator();
+		List<String> charRepeated = new ArrayList<String>();
+		
+	    while(charIterator.hasNext()) {
+	        String temp = charIterator.next();
+	        int frequency = Collections.frequency(charNGrams, temp);
+	        if(frequency > 1) {
+	            charIterator.remove();
+	            charRepeated.add(temp + "=" + frequency);
+	        }
+	    }
+		
+	    for (String rep : charRepeated) {
+			setOfCharNGrams.add(rep);
+		}
+		*/
+		
 		String featureCode = "Char " + n + "-grams";
-		//twAnnots.iterator().next().getFeatures().put(featureCode, Arrays.toString(charNGrams));
+		//twAnnots.iterator().next().getFeatures().put(featureCode, setOfCharNGrams);
 		twAnnots.iterator().next().getFeatures().put(featureCode, charNGrams);
 	}
 	

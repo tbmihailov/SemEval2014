@@ -1,28 +1,11 @@
-Phase:twitter
-Input: Token Split
-Options: control = appelt
-
-Rule:tweet
-({Token.category == JJ})
-(
-({Token})*
-{Split.kind == external}
-):tw
--->
-:tw.Tweet={rule = "tweet"}
-
-
-///////////////////////////
-
-
 Phase:Negation
-Input: Token Lookup Split Tweet
+Input: Token Lookup Split tweet
 Options: control = appelt
 
 Rule:negation (
 	{Token, Lookup.majorType == "negation"}
-	({Token.string !~ "^[.:;!?]$"})*
-	{!Tweet}
+	({Token.string !~ "^[.:;!?]$"})[0,30]
+	({Split.kind != external})?
 ):ng
 -->
 :ng.Negation={}
@@ -41,18 +24,25 @@ Rule:negationSuffix (
 	Long start = ngAnnots.firstNode().getOffset();
 	Long end = ngAnnots.lastNode().getOffset();
 	
+	
+	//Add NEG suffix to Lookups.
+	final String NEG = "NEG";
+	
+	AnnotationSet lookupAS = inputAS.get("Lookup").getContained(start, end);
+
+	for(Annotation lookupAnn : lookupAS) {
+		lookupAnn.getFeatures().put(NEG, true);
+	}
+	
+	
+	
+	//Add NEG suffix to words.
 	String text = "";
 	try {
 		text = doc.getContent().getContent(start, end).toString();
 	} catch (gate.util.InvalidOffsetException e) {
 		throw new java.lang.IndexOutOfBoundsException(e.toString());
 	}
-	
-	
-	
-	//Add NEG suffix to words.
-	final String NEG = "NEG";
-	
 	
 	String[] words = text.split(" ");
 	for (int n = 1; n <= words.length; n++) {
@@ -70,17 +60,11 @@ Rule:negationSuffix (
 		//ngAnnots.iterator().next().getFeatures().put(featureCode, Arrays.toString(negatedWords));
 		ngAnnots.iterator().next().getFeatures().put(featureCode, negatedWords);
 	}
-
 }
 
 
 
-
-///////////////////////////////////////////////////////////////////////
-////////////////////////////  Not Used  ///////////////////////////////
-///////////////////////////////////////////////////////////////////////
-
-
+/* ===== Not Used =====
 Phase:NotNegPunctuation
 Input: Token
 Options: control = appelt
@@ -101,3 +85,4 @@ Rule:negPunctuation (
 ):ng
 -->
 :ng.NegPunctuation={}
+*/
