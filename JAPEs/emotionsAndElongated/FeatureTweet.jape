@@ -66,20 +66,20 @@ Rule: FeatureTweet
 	
 	//
 	AnnotationSet endposemot = inputAS.get("EndPosEmoticon").getContained(start(twAnnots), end(twAnnots));
-	boolean endemotpos = false;
+	integer endemotpos = 0;
 	for(Annotation m : endposemot){
 		if("EndPosEmot".equals(m.getFeatures().get("rule"))){
-		endemotpos = true;
+		endemotpos = 1;
 		}
 	}
 	twAnnots.iterator().next().getFeatures().put("EndPosEmoticons", endemotpos);
 	
 	//
 	AnnotationSet endnegemot = inputAS.get("EndNegEmoticon").getContained(start(twAnnots), end(twAnnots));
-	boolean endemotneg = false;
+	integer endemotneg = 0;
 	for(Annotation g : endnegemot){
 		if("EndNegEmot".equals(g.getFeatures().get("rule"))){
-		endemotneg = true;
+		endemotneg = 1;
 		}
 	}
 	twAnnots.iterator().next().getFeatures().put("EndNegEmoticons", endemotneg);
