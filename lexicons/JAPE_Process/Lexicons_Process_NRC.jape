@@ -163,7 +163,7 @@ Rule: LexiconsSum_NRC
 	}
 	
 	//NRC hashtags lexicon UNI
-	nrcSen_uni_ratio=(nrcSen_uni_pos_sum+1)/(nrcSen_uni_neg_sum+1);
+	nrcSen_uni_ratio=(float)(nrcSen_uni_pos_sum+1)/(nrcSen_uni_neg_sum+1);
 	
 	featureMap.put("nrcSen_uni_pos_sum", nrcSen_uni_pos_sum);
 	featureMap.put("nrcSen_uni_neg_sum", -nrcSen_uni_neg_sum);
@@ -176,7 +176,7 @@ Rule: LexiconsSum_NRC
 
 	
 	//NRC hashtags lexicon BI
-	nrcSen_bi_ratio=(nrcSen_bi_pos_sum+1)/(nrcSen_bi_neg_sum+1);
+	nrcSen_bi_ratio=(float)(nrcSen_bi_pos_sum+1)/(nrcSen_bi_neg_sum+1);
 	
 	featureMap.put("nrcSen_bi_pos_sum", nrcSen_bi_pos_sum);
 	featureMap.put("nrcSen_bi_neg_sum", -nrcSen_bi_neg_sum);
@@ -189,7 +189,7 @@ Rule: LexiconsSum_NRC
 
 	
 	//NRC hashtags lexicon HASHTAGS
-	nrcSen_hash_ratio=(nrcSen_hash_pos_sum+1)/(nrcSen_hash_neg_sum+1);
+	nrcSen_hash_ratio=(float)(nrcSen_hash_pos_sum+1)/(nrcSen_hash_neg_sum+1);
 	
 	featureMap.put("nrcSen_hash_pos_sum", nrcSen_hash_pos_sum);
 	featureMap.put("nrcSen_hash_neg_sum", -nrcSen_hash_neg_sum);

@@ -46,6 +46,8 @@ Rule: LexiconsSum
 	int nrcEmo_sent_sum = 0;
 	int nrcEmo_token_sent = 0;
 	
+	
+	
 	for(Annotation a : lookups){
 		FeatureMap aFeatMap = a.getFeatures();
 		
@@ -126,14 +128,14 @@ Rule: LexiconsSum
 	featureMap.put("bl_pos_cnt", bl_pos_cnt);
 	bl_sent_sum = bl_pos_cnt - bl_neg_cnt;
 	featureMap.put("bl_sent_sum", bl_sent_sum);
-	featureMap.put("bl_posneg_ratio", (bl_pos_cnt+1)/(bl_neg_cnt+1));
+	featureMap.put("bl_posneg_ratio", (float)(bl_pos_cnt+1)/(bl_neg_cnt+1));
 	featureMap.put("bl_sent_last_token", bl_token_sent);
 	
 	//MPQA Lexicon
 	featureMap.put("mpqa_neg_cnt", -mpqa_neg_cnt);
 	featureMap.put("mpqa_neu_cnt", mpqa_neu_cnt);
 	featureMap.put("mpqa_pos_cnt", mpqa_pos_cnt);
-	featureMap.put("mpqa_posneg_ratio", (mpqa_pos_cnt+1)/(mpqa_neg_cnt+1));
+	featureMap.put("mpqa_posneg_ratio", (float)(mpqa_pos_cnt+1)/(mpqa_neg_cnt+1));
 	mpqa_sent_sum = mpqa_pos_cnt - mpqa_neg_cnt;
 	featureMap.put("mpqa_sent_sum", mpqa_sent_sum);
 	featureMap.put("mpqa_sent_last_token", mpqa_token_sent);
@@ -141,7 +143,7 @@ Rule: LexiconsSum
 	//MSOl Lexicon
 	featureMap.put("msol_neg_cnt", -msol_neg_cnt);
 	featureMap.put("msol_pos_cnt", msol_pos_cnt);
-	featureMap.put("msol_posneg_ratio", (msol_pos_cnt+1)/(msol_neg_cnt+1));
+	featureMap.put("msol_posneg_ratio", (float)(msol_pos_cnt+1)/(msol_neg_cnt+1));
 	msol_sent_sum = msol_pos_cnt - msol_neg_cnt;
 	featureMap.put("msol_sent_sum", msol_sent_sum);
 	featureMap.put("msol_sent_last_token", msol_token_sent);
@@ -149,7 +151,7 @@ Rule: LexiconsSum
 	//NRC Emotion Lexicon
 	featureMap.put("nrcEmo_neg_cnt", -nrcEmo_neg_cnt);
 	featureMap.put("nrcEmo_pos_cnt", nrcEmo_pos_cnt);
-	featureMap.put("nrcEmo_posneg_ratio", (nrcEmo_pos_cnt+1)/(nrcEmo_neg_cnt+1));
+	featureMap.put("nrcEmo_posneg_ratio", (float)(nrcEmo_pos_cnt+1)/(nrcEmo_neg_cnt+1));
 	nrcEmo_sent_sum = nrcEmo_pos_cnt - nrcEmo_neg_cnt; 
 	featureMap.put("nrcEmo_sent_sum", nrcEmo_sent_sum);
 	featureMap.put("nrcEmo_sent_last_token", nrcEmo_token_sent);

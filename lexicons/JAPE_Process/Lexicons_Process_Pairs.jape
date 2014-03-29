@@ -92,7 +92,7 @@ Rule: LexiconsSum_NRC_pairs
 				pos=Integer.parseInt(aFeatMap.get("p").toString());
 				neg=Integer.parseInt(aFeatMap.get("n").toString());
 				sentiment=Float.parseFloat(aFeatMap.get("s").toString());
-				ratio=(pos+1)/(neg+1);
+				ratio=(float)(pos+1)/(neg+1);
 				
 				//set new features
 				//aFeatMap.put("sen140_pair_pos", pos);
@@ -115,7 +115,7 @@ Rule: LexiconsSum_NRC_pairs
 	}
 	
 	//NRC hashtags lexicon pairs
-	nrcSen_pair_ratio=(nrcSen_pair_pos_sum+1)/(nrcSen_pair_neg_sum+1);
+	nrcSen_pair_ratio=(float)(nrcSen_pair_pos_sum+1)/(nrcSen_pair_neg_sum+1);
 	
 	featureMap.put("nrcSen_pair_pos_sum", nrcSen_pair_pos_sum);
 	featureMap.put("nrcSen_pair_neg_sum", nrcSen_pair_neg_sum);
@@ -123,7 +123,7 @@ Rule: LexiconsSum_NRC_pairs
 	featureMap.put("nrcSen_pair_ratio", nrcSen_pair_ratio);
 	
 	//Sen140
-	sen140_pair_ratio=(sen140_pair_pos_sum+1)/(sen140_pair_neg_sum+1);
+	sen140_pair_ratio=(float)(sen140_pair_pos_sum+1)/(sen140_pair_neg_sum+1);
 	
 	featureMap.put("sen140_pair_pos_sum", sen140_pair_pos_sum);
 	featureMap.put("sen140_pair_neg_sum", sen140_pair_neg_sum);
