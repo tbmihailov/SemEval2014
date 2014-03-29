@@ -110,7 +110,7 @@ Priority: 100
 	pattern = Pattern.compile(regex);
     matcher = pattern.matcher(text);
     
-	twAnnots.iterator().next().getFeatures().put("LAST_TOKEN_ENDS_WITH_EXCLAMATION_OR_QUESTION_MARK", matcher.find());
+	twAnnots.iterator().next().getFeatures().put("LAST_TOKEN_ENDS_WITH_EXCLAMATION_OR_QUESTION_MARK", matcher.find() ? 1 : 0);
 	
 	
 	
@@ -148,10 +148,8 @@ Priority: 100
 	    while(iterator.hasNext()) {
 	        String temp = iterator.next();
 	        int frequency = Collections.frequency(wordNGrams, temp);
-	        if(frequency > 1) {
-	            iterator.remove();
-	            repeated.add(temp + "=" + frequency);
-	        }
+	        iterator.remove();
+	        repeated.add(temp + "=" + frequency);
 	    }
 		
 	    for (String rep : repeated) {
@@ -193,25 +191,6 @@ Priority: 100
 			sb.append(ch);
 		}
 		charNGrams.add(sb.toString());
-		
-		/*
-		Set<String> setOfCharNGrams = new HashSet<String>(charNGrams);
-	    Iterator<String> charIterator = setOfCharNGrams.iterator();
-		List<String> charRepeated = new ArrayList<String>();
-		
-	    while(charIterator.hasNext()) {
-	        String temp = charIterator.next();
-	        int frequency = Collections.frequency(charNGrams, temp);
-	        if(frequency > 1) {
-	            charIterator.remove();
-	            charRepeated.add(temp + "=" + frequency);
-	        }
-	    }
-		
-	    for (String rep : charRepeated) {
-			setOfCharNGrams.add(rep);
-		}
-		*/
 		
 		String featureCode = "Char " + n + "-grams";
 		//twAnnots.iterator().next().getFeatures().put(featureCode, setOfCharNGrams);
