@@ -862,6 +862,126 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
               </localMap>
             </runtimeParams>
             <resourceType>gate.creole.gazetteer.DefaultGazetteer</resourceType>
+            <resourceName>NRC-Hashtag-Sentiment-Lexicon</resourceName>
+            <initParams class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap>
+                <entry>
+                  <string>caseSensitive</string>
+                  <boolean>true</boolean>
+                </entry>
+                <entry>
+                  <string>listsURL</string>
+                  <gate.util.persistence.PersistenceManager-URLHolder>
+                    <urlString>$relpath$lexicons/Lexicons/NRC-Hashtag-Sentiment-Lexicon/list.def</urlString>
+                  </gate.util.persistence.PersistenceManager-URLHolder>
+                </entry>
+                <entry>
+                  <string>gazetteerFeatureSeparator</string>
+                  <string>	</string>
+                </entry>
+                <entry>
+                  <string>encoding</string>
+                  <string>UTF-8</string>
+                </entry>
+              </localMap>
+            </initParams>
+            <features class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap/>
+            </features>
+          </pr>
+        </gate.util.persistence.AnalyserRunningStrategyPersistence>
+        <gate.util.persistence.AnalyserRunningStrategyPersistence>
+          <runMode>1</runMode>
+          <featureName></featureName>
+          <featureValue></featureValue>
+          <pr class="gate.util.persistence.LanguageAnalyserPersistence">
+            <runtimeParams class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap>
+                <entry>
+                  <string>wholeWordsOnly</string>
+                  <boolean>true</boolean>
+                </entry>
+                <entry>
+                  <string>longestMatchOnly</string>
+                  <boolean>true</boolean>
+                </entry>
+                <entry>
+                  <string>document</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>corpus</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>annotationSetName</string>
+                  <null/>
+                </entry>
+              </localMap>
+            </runtimeParams>
+            <resourceType>gate.creole.gazetteer.DefaultGazetteer</resourceType>
+            <resourceName>Sentiment140-Lexicon</resourceName>
+            <initParams class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap>
+                <entry>
+                  <string>caseSensitive</string>
+                  <boolean>true</boolean>
+                </entry>
+                <entry>
+                  <string>listsURL</string>
+                  <gate.util.persistence.PersistenceManager-URLHolder>
+                    <urlString>$relpath$lexicons/Lexicons/Sentiment140-Lexicon/list.def</urlString>
+                  </gate.util.persistence.PersistenceManager-URLHolder>
+                </entry>
+                <entry>
+                  <string>gazetteerFeatureSeparator</string>
+                  <string>	</string>
+                </entry>
+                <entry>
+                  <string>encoding</string>
+                  <string>UTF-8</string>
+                </entry>
+              </localMap>
+            </initParams>
+            <features class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap/>
+            </features>
+          </pr>
+        </gate.util.persistence.AnalyserRunningStrategyPersistence>
+        <gate.util.persistence.AnalyserRunningStrategyPersistence>
+          <runMode>1</runMode>
+          <pr class="gate.util.persistence.LanguageAnalyserPersistence">
+            <runtimeParams class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap>
+                <entry>
+                  <string>wholeWordsOnly</string>
+                  <boolean>true</boolean>
+                </entry>
+                <entry>
+                  <string>longestMatchOnly</string>
+                  <boolean>true</boolean>
+                </entry>
+                <entry>
+                  <string>document</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>corpus</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>annotationSetName</string>
+                  <null/>
+                </entry>
+              </localMap>
+            </runtimeParams>
+            <resourceType>gate.creole.gazetteer.DefaultGazetteer</resourceType>
             <resourceName>Stanford Lexicon</resourceName>
             <initParams class="gate.util.persistence.MapPersistence">
               <mapType>gate.util.SimpleFeatureMapImpl</mapType>
@@ -967,7 +1087,7 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
                 </entry>
                 <entry>
                   <string>annotationSetName</string>
-                  <string></string>
+                  <null/>
                 </entry>
                 <entry>
                   <string>annotationType</string>
@@ -1629,10 +1749,10 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[10]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[11]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[12]/pr"/>
-        <gate.util.persistence.PRPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[13]/pr"/>
-        <gate.util.persistence.PRPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[14]/pr"/>
-        <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[15]/pr"/>
-        <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[16]/pr"/>
+        <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[13]/pr"/>
+        <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[14]/pr"/>
+        <gate.util.persistence.PRPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[15]/pr"/>
+        <gate.util.persistence.PRPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[16]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[17]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[18]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[19]/pr"/>
@@ -1640,12 +1760,14 @@ Hope Solo stays coy about nude photo, DWTS - USA Today LLLINKKK
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[21]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[22]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[23]/pr"/>
-        <gate.util.persistence.PRPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[24]/pr"/>
+        <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[24]/pr"/>
+        <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[25]/pr"/>
+        <gate.util.persistence.PRPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[26]/pr"/>
       </localList>
       <collectionType>java.util.ArrayList</collectionType>
     </prList>
     <resourceType>gate.creole.ConditionalSerialAnalyserController</resourceType>
-    <resourceName>main-no-gaz</resourceName>
+    <resourceName>main-large-gaz</resourceName>
     <initParams class="gate.util.persistence.MapPersistence">
       <mapType>gate.util.SimpleFeatureMapImpl</mapType>
       <localMap/>
