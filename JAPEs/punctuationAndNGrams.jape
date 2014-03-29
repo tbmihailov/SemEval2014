@@ -51,6 +51,17 @@ Priority: 100
 	text = text.replaceAll("\\s+$", "");
 	
 	
+	//Remove all URLs from text BUT NOT FROM TOKENS! For Tokens look somewhere below.
+	String urlPattern = "((https?|ftp|gopher|telnet|file|Unsure|http):((//)|(\\\\))+[\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&]*)";
+	Pattern p = Pattern.compile(urlPattern, Pattern.CASE_INSENSITIVE);
+	Matcher m = p.matcher(text);
+	int g = 0;
+	while (m.find()) {
+		text = text.replaceAll(m.group(g), "").trim();
+		g++;
+	}
+	
+	
 	
 	//The number of contiguous sequences of exclamation marks
 	String regex = "!{2,}";
@@ -207,7 +218,11 @@ Priority: 100
 	
 	for(Annotation tweetTokenAnn : tweetTokensAS) {
 		String stem = (String) tweetTokenAnn.getFeatures().get("stem");
-		stems.add(STEM + "_" + stem);
+		//Remove URLs.
+		m = p.matcher(stem);
+		if (!m.find() && !stem.equals("")) {
+			stems.add(STEM + "_" + stem);
+		}
 	}
 	twAnnots.iterator().next().getFeatures().put("Stems", stems);
 	
@@ -220,7 +235,11 @@ Priority: 100
 	
 	for(Annotation tweetTokenAnn : tweetTokensAS) {
 		String root = (String) tweetTokenAnn.getFeatures().get("root");
-		lemmas.add(LEMMA + "_" + root);
+		//Remove URLs.
+		m = p.matcher(root);
+		if (!m.find() && !root.equals("")) {
+			lemmas.add(LEMMA + "_" + root);
+		}
 	}
 	twAnnots.iterator().next().getFeatures().put("Lemmas", lemmas);
 	
