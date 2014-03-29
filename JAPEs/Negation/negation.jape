@@ -31,7 +31,7 @@ Rule:negationSuffix (
 	AnnotationSet lookupAS = inputAS.get("Lookup").getContained(start, end);
 
 	for(Annotation lookupAnn : lookupAS) {
-		lookupAnn.getFeatures().put(NEG, true);
+		lookupAnn.getFeatures().put("negated", 1);
 	}
 	
 	
