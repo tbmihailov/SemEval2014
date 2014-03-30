@@ -1,0 +1,153 @@
+Imports: {
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import static gate.Utils.*;
+}
+Phase: NGramsAndLemAndStem
+Input: tweet
+Options: control = appelt
+
+
+Rule: NGramsAndLemAndStemCounter
+Priority: 100
+
+(
+ {tweet}
+):tw
+-->
+:tw {
+	// public void doit(inputAS, outputAS, doc, twAnnots ...)
+
+	try{
+		//Get content of the Tweet.
+		Long start = twAnnots.firstNode().getOffset();
+		Long end = twAnnots.lastNode().getOffset();
+		
+		//Add negation count
+		AnnotationSet negation = inputAS.get("Negation",start(twAnnots), end(twAnnots));
+		FeatureMap featureMap = featureMap;
+		
+		//Word Ngrams
+		final String NGRAM = "NGRAM";
+		int maxN = 5;
+		boolean useConcatenation = true;
+		
+		
+		String[] words = text.split(" ");
+		for (int n = 1; n <= maxN; n++) {
+			List<String> wordNGrams = new ArrayList<String>();
+			for (int i = 0; i < words.length - n + 1; i++) {
+				StringBuilder sb = new StringBuilder();
+				if (useConcatenation) {
+					sb.append(NGRAM + n + "_");
+				}
+				for (int j = 0; j < n; j++) {
+					if (j > 0) {
+						if (useConcatenation) {
+							sb.append('_');
+						} else {
+							sb.append(' ');
+						}
+					}
+					sb.append(words[i + j]);
+				}
+				wordNGrams.add(sb.toString());
+			}
+			
+			Set<String> setOfWordNGrams = new HashSet<String>(wordNGrams);
+			Iterator<String> iterator = setOfWordNGrams.iterator();
+			List<String> repeated = new ArrayList<String>();
+			
+			while(iterator.hasNext()) {
+				String temp = iterator.next();
+				int frequency = Collections.frequency(wordNGrams, temp);
+				iterator.remove();
+				repeated.add(temp + "=" + frequency);
+			}
+			
+			for (String rep : repeated) {
+				setOfWordNGrams.add(rep);
+			}
+			
+			String featureCode = "Word " + n + "-grams";
+			featureMap.put(featureCode, setOfWordNGrams);
+		}
+		
+		
+		//Character Ngrams
+		final String PRE = "PRE";
+		final String SUF = "SUF";
+		maxN = 5;
+		
+		char[] characters = text.toCharArray();
+		if (characters.length < maxN) {
+			maxN = characters.length;
+		}
+		for(int n = 1; n <= maxN; n++) {
+			List<String> charNGrams = new ArrayList<String>();
+			
+			StringBuilder sb = new StringBuilder();
+			sb.append(PRE + n + "_");
+			for (int i = 0; i < n; i++) {
+				char ch = characters[i];
+				if (ch == ' ') {
+					ch = '_';
+				}
+				sb.append(ch);
+			}
+			charNGrams.add(sb.toString());
+			
+			sb = new StringBuilder();
+			sb.append(SUF + n + "_");
+			//System.out.println("Stage 1 - " + (characters.length - n));
+			for (int i = characters.length - n; i < characters.length; i++) {
+				char ch = characters[i];
+				if (ch == ' ') {
+					ch = '_';
+				}
+				sb.append(ch);
+			}
+			charNGrams.add(sb.toString());
+			
+			String featureCode = "Char " + n + "-grams";
+			//featureMap.put(featureCode, setOfCharNGrams);
+			featureMap.put(featureCode, charNGrams);
+		}
+		
+		// Run stemmer.
+		final String STEM = "STEM";
+		
+		List<String> stems = new ArrayList<String>();
+		AnnotationSet tweetTokensAS = inputAS.get("Token",start(twAnnots), end(twAnnots));
+		
+		for(Annotation tweetTokenAnn : tweetTokensAS) {
+			String stem = (String) tweetTokenAnn.getFeatures().get("stem");
+			//Remove URLs.
+			m = p.matcher(stem);
+			if (!m.find() && !stem.equals("")) {
+				stems.add(STEM + "_" + stem);
+			}
+		}
+		featureMap.put("Stems", stems);
+		
+		
+		// Run lemmatizer.
+		final String LEMMA = "LEMMA";
+		
+		List<String> lemmas = new ArrayList<String>();
+		tweetTokensAS = inputAS.get("Token",start(twAnnots), end(twAnnots));
+		
+		for(Annotation tweetTokenAnn : tweetTokensAS) {
+			String root = (String) tweetTokenAnn.getFeatures().get("root");
+			//Remove URLs.
+			m = p.matcher(root);
+			if (!m.find() && !root.equals("")) {
+				lemmas.add(LEMMA + "_" + root);
+			}
+		}
+		featureMap.put("Lemmas", lemmas);
+		
+	} catch (Throwable e) {
+		e.printStackTrace();
+    }
+}
