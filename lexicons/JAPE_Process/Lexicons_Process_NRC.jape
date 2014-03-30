@@ -56,9 +56,13 @@ Rule: LexiconsSum_NRC
 		//unigrams
 		if(("nrcSen".equals(aFeatMap.get("majorType")))
 		&&("unigrams".equals(aFeatMap.get("minorType")))){
-			pos=Integer.parseInt(aFeatMap.get("p").toString());
-			neg=Integer.parseInt(aFeatMap.get("n").toString());
-			sentiment=Float.parseFloat(aFeatMap.get("s").toString());
+			//pos=Integer.parseInt(aFeatMap.get("p").toString());
+			pos=aFeatMap.containsKey("p")?Integer.parseInt(aFeatMap.get("p").toString()):0;
+			//neg=Integer.parseInt(aFeatMap.get("n").toString());
+			neg=aFeatMap.containsKey("n")?Integer.parseInt(aFeatMap.get("n").toString()):0;
+			//sentiment=Float.parseFloat(aFeatMap.get("s").toString());
+			sentiment=aFeatMap.containsKey("s")?Float.parseFloat(aFeatMap.get("s").toString()):0;
+
 			ratio=(pos+1)/(neg+1);
 			
 			//set new features
@@ -91,9 +95,9 @@ Rule: LexiconsSum_NRC
 		//bigram
 		if(("nrcSen".equals(aFeatMap.get("majorType")))
 		&&("bigrams".equals(aFeatMap.get("minorType")))){
-			pos=Integer.parseInt(aFeatMap.get("p").toString());
-			neg=Integer.parseInt(aFeatMap.get("n").toString());
-			sentiment=Float.parseFloat(aFeatMap.get("s").toString());
+			pos=aFeatMap.containsKey("p")?Integer.parseInt(aFeatMap.get("p").toString()):0;
+			neg=aFeatMap.containsKey("n")?Integer.parseInt(aFeatMap.get("n").toString()):0;
+			sentiment=aFeatMap.containsKey("s")?Float.parseFloat(aFeatMap.get("s").toString()):0;
 			ratio=(pos+1)/(neg+1);
 			
 			//set new features
@@ -128,9 +132,9 @@ Rule: LexiconsSum_NRC
 		//hashtags
 		if(("nrcSen".equals(aFeatMap.get("majorType")))
 		&&("hashtags".equals(aFeatMap.get("minorType")))){
-			pos=Integer.parseInt(aFeatMap.get("p").toString());
-			neg=Integer.parseInt(aFeatMap.get("n").toString());
-			sentiment=Float.parseFloat(aFeatMap.get("s").toString());
+			pos=aFeatMap.containsKey("p")?Integer.parseInt(aFeatMap.get("p").toString()):0;
+			neg=aFeatMap.containsKey("n")?Integer.parseInt(aFeatMap.get("n").toString()):0;
+			sentiment=aFeatMap.containsKey("s")?Float.parseFloat(aFeatMap.get("s").toString()):0;
 			ratio=(pos+1)/(neg+1);
 			
 			//set new features
