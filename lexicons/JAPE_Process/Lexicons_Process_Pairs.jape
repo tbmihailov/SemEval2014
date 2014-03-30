@@ -45,8 +45,7 @@ Rule: LexiconsSum_NRC_pairs
 		if(("nrcSen".equals(aFeatMap.get("majorType")))
 		&&("pairBegin".equals(aFeatMap.get("minorType")))){
 			pairBeginMapNrc.put(aFeatMap.get("ID").toString(), annoVal);
-		}
-		
+		}else		
 		//pairEnd
 		if(("nrcSen".equals(aFeatMap.get("majorType")))
 		&&("pairEnd".equals(aFeatMap.get("minorType")))){
@@ -57,34 +56,18 @@ Rule: LexiconsSum_NRC_pairs
 				sentiment=aFeatMap.containsKey("s")?Float.parseFloat(aFeatMap.get("s").toString()):0;
 				ratio=(pos+1)/(neg+1);
 				
-				//set new features
-				//aFeatMap.put("nrcSen_pair_pos", pos);
-				//aFeatMap.put("nrcSen_pair_neg", neg);
-				//aFeatMap.put("nrcSen_pair_sent", sentiment);
-				//aFeatMap.put("nrcSen_pair_ratio", ratio);
-				
-				//aFeatMap.put("nrcSen_pair_ratio", ratio);
-				
 				nrcSen_pair_pos_sum+=pos;
 				nrcSen_pair_neg_sum+=neg;
 				nrcSen_pair_sent_sum+=sentiment;
 				
-				//featureMap.put("nrcSen_pair_pos_t"+"_"+annoVal, pos);
-				//featureMap.put("nrcSen_pair_neg_t"+"_"+annoVal, neg);
-				//featureMap.put("nrcSen_pair_sent_t"+"_"+annoVal, sentiment);
-				//featureMap.put("nrcSen_pair_ratio_t"+"_"+annoVal, ratio);
 			}
-		}
-			
-
+		}else
 		//sentiment 140
 		//pairBegin
 		if(("sen140".equals(aFeatMap.get("majorType")))
 		&&("pairBegin".equals(aFeatMap.get("minorType")))){
 			pairBeginMapSen140.put(aFeatMap.get("ID").toString(), annoVal);
-		}
-		
-		//pairEnd
+		}else	//pairEnd	
 		if(("sen140".equals(aFeatMap.get("majorType")))
 		&&("pairEnd".equals(aFeatMap.get("minorType")))){
 			if(pairBeginMapSen140.containsKey(aFeatMap.get("ID").toString()))
@@ -94,23 +77,11 @@ Rule: LexiconsSum_NRC_pairs
 				sentiment=aFeatMap.containsKey("s")?Float.parseFloat(aFeatMap.get("s").toString()):0;
 				
 				ratio=(float)(pos+1)/(neg+1);
-				
-				//set new features
-				//aFeatMap.put("sen140_pair_pos", pos);
-				//aFeatMap.put("sen140_pair_neg", neg);
-				//aFeatMap.put("sen140_pair_sent", sentiment);
-				//aFeatMap.put("sen140_pair_ratio", ratio);
-				
-				//aFeatMap.put("sen140_pair_ratio", ratio);
-				
+
 				sen140_pair_pos_sum+=pos;
 				sen140_pair_neg_sum+=neg;
 				sen140_pair_sent_sum+=sentiment;
 				
-				//featureMap.put("sen140_pair_pos_t"+"_"+annoVal, pos);
-				//featureMap.put("sen140_pair_neg_t"+"_"+annoVal, neg);
-				//featureMap.put("sen140_pair_sent_t"+"_"+annoVal, sentiment);
-				//featureMap.put("sen140_pair_ratio_t"+"_"+annoVal, ratio);
 			}
 		}			
 	}

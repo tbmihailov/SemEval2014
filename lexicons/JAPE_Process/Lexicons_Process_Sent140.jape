@@ -37,9 +37,6 @@ Rule: LexiconsSum_NRC
 	
 	for(Annotation a : lookups){
 		FeatureMap aFeatMap = a.getFeatures();
-		
-		String annoVal = gate.Utils.stringFor(doc, a);
-		annoVal = annoVal.replace(" ", "_");
 				
 		//Sentiment140 lexicon
 		//unigrams
@@ -49,12 +46,6 @@ Rule: LexiconsSum_NRC
 			neg=aFeatMap.containsKey("n")?Integer.parseInt(aFeatMap.get("n").toString()):0;
 			sentiment=aFeatMap.containsKey("s")?Float.parseFloat(aFeatMap.get("s").toString()):0;
 			ratio=(pos+1)/(neg+1);
-			
-			//set new features
-			aFeatMap.put("sen140_uni_pos", pos);
-			aFeatMap.put("sen140_uni_neg", neg);
-			aFeatMap.put("sen140_uni_sent", sentiment);
-			aFeatMap.put("sen140_uni_ratio", ratio);
 			
 			sen140_uni_pos_sum+=pos;
 			sen140_uni_neg_sum+=neg;
@@ -70,12 +61,7 @@ Rule: LexiconsSum_NRC
 			  sen140_uni_sent_max = sentiment;
 			}
 			
-			//featureMap.put("sen140_uni_pos_t"+"_"+annoVal, pos);
-			//featureMap.put("sen140_uni_neg_t"+"_"+annoVal, neg);
-			//featureMap.put("sen140_uni_sent_t"+"_"+annoVal, sentiment);
-			//featureMap.put("sen140_uni_ratio_t"+"_"+annoVal, ratio);
-		}
-		
+		}else		
 		//Sentiment140 lexicon
 		//bigram
 		if(("sen140".equals(aFeatMap.get("majorType")))
@@ -85,11 +71,6 @@ Rule: LexiconsSum_NRC
 			sentiment=aFeatMap.containsKey("s")?Float.parseFloat(aFeatMap.get("s").toString()):0;
 			ratio=(pos+1)/(neg+1);
 			
-			//set new features
-			aFeatMap.put("sen140_bi_pos", pos);
-			aFeatMap.put("sen140_bi_neg", neg);
-			aFeatMap.put("sen140_bi_sent", sentiment);
-			aFeatMap.put("sen140_bi_ratio", ratio);
 			
 			sen140_bi_pos_sum+=pos;
 			sen140_bi_neg_sum+=neg;
@@ -107,10 +88,6 @@ Rule: LexiconsSum_NRC
 				sen140_bi_sent_max = sentiment;
 			}
 			
-			//featureMap.put("sen140_bi_pos_t"+"_"+annoVal, pos);
-			//featureMap.put("sen140_bi_neg_t"+"_"+annoVal, neg);
-			//featureMap.put("sen140_bi_sent_t"+"_"+annoVal, sentiment);
-			//featureMap.put("sen140_bi_ratio_t"+"_"+annoVal, ratio);
 		}
 	}
 	

@@ -13,7 +13,6 @@ Rule: LexiconsSum
 	AnnotationSet lookups = inputAS.getContained(start(twAnnots), end(twAnnots)).get("Lookup");
 	FeatureMap featureMap = twAnnots.iterator().next().getFeatures();
 	
-	
 	//last token
 	//AnnotationSet toks = inputAS.get("Token",start(twAnnots), end(twAnnots));
 	//List<Annotation> sortedToks = new ArrayList<Annotation>(toks);
@@ -57,8 +56,12 @@ Rule: LexiconsSum
 	for(Annotation a : lookups){
 		FeatureMap aFeatMap = a.getFeatures();
 		
-		//BingLiu	
 		bl_token_sent = 0;
+		mpqa_token_sent = 0;
+		msol_token_sent = 0;
+		nrcEmo_token_sent = 0;
+		
+		//BingLiu	
 		if("bl_neg".equals(aFeatMap.get("minorType"))){
 			bl_neg_cnt++;
 			bl_token_sent=-1;
@@ -70,11 +73,8 @@ Rule: LexiconsSum
 			bl_token_sent=1;
 			aFeatMap.put("bl_sent","1");
 			//bl_sent_sum += bl_token_sent;
-		}
-		
-		
+		}else		
 		//MPQA Lexicon
-		mpqa_token_sent = 0;
 		if(aFeatMap.containsKey("mpqa_pplrty_nom")){
 			mpqa_token_sent = Integer.parseInt(aFeatMap.get("mpqa_pplrty_nom").toString());
 			if(mpqa_token_sent>0){
@@ -95,10 +95,8 @@ Rule: LexiconsSum
 			}
 			//mpqa_sent_sum += mpqa_token_sent;
 			aFeatMap.put("mpqa_sent",mpqa_token_sent);
-		}
-		
+		}else
 		//MSOL lexicon	
-		msol_token_sent = 0;
 		if("msol_neg".equals(aFeatMap.get("minorType"))){
 			msol_neg_cnt++;
 			msol_token_sent=-1;
@@ -114,10 +112,8 @@ Rule: LexiconsSum
 			aFeatMap.put("msol_sent","1");
 			//msol_sent_sum += msol_token_sent;
 		}
-		
-		
+		else
 		//NRC Emotion Lexicon
-		nrcEmo_token_sent = 0;
 		if(aFeatMap.containsKey("nrcEmo_neg")
 			&&((Integer.parseInt(aFeatMap.get("nrcEmo_neg").toString())>0))){
 			nrcEmo_neg_cnt++;
@@ -136,7 +132,7 @@ Rule: LexiconsSum
 			aFeatMap.put("nrcEmo_sent","1");
 			//nrcEmo_sent_sum += nrcEmo_token_sent;
 		}
-		
+		else
 		//stanford sum
 		if("stanford".equals(aFeatMap.get("majorType"))){
 			stanford_sent = Float.parseFloat(aFeatMap.get("sl").toString());

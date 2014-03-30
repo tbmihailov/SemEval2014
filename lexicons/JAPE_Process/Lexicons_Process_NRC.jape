@@ -49,9 +49,6 @@ Rule: LexiconsSum_NRC
 	for(Annotation a : lookups){
 		FeatureMap aFeatMap = a.getFeatures();
 		
-		String annoVal = gate.Utils.stringFor(doc, a);
-		annoVal = annoVal.replace(" ", "_");
-				
 		//NRC hashtags lexicon
 		//unigrams
 		if(("nrcSen".equals(aFeatMap.get("majorType")))
@@ -64,12 +61,6 @@ Rule: LexiconsSum_NRC
 			sentiment=aFeatMap.containsKey("s")?Float.parseFloat(aFeatMap.get("s").toString()):0;
 
 			ratio=(pos+1)/(neg+1);
-			
-			//set new features
-			aFeatMap.put("nrcSen_uni_pos", pos);
-			aFeatMap.put("nrcSen_uni_neg", neg);
-			aFeatMap.put("nrcSen_uni_sent", sentiment);
-			aFeatMap.put("nrcSen_uni_ratio", ratio);
 			
 			nrcSen_uni_pos_sum+=pos;
 			nrcSen_uni_neg_sum+=neg;
@@ -84,13 +75,7 @@ Rule: LexiconsSum_NRC
 			if(sentiment > nrcSen_uni_sent_max){
 			  nrcSen_uni_sent_max = sentiment;
 			}
-			
-			//featureMap.put("nrcSen_uni_pos_t"+"_"+annoVal, pos);
-			//featureMap.put("nrcSen_uni_neg_t"+"_"+annoVal, neg);
-			//featureMap.put("nrcSen_uni_sent_t"+"_"+annoVal, sentiment);
-			//featureMap.put("nrcSen_uni_ratio_t"+"_"+annoVal, ratio);
-		}
-		
+		}else		
 		//NRC hashtags lexicon
 		//bigram
 		if(("nrcSen".equals(aFeatMap.get("majorType")))
@@ -99,12 +84,6 @@ Rule: LexiconsSum_NRC
 			neg=aFeatMap.containsKey("n")?Integer.parseInt(aFeatMap.get("n").toString()):0;
 			sentiment=aFeatMap.containsKey("s")?Float.parseFloat(aFeatMap.get("s").toString()):0;
 			ratio=(pos+1)/(neg+1);
-			
-			//set new features
-			aFeatMap.put("nrcSen_bi_pos", pos);
-			aFeatMap.put("nrcSen_bi_neg", neg);
-			aFeatMap.put("nrcSen_bi_sent", sentiment);
-			aFeatMap.put("nrcSen_bi_ratio", ratio);
 			
 			nrcSen_bi_pos_sum+=pos;
 			nrcSen_bi_neg_sum+=neg;
@@ -122,12 +101,7 @@ Rule: LexiconsSum_NRC
 				nrcSen_bi_sent_max = sentiment;
 			}
 			
-			//featureMap.put("nrcSen_bi_pos_t"+"_"+annoVal, pos);
-			//featureMap.put("nrcSen_bi_neg_t"+"_"+annoVal, neg);
-			//featureMap.put("nrcSen_bi_sent_t"+"_"+annoVal, sentiment);
-			//featureMap.put("nrcSen_bi_ratio_t"+"_"+annoVal, ratio);
-		}
-		
+		}else		
 		//NRC hashtags lexicon
 		//hashtags
 		if(("nrcSen".equals(aFeatMap.get("majorType")))
@@ -136,12 +110,6 @@ Rule: LexiconsSum_NRC
 			neg=aFeatMap.containsKey("n")?Integer.parseInt(aFeatMap.get("n").toString()):0;
 			sentiment=aFeatMap.containsKey("s")?Float.parseFloat(aFeatMap.get("s").toString()):0;
 			ratio=(pos+1)/(neg+1);
-			
-			//set new features
-			aFeatMap.put("nrcSen_hash_pos", pos);
-			aFeatMap.put("nrcSen_hash_neg", neg);
-			aFeatMap.put("nrcSen_hash_sent", sentiment);
-			aFeatMap.put("nrcSen_hash_ratio", ratio);
 			
 			nrcSen_hash_pos_sum+=pos;
 			nrcSen_hash_neg_sum+=neg;
@@ -159,10 +127,6 @@ Rule: LexiconsSum_NRC
 				nrcSen_hash_sent_max = sentiment;
 			}
 	
-			//featureMap.put("nrcSen_hash_pos_t"+"_"+annoVal, pos);
-			//featureMap.put("nrcSen_hash_neg_t"+"_"+annoVal, neg);
-			//featureMap.put("nrcSen_hash_sent_t"+"_"+annoVal, sentiment);
-			//featureMap.put("nrcSen_hash_ratio_t"+"_"+annoVal, ratio);
 		}
 	}
 	
