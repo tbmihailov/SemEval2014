@@ -25,14 +25,17 @@ Priority: 100
 		
 		//Add negation count
 		AnnotationSet negation = inputAS.get("Negation",start(twAnnots), end(twAnnots));
-		FeatureMap featureMap = featureMap;
+		FeatureMap featureMap = twAnnots.iterator().next().getFeatures();;
 		
 		//Word Ngrams
 		final String NGRAM = "NGRAM";
 		int maxN = 5;
 		boolean useConcatenation = true;
 		
+		Pattern p = null;
+		Matcher m = null;
 		
+		String text = "";
 		String[] words = text.split(" ");
 		for (int n = 1; n <= maxN; n++) {
 			List<String> wordNGrams = new ArrayList<String>();
