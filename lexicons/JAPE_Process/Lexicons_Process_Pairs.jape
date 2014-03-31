@@ -9,7 +9,7 @@ Rule: LexiconsSum_NRC_pairs
 -->
 :tw {
 
-	AnnotationSet lookups = inputAS.get("Lookup").getContained(start(twAnnots), end(twAnnots));
+	AnnotationSet lookups = inputAS.get("Lookup",start(twAnnots), end(twAnnots));
 	FeatureMap featureMap = twAnnots.iterator().next().getFeatures();
 	
 	//common

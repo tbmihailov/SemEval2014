@@ -16,7 +16,10 @@ public class ArffBuilder {
     private static SortedMap<String, Integer> featureToIndex = new TreeMap<String, Integer>();
     private static int index = 0;
     
-    private static String[] filterOut = {"id1", "id2"};
+    private static String[] filterOut = {"id1", "id2", "STEM", "LEMMA", "NGRAM", "URL", "WC_PUNCT_2GRAM", "USR", "PRE5", "SUF5", "PRE4", "SUF4", "NNP", "positive", "negative", "neutral", "unknwn", "PRE", "SUF"};
+    private static String[] whilelist = {"mpqa", "nrcEmo", "num"};
+    
+    static String testGoldPath;
 
     /**
      * @param args
@@ -27,6 +30,7 @@ public class ArffBuilder {
         String testDocsPath = args[1];
         String trainArffPath = args[2];
         String testArffPath = args[3];
+        testGoldPath = args[4];
 
         System.out.print("Extracting global feature list...");
         extractFeaturesFromDocs(trainDocsPath);
@@ -35,44 +39,45 @@ public class ArffBuilder {
         System.out.println("Global feature count: " + featureToIndex.size());
 
         System.out.print("Writing train arff...");
-        createArff(trainDocsPath, trainArffPath, true);
+        createArff(trainDocsPath, trainArffPath, true, false);
         System.out.println("DONE");
 
         System.out.print("Writing test arff...");
-        createArff(testDocsPath, testArffPath, false);
+        createArff(testDocsPath, testArffPath, false, true);
         System.out.println("DONE");
     }
 
-    private static void createArff(String trainDocsPath, String trainArffPath, boolean classIncluded) throws IOException {
-        FileWriter trainWriter = null;
+    private static void createArff(String docsPath, String arffPath, boolean classIncluded, boolean addGold) throws IOException {
+        FileWriter writer = null;
         try {
-            trainWriter = new FileWriter(trainArffPath);
-            trainWriter.write("@RELATION semeval\n\n");
+            writer = new FileWriter(arffPath);
+            writer.write("@RELATION semeval\n\n");
 
             for (String featureName : featureToIndex.keySet()) {
-                trainWriter.write("@ATTRIBUTE " + featureName + " NUMERIC\n");
+                writer.write("@ATTRIBUTE " + featureName + " NUMERIC\n");
             }
             
-            trainWriter.write("@ATTRIBUTE class {positive, negative, neutral}\n\n");
-            trainWriter.write("@DATA\n");
+            writer.write("@ATTRIBUTE class {positive, negative, neutral}\n\n");
+            writer.write("@DATA\n");
 
-            writeArffFromDoc(trainDocsPath, trainWriter, classIncluded);
+            writeArffFromDoc(docsPath, writer, classIncluded, addGold);
 
         } finally {
-            if (trainWriter != null) {
-                trainWriter.flush();
-                trainWriter.close();
+            if (writer != null) {
+                writer.flush();
+                writer.close();
             }
         }
     }
 
-    private static void writeArffFromDoc(String docsPath, FileWriter trainWriter, boolean classIncluded) throws IOException {
+    private static void writeArffFromDoc(String docsPath, FileWriter writer, boolean classIncluded, boolean addGold) throws IOException {
         File docDir = new File(docsPath);
-        for (File doc : docDir.listFiles()) {
+        for (File doc : docDir.listFiles()) { 
             if (!doc.isDirectory()) {
                 String[] instances = splitStringToArray(doc.getAbsolutePath(), "\n", StandardCharsets.UTF_8);
+                int ind = 0;
                 for (String instance : instances) {
-                    trainWriter.write("{");
+                    writer.write("{");
                     String[] instanceData = instance.split("\t");
                     String instanceClass = null;
                     if (classIncluded) {
@@ -92,9 +97,7 @@ public class ArffBuilder {
                             } else {
                                 // replace inconsistent boolean values with 0 and 1
                                 // TODO remove check when fixed
-                                if (featureInstanceData[1].equals("false")) {
-                                    sortedInstances.put(featureToIndex.get(normalizedFeatureLabel), "0");
-                                } else if (featureInstanceData[1].equals("true")) {
+                                if (featureInstanceData[1].equals("true")) {
                                     sortedInstances.put(featureToIndex.get(normalizedFeatureLabel), "1");
                                 } else {
                                     // generic processing of feature-value pairs
@@ -118,14 +121,20 @@ public class ArffBuilder {
                         if (isFirst) {
                             isFirst = false;
                         } else {
-                            trainWriter.write(", ");
+                            writer.write(", ");
                         }
-                        trainWriter.write(index + " " + sortedInstances.get(index));
+                        writer.write(index + " " + sortedInstances.get(index));
                     }
                     if (classIncluded) {
-                        trainWriter.write(", " + featureToIndex.size() + " " + instanceClass);
+                        writer.write(", " + featureToIndex.size() + " " + instanceClass);
                     }
-                    trainWriter.write("}\n");
+                    if (addGold) {
+                        String[] goldData = splitStringToArray(testGoldPath, "\n",  StandardCharsets.UTF_8);
+                        String[] data = goldData[ind].split("\t");
+                        writer.write(", " + featureToIndex.size() + " " + data[2]);
+                    }
+                    ind++;
+                    writer.write("}\n");
                 }
             }
         }
@@ -141,9 +150,11 @@ public class ArffBuilder {
                     for (int i = 3; i < instanceData.length; i++) {
                         String featureLabel = normalize(instanceData[i]);
                         String[] normalizedFeatureLabel = featureLabel.split("=");
-                        if (!matchesFilteredFeatures(normalizedFeatureLabel[0]) && !featureToIndex.containsKey(normalizedFeatureLabel[0])) {
-                            featureToIndex.put(normalizedFeatureLabel[0], index);
-                            index++;
+                        if (!matchesFilteredFeatures(normalizedFeatureLabel[0])) {
+                            if (!featureToIndex.containsKey(normalizedFeatureLabel[0])) {
+                                featureToIndex.put(normalizedFeatureLabel[0], index);
+                                index++;
+                            }
                         }
                     }
                 }
@@ -153,7 +164,7 @@ public class ArffBuilder {
 
     private static boolean matchesFilteredFeatures(String normalizedFeatureLabel) {
         for (String out : filterOut) {
-            if (normalizedFeatureLabel.equals(out)) return true;
+            if (normalizedFeatureLabel.startsWith(out)) return true;
         }
         return false;
     }

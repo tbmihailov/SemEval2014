@@ -1,25 +1,8 @@
 Imports: {
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import static gate.Utils.*;
 }
-/*
-Phase:twitter
-Input: Token Split
-Options: control = appelt
-*/
-/*Rule:tweet
-({Token.category == JJ})
-(
-({Token})*
-{Split.kind == external}
-):tw
--->
-:tw.tweet={rule = "tweet"}
-*/
-
-//////////////////////////////////////////////////////////////////
-
-
 Phase: Punctuation
 Input: tweet
 Options: control = appelt
@@ -35,233 +18,110 @@ Priority: 100
 :tw {
 	// public void doit(inputAS, outputAS, doc, twAnnots ...)
 
-	
-	//Get content of the Tweet.
-	Long start = twAnnots.firstNode().getOffset();
-	Long end = twAnnots.lastNode().getOffset();
-	
-	
-	//Add negation count
-	AnnotationSet negation = inputAS.get("Negation").getContained(start, end);
-	int numNegation = 0;
-	int numAllNegationTokens = 0;
-	for(Annotation a : negation){
-		if("negation".equals(a.getFeatures().get("rule"))){
-			numNegation ++;
-			numAllNegationTokens += (Integer) a.getFeatures().get("numNegationTokens");
-		}
-	}
-	twAnnots.iterator().next().getFeatures().put("numNegations", numNegation);
-	twAnnots.iterator().next().getFeatures().put("numAllNegationTokens", numAllNegationTokens);
-	
-	
-	String text = "";
-	try {
-		text = doc.getContent().getContent(start, end).toString();
-	} catch (gate.util.InvalidOffsetException e) {
-		throw new java.lang.IndexOutOfBoundsException(e.toString());
-	}
-	
-	
-	//Remove whitespaces at the end of the text.
-	text = text.replaceAll("\\s+$", "");
-	
-	
-	//Remove all URLs from text BUT NOT FROM TOKENS! For Tokens look somewhere below.
-	String urlPattern = "((https?|ftp|gopher|telnet|file|Unsure|http):((//)|(\\\\))+[\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&]*)";
-	Pattern p = Pattern.compile(urlPattern, Pattern.CASE_INSENSITIVE);
-	Matcher m = p.matcher(text);
-	int g = 0;
-	while (m.find()) {
-		text = text.replaceAll(m.group(g), "").trim();
-		g++;
-	}
-	
-	
-	
-	//The number of contiguous sequences of exclamation marks
-	String regex = "!{2,}";
-	
-	Pattern pattern = Pattern.compile(regex);
-    Matcher  matcher = pattern.matcher(text);
-
-    int count = 0;
-    while (matcher.find())
-		count++;
-	twAnnots.iterator().next().getFeatures().put("CONT_SEQ_OF_EXCLAMATION_MARKS", count);
-	
-	
-	
-	//The number of contiguous sequences of question marks
-	regex = "\\?{2,}";
-	
-	pattern = Pattern.compile(regex);
-    matcher = pattern.matcher(text);
-
-    count = 0;
-    while (matcher.find())
-		count++;
-	twAnnots.iterator().next().getFeatures().put("CONT_SEQ_OF_QUESTION_MARKS", count);
-	
-	
-	
-	//The number of contiguous sequences of both exclamation and question marks
-	regex = "((!+\\?+(!|\\?)*)|(\\?+!+(!|\\?)*))";
-	
-	pattern = Pattern.compile(regex);
-    matcher = pattern.matcher(text);
-
-    count = 0;
-    while (matcher.find())
-		count++;
-	twAnnots.iterator().next().getFeatures().put("CONT_SEQ_OF_BOTH_EXCLAMATION_AND_QUESTION_MARKS", count);
-	
-	
-	
-	//The number of contiguous sequences of exclamation marks or question marks.
-	regex = "(!|\\?){2,}";
-	
-	pattern = Pattern.compile(regex);
-    matcher = pattern.matcher(text);
-
-    count = 0;
-    while (matcher.find())
-		count++;
-	twAnnots.iterator().next().getFeatures().put("CONT_SEQ_OF_EXCLAMATION_OR_QUESTION_MARKS", count);
-	
-	
-	
-	//Whether the last token contains exclamation or question mark.
-	regex = "^.*(!|\\?)$";
-	
-	pattern = Pattern.compile(regex);
-    matcher = pattern.matcher(text);
-    
-	twAnnots.iterator().next().getFeatures().put("LAST_TOKEN_ENDS_WITH_EXCLAMATION_OR_QUESTION_MARK", matcher.find() ? 1 : 0);
-	
-	
-	
-	//Word Ngrams
-	final String NGRAM = "NGRAM";
-	int maxN = 5;
-	boolean useConcatenation = true;
-	
-	
-	String[] words = text.split(" ");
-	for (int n = 1; n <= maxN; n++) {
-		List<String> wordNGrams = new ArrayList<String>();
-		for (int i = 0; i < words.length - n + 1; i++) {
-			StringBuilder sb = new StringBuilder();
-			if (useConcatenation) {
-				sb.append(NGRAM + n + "_");
+	try{
+		//Get content of the Tweet.
+		Long start = twAnnots.firstNode().getOffset();
+		Long end = twAnnots.lastNode().getOffset();
+		
+		
+		//Add negation count
+		AnnotationSet negation = inputAS.get("Negation",start(twAnnots), end(twAnnots));
+		FeatureMap featureMap = twAnnots.iterator().next().getFeatures();
+		
+		int numNegation = 0;
+		int numAllNegationTokens = 0;
+		for(Annotation a : negation){
+			if("negation".equals(a.getFeatures().get("rule"))){
+				numNegation ++;
+				numAllNegationTokens += (Integer) a.getFeatures().get("numNegationTokens");
 			}
-			for (int j = 0; j < n; j++) {
-				if (j > 0) {
-					if (useConcatenation) {
-						sb.append('_');
-					} else {
-						sb.append(' ');
-					}
-				}
-				sb.append(words[i + j]);
-			}
-			wordNGrams.add(sb.toString());
 		}
 		
-		Set<String> setOfWordNGrams = new HashSet<String>(wordNGrams);
-	    Iterator<String> iterator = setOfWordNGrams.iterator();
-		List<String> repeated = new ArrayList<String>();
+		featureMap.put("numNegations", numNegation);
+		featureMap.put("numAllNegationTokens", numAllNegationTokens);
 		
-	    while(iterator.hasNext()) {
-	        String temp = iterator.next();
-	        int frequency = Collections.frequency(wordNGrams, temp);
-	        iterator.remove();
-	        repeated.add(temp + "=" + frequency);
-	    }
 		
-	    for (String rep : repeated) {
-			setOfWordNGrams.add(rep);
+		String text = "";
+		try {
+			text = doc.getContent().getContent(start, end).toString();
+		} catch (gate.util.InvalidOffsetException e) {
+			throw new java.lang.IndexOutOfBoundsException(e.toString());
 		}
 		
-		String featureCode = "Word " + n + "-grams";
-		twAnnots.iterator().next().getFeatures().put(featureCode, setOfWordNGrams);
-	}
-	
-	
-	//Character Ngrams
-	final String PRE = "PRE";
-	final String SUF = "SUF";
-	maxN = 5;
-	
-	char[] characters = text.toCharArray();
-	if (characters.length < maxN) {
-		maxN = characters.length;
-	}
-	for(int n = 1; n <= maxN; n++) {
-		List<String> charNGrams = new ArrayList<String>();
 		
-		StringBuilder sb = new StringBuilder();
-		sb.append(PRE + n + "_");
-		for (int i = 0; i < n; i++) {
-			char ch = characters[i];
-			if (ch == ' ') {
-				ch = '_';
-			}
-			sb.append(ch);
-		}
-		charNGrams.add(sb.toString());
+		//Remove whitespaces at the end of the text.
+		text = text.replaceAll("\\s+$", "");
 		
-		sb = new StringBuilder();
-		sb.append(SUF + n + "_");
-		System.out.println("Stage 1 - " + (characters.length - n));
-		for (int i = characters.length - n; i < characters.length; i++) {
-			char ch = characters[i];
-			if (ch == ' ') {
-				ch = '_';
-			}
-			sb.append(ch);
-		}
-		charNGrams.add(sb.toString());
 		
-		String featureCode = "Char " + n + "-grams";
-		//twAnnots.iterator().next().getFeatures().put(featureCode, setOfCharNGrams);
-		twAnnots.iterator().next().getFeatures().put(featureCode, charNGrams);
-	}
-	
-	
-	
-	// Run stemmer.
-	final String STEM = "STEM";
-	
-	List<String> stems = new ArrayList<String>();
-	AnnotationSet tweetTokensAS = inputAS.get("Token").getContained(start, end);
-	
-	for(Annotation tweetTokenAnn : tweetTokensAS) {
-		String stem = (String) tweetTokenAnn.getFeatures().get("stem");
-		//Remove URLs.
-		m = p.matcher(stem);
-		if (!m.find() && !stem.equals("")) {
-			stems.add(STEM + "_" + stem);
+		//Remove all URLs from text BUT NOT FROM TOKENS! For Tokens look somewhere below.
+		String urlPattern = "((https?|ftp|gopher|telnet|file|Unsure|http):((//)|(\\\\))+[\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&]*)";
+		Pattern p = Pattern.compile(urlPattern, Pattern.CASE_INSENSITIVE);
+		Matcher m = p.matcher(text);
+		int g = 0;
+		while (m.find()) {
+			text = text.replaceAll(m.group(g), "").trim();
+			g++;
 		}
-	}
-	twAnnots.iterator().next().getFeatures().put("Stems", stems);
-	
-	
-	// Run lemmatizer.
-	final String LEMMA = "LEMMA";
-	
-	List<String> lemmas = new ArrayList<String>();
-	tweetTokensAS = inputAS.get("Token").getContained(start, end);
-	
-	for(Annotation tweetTokenAnn : tweetTokensAS) {
-		String root = (String) tweetTokenAnn.getFeatures().get("root");
-		//Remove URLs.
-		m = p.matcher(root);
-		if (!m.find() && !root.equals("")) {
-			lemmas.add(LEMMA + "_" + root);
-		}
-	}
-	twAnnots.iterator().next().getFeatures().put("Lemmas", lemmas);
-	
-	
+		
+		//The number of contiguous sequences of exclamation marks
+		String regex = "!{2,}";
+		
+		Pattern pattern = Pattern.compile(regex);
+		Matcher  matcher = pattern.matcher(text);
+
+		int count = 0;
+		while (matcher.find())
+			count++;
+		featureMap.put("CONT_SEQ_OF_EXCLAMATION_MARKS", count);
+		
+		//The number of contiguous sequences of question marks
+		regex = "\\?{2,}";
+		
+		pattern = Pattern.compile(regex);
+		matcher = pattern.matcher(text);
+
+		count = 0;
+		while (matcher.find())
+			count++;
+		featureMap.put("CONT_SEQ_OF_QUESTION_MARKS", count);
+		
+		
+		
+		//The number of contiguous sequences of both exclamation and question marks
+		regex = "((!+\\?+(!|\\?)*)|(\\?+!+(!|\\?)*))";
+		
+		pattern = Pattern.compile(regex);
+		matcher = pattern.matcher(text);
+
+		count = 0;
+		while (matcher.find())
+			count++;
+		featureMap.put("CONT_SEQ_OF_BOTH_EXCLAMATION_AND_QUESTION_MARKS", count);
+		
+		
+		
+		//The number of contiguous sequences of exclamation marks or question marks.
+		regex = "(!|\\?){2,}";
+		
+		pattern = Pattern.compile(regex);
+		matcher = pattern.matcher(text);
+
+		count = 0;
+		while (matcher.find())
+			count++;
+		featureMap.put("CONT_SEQ_OF_EXCLAMATION_OR_QUESTION_MARKS", count);
+		
+		
+		
+		//Whether the last token contains exclamation or question mark.
+		regex = "^.*(!|\\?)$";
+		
+		pattern = Pattern.compile(regex);
+		matcher = pattern.matcher(text);
+		
+		featureMap.put("LAST_TOKEN_ENDS_WITH_EXCLAMATION_OR_QUESTION_MARK", matcher.find() ? 1 : 0);
+		
+	} catch (Throwable e) {
+		e.printStackTrace();
+    }
 }

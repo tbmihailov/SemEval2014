@@ -10,7 +10,7 @@ Rule: LexiconsSum
 :tw {
 
 	//
-	AnnotationSet lookups = inputAS.getContained(start(twAnnots), end(twAnnots)).get("Lookup");
+	AnnotationSet lookups = inputAS.get("Lookup",start(twAnnots), end(twAnnots));
 	FeatureMap featureMap = twAnnots.iterator().next().getFeatures();
 	
 	//last token
