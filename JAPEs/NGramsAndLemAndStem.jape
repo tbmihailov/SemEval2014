@@ -24,18 +24,41 @@ Priority: 100
 		Long end = twAnnots.lastNode().getOffset();
 		
 		//Add negation count
-		AnnotationSet negation = inputAS.get("Negation",start(twAnnots), end(twAnnots));
+		//AnnotationSet negation = inputAS.get("Negation",start(twAnnots), end(twAnnots));
 		FeatureMap featureMap = twAnnots.iterator().next().getFeatures();;
+		
+		//d======================================
+		String text = "";
+		try {
+			text = doc.getContent().getContent(start, end).toString();
+		} catch (gate.util.InvalidOffsetException e) {
+			throw new java.lang.IndexOutOfBoundsException(e.toString());
+		}
+		
+		
+		//Remove whitespaces at the end of the text.
+		text = text.replaceAll("\\s+$", "");
+		
+		
+		//Remove all URLs from text BUT NOT FROM TOKENS! For Tokens look somewhere below.
+		String urlPattern = "((https?|ftp|gopher|telnet|file|Unsure|http):((//)|(\\\\))+[\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&]*)";
+		Pattern p = Pattern.compile(urlPattern, Pattern.CASE_INSENSITIVE);
+		Matcher m = p.matcher(text);
+		int g = 0;
+		while (m.find()) {
+			text = text.replaceAll(m.group(g), "").trim();
+			g++;
+		}
+		//=================================
 		
 		//Word Ngrams
 		final String NGRAM = "NGRAM";
 		int maxN = 5;
 		boolean useConcatenation = true;
 		
-		Pattern p = null;
-		Matcher m = null;
+		 p = null;
+		 m = null;
 		
-		String text = "";
 		String[] words = text.split(" ");
 		for (int n = 1; n <= maxN; n++) {
 			List<String> wordNGrams = new ArrayList<String>();
