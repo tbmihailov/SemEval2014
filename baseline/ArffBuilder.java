@@ -16,7 +16,10 @@ public class ArffBuilder {
     private static SortedMap<String, Integer> featureToIndex = new TreeMap<String, Integer>();
     private static int index = 0;
     
-    private static String[] filterOut = {"id1", "id2", "STEM", "LEMMA", "NGRAM", "URL", "WC_PUNCT_2GRAM", "USR", "PRE5", "SUF5", "PRE4", "SUF4", "NNP", "positive", "negative", "neutral", "unknwn", "PRE", "SUF"};
+    private static String[] filterOut = {"id1", "id2", "STEM", "LEMMA", "NGRAM", "URL", "WC_PUNCT_2GRAM", "USR", "PRE5", "SUF5", "PRE4", "SUF4", "NNP", "positive", "negative", "neutral", "unknwn", "PRE", "SUF"
+    									//selection
+    									//,""
+    									};
     private static String[] whilelist = {"mpqa", "nrcEmo", "num"};
     
     static String testGoldPath;
@@ -43,7 +46,7 @@ public class ArffBuilder {
         System.out.println("DONE");
 
         System.out.print("Writing test arff...");
-        createArff(testDocsPath, testArffPath, false, true);
+        createArff(testDocsPath, testArffPath, false, false);//last param is for test with already known result from 2013
         System.out.println("DONE");
     }
 
@@ -81,10 +84,10 @@ public class ArffBuilder {
                     String[] instanceData = instance.split("\t");
                     String instanceClass = null;
                     if (classIncluded) {
-                        instanceClass = instanceData[instanceData.length - 1];
+                        instanceClass = instanceData[0];//instance class is the first attribute in the gate export result file //[instanceData.length - 1];
                     }
                     SortedMap<Integer, String> sortedInstances = new TreeMap<Integer, String>();
-                    for (int i = 3; i < instanceData.length; i++) {
+                    for (int i = 2; i < instanceData.length; i++) {
                         String featureInstance = normalize(instanceData[i]);
                         String[] featureInstanceData = featureInstance.split("=");
                         String normalizedFeatureLabel = featureInstanceData[0];
