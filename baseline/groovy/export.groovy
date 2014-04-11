@@ -1,7 +1,24 @@
 // export to file
 new File(doc.name).withWriterAppend{ out ->
-    doc.getAnnotations().get("tweet").each{ tw ->
+    
+    tweets = doc.getAnnotations().get("tweet")
+    sortedTweets = new ArrayList<Annotation>(tweets);
+    Collections.sort(sortedTweets, new OffsetComparator());
+
+    // doc.getAnnotations().get("tweet").each{ tw ->
+    sortedTweets.each{ tw ->
         String t = "\t"
+        
+        
+        // export id1
+        if(tw.features.id1 != null) {
+            out.write(tw.features.id1 + t);
+        }
+        
+        // export id2
+        if(tw.features.id2 != null) {
+            out.write(tw.features.id2 + t);
+        }
         
         // export label
         if(tw.features.label != null) {
@@ -14,7 +31,7 @@ new File(doc.name).withWriterAppend{ out ->
         Map<String, Integer> features = new HashMap<String, Integer>();
         
         tw.features.each{ fName, fValue ->
-            if(!fName.equals("label")) {
+            if(!fName.equals("label") && !fName.equals("id1") && !fName.equals("id2")) {
                 if(fValue instanceof Collection && !(fValue instanceof String)) {
                     
                     fValue.each{ val ->
