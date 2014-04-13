@@ -21,6 +21,7 @@ namespace LexiconToGazetteer
                 Console.WriteLine("2.regex");
                 Console.WriteLine("3.regex replace");
                 Console.WriteLine("4.output file");
+                return;
             }
 
             string inputFile = args[0];
