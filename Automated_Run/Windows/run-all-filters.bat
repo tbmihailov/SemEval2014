@@ -1,0 +1,13 @@
+call all.bat
+call all-no-BinqLiu-lex.bat
+call all-no-encodings.bat
+call all-no-lexicons.bat
+call all-no-mpqa-lex.bat
+call all-no-msol-lex.bat
+call all-no-negation.bat
+call all-no-nrc-emotion-lex.bat
+call all-no-nrcSent-hashtag-lex.bat
+call all-no-pos.bat
+call all-no-sent140-lex.bat
+call all-no-stanford-lex.bat
+call all-no-word-clusters.bat
