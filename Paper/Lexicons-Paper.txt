@@ -1,0 +1,96 @@
+Lexicons 
+Lexicons we used in our work include
+- Minqing Hu and Bing Liu opinion lexicon (Hu and Liu 2004) (4783 positive and 2006 negative terms)
+- MPQA Subjectivity Cues Lexicon (Wilson et al., 2005)(8222 terms) 
+- Macquarie Semantic Orientation Lexicon (MSOL) (Mohammad, Dorr, Dunne, 2009) (30458 positive and 45942 negative terms)
+- NRC Emotion Lexicon (Mohammad and Turney, 2013) (14181 terms with specified emotion) 
+- NRC Hashtag Sentiment Lexicon - list of words and their associations with
+positive and negative sentiment (Mohammad, Kiritchenko, and Zhu 2013)(54129 unigrams, 316531 bigrams, 480010 pairs, 78 positive and negative hashtag terms)
+- Sentiment140 Lexicon - list of words with associations to positive an negative sentiments (Mohammad, Kiritchenko, and Zhu 2013)(62468 unigrams, 677698 bigrams, 480010 pairs)
+References
+
+\bibitem[\protect\citename{Pang \bgroup et al.\egroup }2002]{Pang:02}
+Bo Pang, Lillian Lee, and Shivakumar Vaithyanathan.
+\newblock 2002.
+\newblock Sentiment Classi?cation Using Machine Learning Techniques.
+\newblock In Proceedings of the Conference on Empirical Methods in Natural Language Processing, pages 79–86, Philadelphia, PA.
+
+Minqing Hu and Bing Liu. "Mining and Summarizing Customer Reviews." 
+       Proceedings of the ACM SIGKDD International Conference on Knowledge 
+       Discovery and Data Mining (KDD-2004), Aug 22-25, 2004, Seattle, 
+       Washington, USA, 
+Bing Liu, Minqing Hu and Junsheng Cheng. "Opinion Observer: Analyzing 
+       and Comparing Opinions on the Web." Proceedings of the 14th 
+       International World Wide Web conference (WWW-2005), May 10-14, 
+       2005, Chiba, Japan.
+	   
+Bing Liu. "Sentiment Analysis and Subjectivity." An chapter in 
+          Handbook of Natural Language Processing, Second Edition, 
+          (editors: N. Indurkhya and F. J. Damerau), 2010.	  
+
+Theresa Wilson, Janyce Wiebe and Paul Hoffmann (2005). Recognizing Contextual 
+		Polarity in Phrase-Level Sentiment Analysis. Proceedings of HLT/EMNLP 2005,
+		Vancouver, Canada.	
+
+Riloff and Wiebe (2003). Learning extraction patterns for subjective
+expressions. EMNLP-2003.	
+
+Generating High-Coverage Semantic Orientation Lexicons From Overtly Marked Words and a Thesaurus, Saif Mohammad, Bonnie Dorr, and Cody Dunne, In Proceedings of the Conference on Empirical Methods in Natural Language Processing (EMNLP-2009), August 2009, Singapore.
+
+NRC Emotion Lexicon, Saif M. Mohammad and Peter D. Turney, NRC Technical Report,
+December 2013, Ottawa, Canada.	
+
+Saif M. Mohammad, Svetlana Kiritchenko, and Xiaodan Zhu "Building the State-of-the-Art in Sentiment Analysis of Tweets", To Appear In Proceedings of the seventh international workshop on Semantic Evaluation Exercises (SemEval-2013), June 2013, Atlanta, Georgia, USA.
+
+
+LATEX:
+\bibitem[\protect\citename{Pang \bgroup et al.\egroup }2002]{Pang:02}
+Bo Pang, Lillian Lee, and Shivakumar Vaithyanathan.
+\newblock 2002.
+\newblock Sentiment Classi?cation Using Machine Learning Techniques.
+\newblock In Proceedings of the Conference on Empirical Methods in Natural Language Processing, pages 79–86, Philadelphia, PA.
+
+\bibitem[\protect\citename{Minqing Hu and Bing Liu. }2004]{Minqing Hu and Bing Liu. :2004}
+Minqing Hu and Bing Liu
+\newblock 2004
+\newblock "Mining and Summarizing Customer Reviews." 
+\newblock Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD-2004), Aug 22-25, 2004, Seattle,  Washington, USA, 
+	   
+\bibitem[\protect\citename{Bing Liu, Minqing Hu and Junsheng Cheng.}2005]{Bing Liu, Minqing Hu and Junsheng Cheng.:2005}
+\newblock Bing Liu, Minqing Hu and Junsheng Cheng. 
+\newblock 2005
+\newblock "Opinion Observer: Analyzing 
+       and Comparing Opinions on the Web." Proceedings of the 14th 
+       International World Wide Web conference (WWW-2005), May 10-14, 
+       2005, Chiba, Japan.
+	
+\bibitem[\protect\citename{Bing Liu}2010 ]{Bing Liu:2010}	
+\newblock Bing Liu. 
+\newblock 2010
+\newblock "Sentiment Analysis and Subjectivity." An chapter in 
+          Handbook of Natural Language Processing, Second Edition, 
+          (editors: N. Indurkhya and F. J. Damerau), 2010.	  
+
+\bibitem[\protect\citename{Theresa Wilson, Janyce Wiebe and Paul Hoffmann}2005]{Theresa Wilson, Janyce Wiebe and Paul Hoffmann:2005}		  
+\newblock Theresa Wilson, Janyce Wiebe and Paul Hoffmann (2005). 
+\newblock Recognizing Contextual 
+		Polarity in Phrase-Level Sentiment Analysis. Proceedings of HLT/EMNLP 2005,
+		Vancouver, Canada.	
+
+\bibitem[\protect\citename{Riloff and Wiebe}2003 ]{Riloff and Wiebe:2003}		
+\newblock Riloff and Wiebe (2003). 
+\newblock Learning extraction patterns for subjective
+expressions. EMNLP-2003.	
+
+\bibitem[\protect\citename{Saif Mohammad, Bonnie Dorr, and Cody Dunne}2009 ]{Saif Mohammad, Bonnie Dorr, and Cody Dunne:2009}
+\newblock Saif Mohammad, Bonnie Dorr, and Cody Dunne 2009 
+\newblock Generating High-Coverage Semantic Orientation Lexicons From Overtly Marked Words and a Thesaurus, In Proceedings of the Conference on Empirical Methods in Natural Language Processing (EMNLP-2009), August 2009, Singapore.
+
+\bibitem[\protect\citename{Saif M. Mohammad and Peter D. Turney}2013 ]{Saif M. Mohammad and Peter D. Turney:2013  }
+\newblock Saif M. Mohammad and Peter D. Turney, 2013
+\newblock NRC Emotion Lexicon, NRC Technical Report,
+December 2013, Ottawa, Canada.	
+
+\bibitem[\protect\citename{Saif M. Mohammad, Svetlana Kiritchenko, and Xiaodan Zhu}2013 ]{Saif M. Mohammad, Svetlana Kiritchenko, and Xiaodan Zhu:2013  }
+\newblock Saif M. Mohammad, Svetlana Kiritchenko, and Xiaodan Zhu 2013
+\newblock "Building the State-of-the-Art in Sentiment Analysis of Tweets", To Appear In Proceedings of the seventh international workshop on Semantic Evaluation Exercises (SemEval-2013), June 2013, Atlanta, Georgia, USA.
