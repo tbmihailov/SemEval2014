@@ -1,7 +1,7 @@
 perl generate-LIBLINEAR-filtered.pl %1
 
-SET LIBSVM_PATH=E:\Software\libsvm-3.18\windows
-SET LIBLINEAR_PATH=E:\Software\liblinear-1.94\windows
+SET LIBSVM_PATH=%~dp0\..\..\..\tools\libsvm-3.21\windows
+SET LIBLINEAR_PATH=%~dp0\..\..\..\tools\liblinear-2.1\windows
 
 # Cross_validation:
 %LIBLINEAR_PATH%\train.exe -c 1 -v 2 train+dev2013-B-GATE.txt.liblinear

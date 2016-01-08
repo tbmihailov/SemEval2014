@@ -1,5 +1,5 @@
 // export to file
-new File(doc.name).withWriterAppend{ out ->
+new File("D:\\programming\\TextMining\\gate-export\\"+doc.name).withWriterAppend{ out ->
     
     tweets = doc.getAnnotations().get("tweet")
     sortedTweets = new ArrayList<Annotation>(tweets);
@@ -8,7 +8,6 @@ new File(doc.name).withWriterAppend{ out ->
     // doc.getAnnotations().get("tweet").each{ tw ->
     sortedTweets.each{ tw ->
         String t = "\t"
-        
         
         // export id1
         if(tw.features.id1 != null) {
