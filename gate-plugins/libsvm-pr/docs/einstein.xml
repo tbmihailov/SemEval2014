@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<GateDocument version="3">
+<!-- The document's features-->
+
+<GateDocumentFeatures>
+<Feature>
+  <Name className="java.lang.String">MimeType</Name>
+  <Value className="java.lang.String">text/plain</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">docNewLineType</Name>
+  <Value className="java.lang.String">LF</Value>
+</Feature>
+</GateDocumentFeatures>
+<!-- The document content area with serialized nodes -->
+
+<TextWithNodes><Node id="0"/>Albert Einstein (/ˈælbərt ˈaɪnstaɪn/; German: [ˈalbɐrt ˈaɪnʃtaɪn] ( listen); 14 March 1879 – 18 April 1955) was a German-born theoretical physicist and philosopher of science.<Node id="175"/>[3] He developed the general theory of relativity, one of the two pillars of modern physics (alongside quantum mechanics).<Node id="297"/>[2][4] He is best known in popular culture for his mass–energy equivalence formula E = mc2 (which has been dubbed "the world's most famous equation").<Node id="447"/>[5] He received the 1921 Nobel Prize in Physics "for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect".<Node id="610"/>[6] The latter was pivotal in establishing quantum theory.<Node id="668"/>
+<Node id="669"/>Near the beginning of his career, Einstein thought that Newtonian mechanics was no longer enough to reconcile the laws of classical mechanics with the laws of the electromagnetic field.<Node id="854"/> <Node id="855"/>This led to the development of his special theory of relativity.<Node id="919"/> <Node id="920"/>He realized, however, that the principle of relativity could also be extended to gravitational fields, and with his subsequent theory of gravitation in 1916, he published a paper on the general theory of relativity.<Node id="1135"/> <Node id="1136"/>He continued to deal with problems of statistical mechanics and quantum theory, which led to his explanations of particle theory and the motion of molecules.<Node id="1293"/> <Node id="1294"/>He also investigated the thermal properties of light which laid the foundation of the photon theory of light.<Node id="1403"/> <Node id="1404"/>In 1917, Einstein applied the general theory of relativity to model the large-scale structure of the universe.<Node id="1514"/>[7]
+He was visiting the United States when Adolf Hitler came to power in 1933 and, being Jewish, did not go back to Germany, where he had been a professor at the Berlin Academy of Sciences.<Node id="1703"/> <Node id="1704"/>He settled in the U.S., becoming an American citizen in 1940.<Node id="1765"/>[8] On the eve of World War II, he endorsed a letter to President Franklin D. Roosevelt alerting him to the potential development of "extremely powerful bombs of a new type" and recommending that the U.S. begin similar research.<Node id="1993"/> <Node id="1994"/>This eventually led to what would become the Manhattan Project.<Node id="2057"/> <Node id="2058"/>Einstein supported defending the Allied forces, but largely denounced the idea of using the newly discovered nuclear fission as a weapon.<Node id="2195"/> <Node id="2196"/>Later, with the British philosopher Bertrand Russell, Einstein signed the Russell–Einstein Manifesto, which highlighted the danger of nuclear weapons.<Node id="2346"/> <Node id="2347"/>Einstein was affiliated with the Institute for Advanced Study in Princeton, New Jersey, until his death in 1955.<Node id="2459"/>
+<Node id="2460"/>Einstein published more than 300 scientific papers along with over 150 non-scientific works.<Node id="2552"/>[7][9] On 5 December 2014, universities and archives announced the release of Einstein's papers, comprising more than 30,000 unique documents.<Node id="2694"/>[10][11] Einstein's intellectual achievements and originality have made the word "Einstein" synonymous with genius[12] so that in a sense he may be regarded as the greatest genius who ever lived.<Node id="2889"/>
+<Node id="2890"/></TextWithNodes>
+<!-- The default annotation set -->
+
+<AnnotationSet>
+</AnnotationSet>
+
+<!-- Named annotation set -->
+
+<AnnotationSet Name="Key">
+<Annotation Id="3285" Type="Sentence" StartNode="1514" EndNode="1703">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3287" Type="Sentence" StartNode="1704" EndNode="1765">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3281" Type="Sentence" StartNode="1294" EndNode="1403">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3283" Type="Sentence" StartNode="1404" EndNode="1514">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3293" Type="Sentence" StartNode="2058" EndNode="2195">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3295" Type="Sentence" StartNode="2196" EndNode="2346">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3289" Type="Sentence" StartNode="1765" EndNode="1993">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3291" Type="Sentence" StartNode="1994" EndNode="2057">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3269" Type="Sentence" StartNode="447" EndNode="610">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3271" Type="Sentence" StartNode="610" EndNode="668">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3265" Type="Sentence" StartNode="175" EndNode="297">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3267" Type="Sentence" StartNode="297" EndNode="447">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3277" Type="Sentence" StartNode="920" EndNode="1135">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3279" Type="Sentence" StartNode="1136" EndNode="1293">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3273" Type="Sentence" StartNode="669" EndNode="854">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3275" Type="Sentence" StartNode="855" EndNode="919">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3263" Type="Sentence" StartNode="0" EndNode="175">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3303" Type="Sentence" StartNode="2694" EndNode="2889">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3301" Type="Sentence" StartNode="2552" EndNode="2694">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3299" Type="Sentence" StartNode="2460" EndNode="2552">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3297" Type="Sentence" StartNode="2347" EndNode="2459">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">science</Value>
+</Feature>
+</Annotation>
+</AnnotationSet>
+
+<!-- Named annotation set -->
+
+<AnnotationSet Name="Original markups">
+<Annotation Id="0" Type="paragraph" StartNode="0" EndNode="2890">
+</Annotation>
+</AnnotationSet>
+
+</GateDocument>

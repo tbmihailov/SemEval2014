@@ -1,0 +1,54 @@
+A lightweight wrapper PR for LIBSVM in GATE.
+
+LIBSVM homepage: http://www.csie.ntu.edu.tw/~cjlin/libsvm/
+GATE homepage: https://gate.ac.uk/
+
+This PR provides an easy way to use LIBSVM in GATE for classification, allowing conversion of GATE FeatureSets to LIBSVM data objects to train and evaluate. 
+
+When training on a corpus, this PR will accumulate data, convert it to LIBSVM objects and pass it to the java implementation of LIBSVM for training. It will then store the model, along with x and y alphabets to files. When testing, each annotation's features will be translated to libsvm instance with the stored alphabets, and passed to libsvm model for predicting.
+
+Main advantages are ease of use, transparency and real-valued feature support.
+
+For train and test example pipelines, load the applications train.xgapp and test.xgapp from the zip distribution.
+
+To build the plugin yourself, in the project folder run:
+	mvn clean install
+
+To load the plugin in GATE:
+	- unzip "target/libsvm-pr.zip" or the zip distribution.
+	- Run GATE
+	- Open "Manage Creole Plugins"
+	- find the "libsvm-pr" folder from the zip and check "load now".
+
+To add the PR to an existing pipeline for training:
+	- Create new "LIBSVM Classifier PR" Processing Resource with mode=TRAIN and modelPath="a place to store trained model files";
+	- Add the created PR to the pipeline;
+	- Set the right parameters (see list below);
+	- Make sure your documents have (or your pipeline creates) annotations of the right "annType", that they have a "label" feature and that all other fetures are Integer, Double, or a String parsable to Double. Other features will be ignored with a warning message;
+	- Run and check in the "modelPath" folder if two files "libsvm.model" and "libsvm.alphabet" are created. "libsvm.model" file is actually compatible with LIBSVM and can be used outside of GATE, although feature numbering is stored in the "libsvm.alphabet" file.
+
+To add the PR to an existing pipeline for testing:
+	- Create new "LIBSVM Classifier PR" Processing Resource with mode=EVAL and modelPath="the place where trained model files are stored". Trained model will be loaded;
+	- Add the created PR to the pipeline;
+	- Set the right parameters (see list below);
+	- Make sure your documents have (or your pipeline creates) annotations of the right "annType" and all fetures ("label" feature will be ignored) are Integer, Double, or a String parsable to Double. Other features will be ignored with a warning message;
+	- Run and check the predicted labela and scores in the "annType" annotations in your documents.
+
+Runtime parameters:
+	- annType: annotations of this type will be treated as instances for classification. For classification of whole documents only one annotation should be created for each document. Annotation span doesn't matter as long as its features are set appropriately.
+	
+	- commandLineParams: The same set of options LIBSVM uses when running in command line (described here: http://www.csie.ntu.edu.tw/~cjlin/libsvm/). This line is parsed the same way the java version of LIBSVM parses it except for the quiet mode and the in/out files. Default value is "-s 0 -c 1 -t 0 -m 1024"
+	
+	- inputAS: annotation set where the annType annotations should be.
+	
+	- labelFeature: name of the feature which holds the "label" value. In TRAIN or DUMP mode this value will be used in the model, while in EVAL mode the pr will write the predicted class in it.
+	
+	- scoresFeature: name of the feature to hold "scores" for each class, produced by LIBSVM in EVAL mode.
+	
+	- quietMode: when true, libsvm output will be completely lost - not displayed or written anywhere. This could be useful if libsvm logging gets too big and GATE console has problems displaying it.
+
+Exporting data in LIBSVM format:
+It is possible to export the features created by your pipeline in the LIBSVM format for processing. This is useful when doing parameter selection or trying different options in LIBSVM, their java implementation is said to be slower than the original one so it could make sense to do time consuming operations outside GATE. Notice however, that to use the PR, training should be done in GATE as LIBSVM does not store alphabets of the feature names and target classes. To export features, use the mode=DUMP when initializing the PR, then follow the training instructions. A "libsvm.dump" file will be created in the "modelPath" folder, ready to use for training/test in LIBSVM.
+
+Transparency and updating LIBSVM core:
+This plugin is built with the idea to be as light as possible, reusing as much LIBSVM funcitonality as possible. It's built with maven and versions of LIBSVM should be easily changed with altering the pom.xml file. Writing and reading of models is done through the LIBSVM library. Parameter parsing is a replica of the java code in the distribution as it was not in a named package, hence not reusable.

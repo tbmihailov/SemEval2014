@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<GateDocument version="3">
+<!-- The document's features-->
+
+<GateDocumentFeatures>
+<Feature>
+  <Name className="java.lang.String">gate.SourceURL</Name>
+  <Value className="java.lang.String">created from String</Value>
+</Feature>
+</GateDocumentFeatures>
+<!-- The document content area with serialized nodes -->
+
+<TextWithNodes>Diego Armando Maradona Franco (Spanish pronunciation: [ˈdjeɣo maɾaˈðona], born 30 October 1960) is an Argentine former footballer. He has served as a manager and coach at other clubs as well as for the national team of Argentina. Many experts, football critics, former players, current players and football fans regard Maradona as the greatest football player of all time.[5][6][7][8] He was joint FIFA Player of the 20th Century with Pelé.[9][10]
+A playmaker who operated in the classic number 10 position, Maradona is the only player in football history to set the world record transfer fee twice, first when he transferred to Barcelona for a then world record £5m, and second, when he transferred to Napoli for another record fee £6.9m.[11] He played for Argentinos Juniors, Boca Juniors, Barcelona, Napoli, Sevilla and Newell's Old Boys during his club career, and is most famous for his time at Napoli where he won numerous accolades. In his international career with Argentina, he earned 91 caps and scored 34 goals. Maradona's exceptional vision, passing, ball control, dribbling skills, speed, reflexes and thinking time was combined with his small size (he was 5'5", or 1.65m) giving him a low center of gravity which allowed him to be more maneuverable than most other football players; he would often dribble past multiple opposing players on a run. His presence on the pitch would have a great effect on his team's general performance, while he would often be singled out by the opposition.</TextWithNodes>
+<!-- The default annotation set -->
+
+<AnnotationSet>
+</AnnotationSet>
+
+</GateDocument>

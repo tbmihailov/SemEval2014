@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<GateDocument version="3">
+<!-- The document's features-->
+
+<GateDocumentFeatures>
+<Feature>
+  <Name className="java.lang.String">MimeType</Name>
+  <Value className="java.lang.String">text/plain</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">docNewLineType</Name>
+  <Value className="java.lang.String">LF</Value>
+</Feature>
+</GateDocumentFeatures>
+<!-- The document content area with serialized nodes -->
+
+<TextWithNodes><Node id="0"/>Gabriel Omar Batistuta (Spanish pronunciation: [ɡaˈβɾjel ˈomaɾ βatisˈtuta]; born 1 February 1969), nicknamed Batigol [batiˈɣol] as well as El Ángel Gabriel [el ˌaŋxel ɣaˈβɾjel] (Spanish for Angel Gabriel), is a retired professional footballer.<Node id="243"/> <Node id="244"/>The prolific Argentine striker played most of his club football at Fiorentina in Italy, and is the eleventh top scorer of all-time in the Italian Serie A league, with 184 goals in 318 matches.<Node id="436"/>
+<Node id="437"/>At international level, he is Argentina's all-time leading goalscorer, with 56 goals in 78 matches, and he played at three World Cups.<Node id="571"/> <Node id="572"/>In 1999, Batistuta was third in the FIFA World Player of the Year awards.<Node id="645"/>[1] In 2004 he was named in the FIFA 100 list of the Top 125 greatest living footballers.<Node id="734"/>[2] A powerful player with an all-round game, clinical finishing, as well as accurate heading and free-kick taking abilities, he is known as one of the most complete strikers of his generation.<Node id="927"/> <Node id="928"/>Diego Maradona stated that Batistuta is the best striker he has ever seen play the game.<Node id="1016"/>[3][4]
+When his club Fiorentina was relegated to Serie B in 1993, Batistuta stayed with the club and helped it return to the top-flight league a year later.<Node id="1172"/> <Node id="1173"/>A popular sporting figure in Florence, the Fiorentina fans erected a life-size bronze statue of him in 1996, in recognition of his performances for Fiorentina.<Node id="1332"/>[5] He never won the Italian league with Fiorentina, but when he moved to Roma in 2000, he finally won the Serie A title to crown his career in Italy.<Node id="1482"/>[6] He played his last season in Qatar with Al-Arabi before he retired in 2005.<Node id="1561"/>[7]<Node id="1564"/>
+<Node id="1565"/></TextWithNodes>
+<!-- The default annotation set -->
+
+<AnnotationSet>
+</AnnotationSet>
+
+<!-- Named annotation set -->
+
+<AnnotationSet Name="Key">
+<Annotation Id="2576" Type="Sentence" StartNode="1561" EndNode="1564">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">sport</Value>
+</Feature>
+</Annotation>
+<Annotation Id="2556" Type="Sentence" StartNode="244" EndNode="436">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">sport</Value>
+</Feature>
+</Annotation>
+<Annotation Id="2564" Type="Sentence" StartNode="734" EndNode="927">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">sport</Value>
+</Feature>
+</Annotation>
+<Annotation Id="2566" Type="Sentence" StartNode="928" EndNode="1016">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">sport</Value>
+</Feature>
+</Annotation>
+<Annotation Id="2558" Type="Sentence" StartNode="437" EndNode="571">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">sport</Value>
+</Feature>
+</Annotation>
+<Annotation Id="2560" Type="Sentence" StartNode="572" EndNode="645">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">sport</Value>
+</Feature>
+</Annotation>
+<Annotation Id="2554" Type="Sentence" StartNode="0" EndNode="243">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">sport</Value>
+</Feature>
+</Annotation>
+<Annotation Id="2562" Type="Sentence" StartNode="645" EndNode="734">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">sport</Value>
+</Feature>
+</Annotation>
+<Annotation Id="2572" Type="Sentence" StartNode="1332" EndNode="1482">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">sport</Value>
+</Feature>
+</Annotation>
+<Annotation Id="2574" Type="Sentence" StartNode="1482" EndNode="1561">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">sport</Value>
+</Feature>
+</Annotation>
+<Annotation Id="2568" Type="Sentence" StartNode="1016" EndNode="1172">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">sport</Value>
+</Feature>
+</Annotation>
+<Annotation Id="2570" Type="Sentence" StartNode="1173" EndNode="1332">
+<Feature>
+  <Name className="java.lang.String">label</Name>
+  <Value className="java.lang.String">sport</Value>
+</Feature>
+</Annotation>
+</AnnotationSet>
+
+<!-- Named annotation set -->
+
+<AnnotationSet Name="Original markups">
+<Annotation Id="0" Type="paragraph" StartNode="0" EndNode="1565">
+</Annotation>
+</AnnotationSet>
+
+</GateDocument>

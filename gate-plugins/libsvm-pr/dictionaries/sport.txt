@@ -1,0 +1,11 @@
+ball
+game
+win
+won
+league
+play
+player
+sport
+sports
+match
+matches
